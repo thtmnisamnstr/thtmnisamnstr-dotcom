@@ -33,8 +33,12 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
+# Gavin, 20200719: Including the Novela theme directory under node_modules
+node_modules/*
+!node_modules/@narative/
+node_modules/@narative/*
+!node_modules/@narative/gatsby-theme-novela/
 
 # Typescript v1 declaration files
 typings/
