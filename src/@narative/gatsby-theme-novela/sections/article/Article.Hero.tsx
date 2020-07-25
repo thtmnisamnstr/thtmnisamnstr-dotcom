@@ -161,6 +161,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
   `}
 `;
 
+/* Gavin 20200724: Changed from 'height: 220px' to 'max-width: 100%' for phablet */
 const HeroImage = styled.div`
   position: relative;
   z-index: 1;
@@ -177,11 +178,10 @@ const HeroImage = styled.div`
 
   ${mediaqueries.phablet`
     margin: 0 auto;
-    width: calc(100vw - 40px);
-    height: 220px;
+    max-width: 100%;
 
     & > div {
-      height: 220px;
+      max-width: 100%;
     }
 `}
 `;
