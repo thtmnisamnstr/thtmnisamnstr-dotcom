@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: `https://thtmnisamnstr.com/`,
     description: `Gavin Johnson's personal site. Resume, blog posts, tech product marketing stuff, maybe some tech-y stuff too.`,
     hero: {
-      heading: `Hi. I'm Gavin. My handle is usually thtmnisamnstr. This is my site.`,
+      heading: `Hi. I'm Gavin. You can find me floating around the internet as thtmnisamnstr. This is my site.`,
       maxWidth: 652,
     },
     social: [
