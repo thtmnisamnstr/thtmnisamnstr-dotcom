@@ -35,10 +35,11 @@ build/Release
 # Dependency directories
 jspm_packages/
 # Gavin, 20200719: Including the Novela theme directory under node_modules
-node_modules/*
-!node_modules/@narative/
-node_modules/@narative/*
-!node_modules/@narative/gatsby-theme-novela/
+# Gavin, 20200802: Including all under directory under node_modules
+#node_modules/*
+#!node_modules/@narative/
+#node_modules/@narative/*
+#!node_modules/@narative/gatsby-theme-novela/
 
 # Typescript v1 declaration files
 typings/
@@ -60,7 +61,9 @@ typings/
 
 # gatsby files
 .cache/
-public
+
+# Gavin, 20200802: Including public
+#public
 
 # Mac files
 .DS_Store
