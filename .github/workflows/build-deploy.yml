@@ -5,9 +5,7 @@ name: Build and Deploy
 # events but only for the main branch
 on:
   # Gavin, 20200802: Removing on-push, because I only want PRs to trigger this job
-  #push:
-  #  branches: [ main ]
-  pull_request:
+  push:
     branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
