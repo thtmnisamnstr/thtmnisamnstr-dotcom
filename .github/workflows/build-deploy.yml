@@ -27,10 +27,10 @@ jobs:
         gatsby-arg: build
     # Gavin, 202008013: Added the Archive Production Artifact step
     - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
+      uses: actions/upload-artifact@master
+      with:
+        name: dist
+        path: dist
 
   # 
   deploy:
