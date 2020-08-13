@@ -25,12 +25,6 @@ jobs:
       uses: jzweifel/gatsby-cli-github-action@master
       with:
         gatsby-arg: build
-    # Gavin, 202008013: Added the Archive Production Artifact step
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: dist
-        path: dist
 
   # 
   deploy:
@@ -41,12 +35,6 @@ jobs:
       # Gavin, 202008013: Added the Checkout Repo step
       - name: Checkout Repo
         uses: actions/checkout@master
-      # Gavin, 202008013: Added the Download Artifact step
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: dist
-          path: dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
