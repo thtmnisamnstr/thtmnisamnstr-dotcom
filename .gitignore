@@ -76,3 +76,6 @@ yarn-error.log
 .yarn-integrity
 
 .netlify/
+
+# Gavin, 20200817: Ignoring .firebase/ cache
+.firebase/
