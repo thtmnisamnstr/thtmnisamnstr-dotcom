@@ -15,16 +15,16 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@master
-    - name: Clean Gatsby Site
-      uses: thtmnisamnstr/gatsby-cli-github-action@main
-      with:
-        gatsby-arg: clean
-    - name: Build Gatsby Site
-      uses: thtmnisamnstr/gatsby-cli-github-action@main
-      with:
-        gatsby-arg: build
+    # - name: Checkout Repo
+    #   uses: actions/checkout@master
+    # - name: Clean Gatsby Site
+    #   uses: jzweifel/gatsby-cli-github-action@master
+    #   with:
+    #     gatsby-arg: clean
+    # - name: Build Gatsby Site
+    #   uses: jzweifel/gatsby-cli-github-action@master
+    #   with:
+    #     gatsby-arg: build
     # Gavin, 202008014: Moved this up from its own Deploy job into this job ()
     - name: Deploy to Firebase
       uses: w9jds/firebase-action@master
