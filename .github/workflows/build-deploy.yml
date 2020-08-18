@@ -17,6 +17,10 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@master
+    - name: Gatsby Build and Firebase Deploy
+      uses: thtmnisamnstr/gatsby-cli-github-action@main
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     # - name: Clean Gatsby Site
     #   uses: thtmnisamnstr/gatsby-cli-github-action@main
     #   with:
@@ -26,9 +30,9 @@ jobs:
     #   with:
     #     gatsby-arg: build
     # Gavin, 202008014: Moved this up from its own Deploy job into this job ()
-    - name: Deploy to Firebase
-      uses: w9jds/firebase-action@master
-      with:
-        args: deploy --only hosting
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    # - name: Deploy to Firebase
+    #   uses: w9jds/firebase-action@master
+    #   with:
+    #     args: deploy --only hosting
+    #   env:
+    #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
