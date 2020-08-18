@@ -15,8 +15,8 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    # - name: Checkout Repo
-    #   uses: actions/checkout@master
+    - name: Checkout Repo
+      uses: actions/checkout@master
     # - name: Clean Gatsby Site
     #   uses: jzweifel/gatsby-cli-github-action@master
     #   with:
