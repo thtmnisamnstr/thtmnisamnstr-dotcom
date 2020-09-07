@@ -79,3 +79,5 @@ yarn-error.log
 
 # Gavin, 20200817: Ignoring .firebase/ cache
 .firebase/
+node_modules
+node_modules

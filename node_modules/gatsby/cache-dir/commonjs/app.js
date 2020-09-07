@@ -20,9 +20,9 @@ var _loader = require("./loader");
 
 var _devLoader = _interopRequireDefault(require("./dev-loader"));
 
-var _syncRequires = _interopRequireDefault(require("./sync-requires"));
+var _syncRequires = _interopRequireDefault(require("$virtual/sync-requires"));
 
-var _matchPaths = _interopRequireDefault(require("./match-paths.json"));
+var _matchPaths = _interopRequireDefault(require("$virtual/match-paths.json"));
 
 // Generated during bootstrap
 window.___emitter = _emitter.default;
@@ -54,6 +54,12 @@ window.___loader = _loader.publicLoader; // Let the site/plugins run code very e
           });
           parentSocket.emit(`develop:restart`);
         }
+      }); // Prevents certain browsers spamming XHR 'ERR_CONNECTION_REFUSED'
+      // errors within the console, such as when exiting the develop process.
+
+      parentSocket.on(`disconnect`, () => {
+        console.warn(`[socket.io] Disconnected. Unable to perform health-check.`);
+        parentSocket.close();
       });
     }
   });
