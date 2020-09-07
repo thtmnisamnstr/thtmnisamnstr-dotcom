@@ -4,6 +4,7 @@ author: Gavin Johnson
 date: 2020-08-26
 hero: ./images/twitter-logo.png
 excerpt: 'My wife and I got in a fight with a deer yesterday. I’ll detail our harrowing adventure in this thread I’ve named #deerfight2020'
+secret: true
 ---
 ***This is a tweet thread originally posted on [Twitter](https://twitter.com/gavinjtech/status/1298354787621036032?s=20).***
 <br />
