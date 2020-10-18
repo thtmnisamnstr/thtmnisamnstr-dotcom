@@ -29,11 +29,11 @@ The search for a laptop that fit these requirements was kinda long. I looked on 
 * **OS:** Windows 8.1
 * **Other Specs:** 8" touchscreen @ 1280x800, 802.11b/g/n wifi, Bluetooth v4.0, 1xMicro USB 2.0 port, 1xmicroSD card slot, back and front 2MP webcams, 1x3.5mm headphone jack, keyboard case included.
 
-![Alt Text](./images/yb7c96cdepdlu12o93d5.jpeg)*I didn't have a banana, so I used a quarter for scale instead.*
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/yb7c96cdepdlu12o93d5.jpeg)*I didn't have a banana, so I used a quarter for scale instead.*
 
-![Alt Text](./images/aq1dfzevp36unkr3j0ba.jpeg)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/aq1dfzevp36unkr3j0ba.jpeg)
 
-![Alt Text](./images/c9uoiw0c35vn3vtn47ut.jpeg)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/c9uoiw0c35vn3vtn47ut.jpeg)
 
 I bought this 2-in-1 refurbished from walmart.com. It was dirt cheap, super small due to the keyboard case and 2-in-1 form factor, and ran an x86 Intel Atom processor. Another big plus was that it came with  Windows 8.1 installed. I never had any intention of keeping or even using Windows, but having it installed meant that a full-featured, non-mobile OS install was possible.
 
@@ -118,8 +118,8 @@ You can boot from your USB via the UEFI boot menu. It's pretty straightforward a
 
 It works fine. It's not fast, but it's not super slow either. It hasn't crashed since I started it. I haven't had to hard reboot it a single time. I wrote about 1/3 this blog on it, another 1/3 on my iPhone, and the last 1/3 between my personal MacBook and my work MacBook.
  
-![Alt Text](./images/d2gu1pbf5kiu51t0f3ns.jpg)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/d2gu1pbf5kiu51t0f3ns.jpg)
 *Here's a screenshot of me writing this post in Chromium.*
 
-![Alt Text](./images/fbnvl2vh9tnm9otj00mw.jpg)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/fbnvl2vh9tnm9otj00mw.jpg)
 *Here's my website in VSCode.*

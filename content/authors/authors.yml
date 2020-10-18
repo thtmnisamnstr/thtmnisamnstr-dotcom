@@ -19,3 +19,21 @@
     - url: https://www.linkedin.com/in/gavin-johnson/
     - url: https://www.instagram.com/thtmnisamnstr
   featured: true
+
+- name: Rahul Bhattacharya
+  bio: |
+    Rahul Bhattacharya is a seasoned consultant, a passionate developer, and a Kafka development 
+    thought leader. His Kafka technical leadership spans retail, financial services, and 
+    transportation, to name a few. Rahul currently works for Confluent to help their customers 
+    adapt and use Kafka to its maximum potential. Before Confluent, he worked in several 
+    companies, including Target, Cisco, and SAP. He has a degree in computer science and an MBA 
+    from Boston University. In his free time, he enjoys spending time with his daughter, playing 
+    open-world video games, and traveling.  
+  shortBio: |
+    Seasoned consultant, a passionate developer, and a Kafka development thought leader.
+  avatar: ./avatars/rahul-bhattacharya.png
+  social:
+    - url: https://twitter.com/rahulbats
+    - url: https://github.com/rahulbats
+    - url: https://www.linkedin.com/in/rahul-bhattacharya-62258a7/
+  featured: false
