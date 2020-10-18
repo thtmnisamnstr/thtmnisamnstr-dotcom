@@ -3,7 +3,7 @@ title: Create Grafana Dashboards with Prometheus Data Stored in New Relic
 author: Gavin Johnson
 date: 2020-08-10
 hero: ./images/prom-nr-graf.png
-excerpt: Learn how to store Prometheus data in New Relic and send that data to Grafana without having to adjust your existing dashboards
+excerpt: Learn how to store Prometheus data in New Relic and send that data to Grafana without having to adjust your existing dashboards.
 ---
 ***This post was originally published on [New Relic's blog](https://blog.newrelic.com/product-news/grafana-dashboards-prometheus-telemetry-data-platform/). I wrote this as part of a larger announcement of a partnership between New Relic and Grafana Labs which included [this blog post on the New Relic blog](https://blog.newrelic.com/product-news/grafana-new-relic-observability-for-all/) of an interview with Lew Cirne, CEO of New Relic, and Raj Dutt, CEO of Grafana Labs; [this blog post on the Grafana blog](https://grafana.com/blog/2020/08/10/a-conversation-about-grafana-labs-new-partnership-with-new-relic/) covering the same interview, this [New Relic press release](https://newrelic.com/press-release/20200810); [the same press release made by Grafana](https://grafana.com/about/press/2020-08-10-new-relic-and-grafana-labs-partnership/); and a bunch of YouTube videos of the interview with Lew and Raj ([video 1](https://www.youtube.com/watch?v=9q264BdoTHQ), [video 2](https://www.youtube.com/watch?v=LCk1pbCKnho), [video 3](https://www.youtube.com/watch?v=zr1cH8C4dHw), and [video 4](https://www.youtube.com/watch?v=IICqvxbDUnc)).***
 <br />

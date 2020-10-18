@@ -2,11 +2,11 @@
   bio: |
     Gavin Johnson is a programmer-turned-product marketer with experience in IT, tech consulting, 
     and product marketing. At New Relic, he works with our open source team on community 
-    engagement and product awareness. Before joining New Relic, Gavin attended business school at 
-    the University of Southern California. He’s worked for Deloitte Digital as a Senior 
+    engagement and product awareness. Before joining New Relic, Gavin attended business school 
+    at the University of Southern California. He’s worked for Deloitte Digital as a Senior 
     Consultant and Manager, designing and delivering custom applications for clients, and at AT&T 
     as a Lead Product Marketing Manager for their digital video products. An Oregon native, Gavin 
-    now lives in Los Angeles. He is a happily married, has a purple belt in Brazilian Jiu Jitsu, 
+    now lives in Los Angeles. He is happily married, has a purple belt in Brazilian Jiu Jitsu, 
     and is a photographer, homebrewer, and former marathoner.
   shortBio: |
     Open Source marketing person at New Relic. Ex-AT&T marketer. Ex-Deloitte consultant. Ex-sys 
@@ -19,3 +19,21 @@
     - url: https://www.linkedin.com/in/gavin-johnson/
     - url: https://www.instagram.com/thtmnisamnstr
   featured: true
+
+- name: Rahul Bhattacharya
+  bio: |
+    Rahul Bhattacharya is a seasoned consultant, a passionate developer, and a Kafka development 
+    thought leader. His Kafka technical leadership spans retail, financial services, and 
+    transportation, to name a few. Rahul currently works for Confluent to help their customers 
+    adapt and use Kafka to its maximum potential. Before Confluent, he worked in several 
+    companies, including Target, Cisco, and SAP. He has a degree in computer science and an MBA 
+    from Boston University. In his free time, he enjoys spending time with his daughter, playing 
+    open-world video games, and traveling.  
+  shortBio: |
+    Seasoned consultant, a passionate developer, and a Kafka development thought leader.
+  avatar: ./avatars/rahul-bhattacharya.png
+  social:
+    - url: https://twitter.com/rahulbats
+    - url: https://github.com/rahulbats
+    - url: https://www.linkedin.com/in/rahul-bhattacharya-62258a7/
+  featured: false
