@@ -1,16 +1,20 @@
 - name: Gavin Johnson
   bio: |
-    Gavin Johnson is a programmer-turned-product marketer with experience in IT, tech consulting, 
-    and product marketing. At New Relic, he works with our open source team on community 
-    engagement and product awareness. Before joining New Relic, Gavin attended business school 
-    at the University of Southern California. He’s worked for Deloitte Digital as a Senior 
-    Consultant and Manager, designing and delivering custom applications for clients, and at AT&T 
-    as a Lead Product Marketing Manager for their digital video products. An Oregon native, Gavin 
-    now lives in Los Angeles. He is happily married, has a purple belt in Brazilian Jiu Jitsu, 
-    and is a photographer, homebrewer, and former marathoner.
+   Gavin Johnson is a programmer-turned-product marketer with experience in IT, tech 
+   consulting, and product marketing. At RudderStack, he leads Product Marketing and is 
+   helping build the company's open source brand, focusing heavily on increasing both 
+   community engagement and product awareness. Before joining RudderStack, Gavin attended 
+   business school at the University of Southern California and earned his bachelor's in 
+   Computer Science from Oregon State University. He’s worked for Deloitte Digital as a 
+   Senior Consultant and Manager, designing and delivering custom applications for 
+   clients, at AT&T as a Lead Product Marketing Manager for their digital video products, 
+   and at New Relic as a Principal Product Marketer for everything open source as well as 
+   their Digital Customer Experience solution. An Oregon native, Gavin now lives in Los 
+   Angeles. He is happily married, has a purple belt in Brazilian Jiu Jitsu, and is a 
+   photographer, homebrewer, and former marathoner.
   shortBio: |
-    Open Source marketing person at New Relic. Ex-AT&T marketer. Ex-Deloitte consultant. Ex-sys 
-    admin. (Sometimes)Ex-developer.
+   Product Marketer at RudderStack. Ex-PMM at New Relic & AT&T. Ex-consultant at Deloitte. 
+   Ex-sys admin. (Sometimes) Ex-developer.
   avatar: ./avatars/gavin-johnson.png
   social:
     - url: https://twitter.com/gavinjtech
