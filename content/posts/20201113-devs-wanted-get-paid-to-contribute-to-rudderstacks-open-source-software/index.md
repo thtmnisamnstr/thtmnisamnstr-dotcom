@@ -1,5 +1,10 @@
-# Devs Wanted: Get paid to contribute to RudderStack's open source software
-
+---
+title: "Devs Wanted: Get paid to contribute to RudderStack's open source software"
+author: Gavin Johnson
+date: 2020-11-13
+hero: ./images/hero.png
+excerpt: RudderStack partnered with GitHub Sponsors to launch an enhancement bounty program.
+---
 RudderStack is built around open source software. The main component of RudderStack, [rudder-server](https://github.com/rudderlabs/rudder-server), as well as a significant amount of the rest of our software is open source. Our engineering team builds pretty much all of our open source software. We get some contribution but not as much as we'd like.
 
 We also have enhancements (and integration tests and probably some bugs) that would be great to have but are not a top priority for our engineering team.
@@ -11,7 +16,7 @@ Yep. We are going to pay open source developers to contribute to our repos. It's
 
 ## How does it work?
 Go to the [rudder-server repo](https://github.com/rudderlabs/rudder-server), go to Issues, and filter the issues to ones with the label `$$$ Bounty`.
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/6c5mecu7hwlrkt7rr09h.png)
+![Alt Text](./images/6c5mecu7hwlrkt7rr09h.png)
 If the Issue has no Assignee, it is open for application.
 
 ### How do I apply?

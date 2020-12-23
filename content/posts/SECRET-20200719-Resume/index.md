@@ -15,8 +15,11 @@ slug: gavin-johnson-resume
 
 ## Experience
 
+### RudderStack *-- Los Angeles, CA (Remote)*
+#### Product Marketing Lead *-- November 2020-Present*
+
 ### New Relic *-- Los Angeles, CA (Remote)*
-#### Principal Product Marketing Manager, Open Source *-- May 2020-Present*
+#### Principal Product Marketing Manager, Open Source *-- May 2020-November 2020*
 Led go-to-market strategy and execution for [New Relic Open Source](https://opensource.newrelic.com) and for [New Relic's open source instrumentation](https://blog.newrelic.com/product-news/introducing-open-source-agents-and-projects/).
 #### Principal Solutions Marketing Manager, Digital Customer Experience (now Digital Experience Management) *-- November 2018-May 2020*
 Built the strategy for New Relic’s Digital Customer (DCX) solution and executed on it. Led creation of DCX Marketing and Sales content. Integrated DCX into New Relic’s campaigns and tactics. Represented New Relic as an external speaker.
