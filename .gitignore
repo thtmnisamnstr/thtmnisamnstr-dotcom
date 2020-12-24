@@ -79,3 +79,6 @@ yarn-error.log
 
 # Gavin, 20200817: Ignoring .firebase/ cache
 .firebase/
+
+# Gavin, 20201223: Ignoring .env variables
+.env*

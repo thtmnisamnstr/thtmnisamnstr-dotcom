@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `thtmnisamnstr`,
@@ -60,6 +64,17 @@ module.exports = {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
       },
+    },
+    {
+      resolve: `gatsby-plugin-rudderstack`,
+      options: {
+          prodKey: process.env.RUDDERSTACK_PROD_KEY,
+          devKey: process.env.RUDDERSTACK_DEV_KEY,
+          trackPage: true,
+          trackPageDelay: 50,
+          delayLoad: false,
+          manualLoad: false
+      }
     },
   ],
 };
