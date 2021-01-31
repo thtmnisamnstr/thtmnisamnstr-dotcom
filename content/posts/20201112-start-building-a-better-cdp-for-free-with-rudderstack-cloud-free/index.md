@@ -5,6 +5,9 @@ date: 2020-11-12
 hero: ./images/hero.png
 excerpt: Today, we launched RudderStack Cloud Free, a no time limit, no credit card required, completely free tier of RudderStack Cloud...
 ---
+***This post was originally published on [RudderStack's blog](https://rudderstack.com/blog/start-building-a-better-cdp-for-free-with-rudderstack-cloud-free). I wrote this as part of a product launch for RudderStack Cloud Free, their free tier.***
+<br />
+
 Today, we launched [RudderStack Cloud Free](https://app.rudderlabs.com/signup?type=freetrial), a no time limit, no credit card required, completely free tier of RudderStack Cloud. The driving force behind this is simple: we want you to try RudderStack, and RudderStack Cloud Free makes it easier than ever to do that. You receive the same great experience you get with RudderStack Cloud Pro, with the only limitation being a cap of 500,000 events per month (that’s roughly 10,000 monthly active users for most sites and apps). We are confident that if you try RudderStack, you will find value in it and love it.
 
 ## RudderStack’s Warehouse-First Approach is Better Than Other CDPs
