@@ -5,6 +5,9 @@ date: 2020-12-21
 hero: ./images/hero.png
 excerpt: Announcing our launch partnership with GitHub for GitHub Sponsors for companies.
 ---
+***This post was originally published on [RudderStack's blog](https://rudderstack.com/blog/RudderStack-gitHub-sponsors-making-open-source-more-sustainable-for-developers). I wrote this as part of a formal announcement for RudderStack's GitHub Sponsors program.***
+<br />
+
 We all use **Open Source Software (OSS)** all the time, even when we don’t know it. The backbone of the Internet is built on OSS. OSS makes standing on the shoulders of coding giants as easy as forking a repo, which just isn’t possible with closed source software. Yet a vast majority of developers that build and architect OSS, unless in the small, incredibly lucky minority of developers fully employed by a company or organization to do open source work, don’t get compensated for their work. We are working to change that.
 
 

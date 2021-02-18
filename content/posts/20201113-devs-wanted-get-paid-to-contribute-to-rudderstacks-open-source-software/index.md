@@ -5,6 +5,9 @@ date: 2020-11-13
 hero: ./images/hero.png
 excerpt: RudderStack partnered with GitHub Sponsors to launch an enhancement bounty program.
 ---
+***This post was originally published on [dev.to](https://dev.to/rudderstack/devs-wanted-get-paid-to-contribute-to-rudderstack-s-open-source-software-bjp). I wrote this as part of a small launch for RudderStack's GitHub Sponsors program.***
+<br />
+
 RudderStack is built around open source software. The main component of RudderStack, [rudder-server](https://github.com/rudderlabs/rudder-server), as well as a significant amount of the rest of our software is open source. Our engineering team builds pretty much all of our open source software. We get some contribution but not as much as we'd like.
 
 We also have enhancements (and integration tests and probably some bugs) that would be great to have but are not a top priority for our engineering team.

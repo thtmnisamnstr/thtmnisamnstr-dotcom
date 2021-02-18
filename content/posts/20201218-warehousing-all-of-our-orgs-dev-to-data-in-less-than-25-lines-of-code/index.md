@@ -5,6 +5,9 @@ date: 2020-12-18
 hero: ./images/hero.png
 excerpt: I want to report on our org's dev.to performance. This is the first step, collecting and storing data.
 ---
+***This post was originally published on [dev.to](https://dev.to/rudderstack/warehousing-all-of-our-orgs-dev-to-data-in-less-than-25-lines-new-of-code-1908).***
+<br />
+
 Since I’ve joined RudderStack, I’ve made dev.to a focus for us. We’ve started sponsoring the Dev Discuss podcast, we’re building content specifically for dev.to, we’re seeding conversations with `watercooler` and `discuss` posts, and we’ve started including dev.to posts in our launch tactics. It’s an important channel for us, and I want to collect data around how our org and our individual posts perform.
 
 Getting data on the performance of posts we publish is easy for snapshots. You can either pull it manually or, better, hit the API. That only gives point-in-time data though. If you want data you can analyze over time, there’s no good solution.

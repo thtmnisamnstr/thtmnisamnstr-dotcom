@@ -41,3 +41,23 @@
     - url: https://github.com/rahulbats
     - url: https://www.linkedin.com/in/rahul-bhattacharya-62258a7/
   featured: false
+
+- name: Savia Lobo
+  bio: |
+    Content Writer at RudderStack. Techie at heart and loves to stay up to date with
+     tech happenings across the globe. Loves singing and composing songs.
+  shortBio: |
+    Content Writer at RudderStack. Techie at heart and loves to stay up to date with
+     tech happenings across the globe. Loves singing and composing songs.
+  avatar: ./avatars/savia-lobo.png
+  featured: false
+
+- name: Kostas Pardalis
+  bio: |
+    Kostas is head of product at RudderStack. He was CEO at Blendo (acquired) and is an 
+    entrepreneur and engineer.
+  shortBio: |
+    Kostas is head of product at RudderStack. He was CEO at Blendo (acquired) and is an 
+    entrepreneur and engineer.
+  avatar: ./avatars/kostas-pardalis.png
+  featured: false
