@@ -1,7 +1,7 @@
 ---
 title: "Introducing RudderStack Cloud Extract and Warehouse Actions"
 author: Gavin Johnson
-date: 2020-01-26
+date: 2021-01-26
 hero: ./images/hero.png
 excerpt: Announcing the launch of our new features, Cloud Extract and Warehouse Actions.
 ---
@@ -66,9 +66,6 @@ Just like the recommendation engine, you can build your own personalization engi
 Lead scoring is a popular sales and marketing method for ranking leads to determine their sales-readiness or intent to buy. Leads are scored are largely based on behavior, which is represented as events (like browsing behavior, conversion, etc.), and profile, which is represented as customer traits. Many companies also group leads based on different categories using a tagging system.
 
 Now you can use your complete customer data set to perform lead scoring and automatically sync it back to your CRM. With Event Stream and Cloud Extract, you can:  
-
-
-
 *   Use Event Stream to collect behavioral event data from your websites and apps.
 *   Use Cloud Extract to combine event data in your warehouse with up-to-date lead data from your CRM.
 *   Build the lead scoring/tagging logic on your warehouse that uses all of your customer data (event and non-event).
