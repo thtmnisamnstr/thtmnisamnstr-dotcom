@@ -76,5 +76,32 @@ module.exports = {
           manualLoad: false
       }
     },
+    {
+      resolve: 'gatsby-plugin-newrelic',
+      options: {
+        configs: {
+          dev: {
+            instrumentationType: 'proAndSPA',
+            accountId: process.env.NR_ACCOUNT_ID,
+            trustKey: process.env.NR_TRUST_KEY,
+            agentID: process.env.NR_AGENT_ID,
+            licenseKey: process.env.NR_LICENSE_KEY,
+            applicationID: process.env.NR_APPLICATION_ID,
+            beacon: 'bam.nr-data.net',
+            errorBeacon: 'bam.nr-data.net'
+          },
+          production: {
+            instrumentationType: 'proAndSPA',
+            accountId: process.env.NR_ACCOUNT_ID,
+            trustKey: process.env.NR_TRUST_KEY,
+            agentID: process.env.NR_AGENT_ID,
+            licenseKey: process.env.NR_LICENSE_KEY,
+            applicationID: process.env.NR_APPLICATION_ID,
+            beacon: 'bam.nr-data.net',
+            errorBeacon: 'bam.nr-data.net'
+          }
+        }
+      }
+    },
   ],
 };
