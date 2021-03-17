@@ -71,6 +71,7 @@ module.exports = {
           prodKey: process.env.RUDDERSTACK_PROD_KEY,
           devKey: process.env.RUDDERSTACK_DEV_KEY,
           trackPage: true,
+          host: `https://thtmnisamnlzvkcowwm.dataplane.rudderstack.com`,
           trackPageDelay: 50,
           delayLoad: false,
           manualLoad: false
