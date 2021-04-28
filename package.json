@@ -8,6 +8,7 @@
     "proxy": "netlify-cms-proxy-server"
   },
   "dependencies": {
+    "@mparticle/gatsby-plugin-mparticle": "^1.0.3",
     "@narative/gatsby-theme-novela": "^0.17.0",
     "gatsby": "^2.24.54",
     "gatsby-plugin-manifest": "^2.4.28",

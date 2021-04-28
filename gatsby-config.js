@@ -77,5 +77,15 @@ module.exports = {
           manualLoad: false
       }
     },
+    {
+      resolve: '@mparticle/gatsby-plugin-mparticle',
+      options: {
+        apiKey: process.env.MPARTICLE_KEY,
+        logPageViews: true,
+        config: {
+          isDevelopmentMode: process.env.MPARTICLE_IS_DEV
+        }
+      }
+    }
   ],
 };
