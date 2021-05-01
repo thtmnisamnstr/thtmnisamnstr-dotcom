@@ -2,8 +2,8 @@
 title: "Why You Don’t Want a Customer Data Platform"
 author: Gavin Johnson, Kostas Pardalis
 date: 2021-01-13
-hero: ./images/hero.png
-excerpt: "Know everything about CDPs and the problems they solve. Also, know in which cases you should not go for a Customer Data Platform."
+hero: ./images/hero.jpg
+excerpt: "The warehouse-first approach eliminates the problems that CDP users frequently face. It solves the use cases associated with a CDP."
 ---
 ***This post was originally published on [The New Stack](https://thenewstack.io/why-you-dont-want-a-customer-data-platform/). It was then republished on [RudderStack's blog](https://rudderstack.com/blog/why-you-dont-want-a-customer-data-platform).***
 <br />
@@ -114,7 +114,3 @@ You need a tool that will make it easy to ingest customer data, route data to do
 [RudderStack](https://rudderstack.com/) is the smart customer data pipeline. It is warehouse-first. It builds your customer data warehouse and your identity graph in your data warehouse, giving you complete control over your customer data. With RudderStack, you can easily build pipelines that connect your whole customer data stack and then make them smarter by ingesting and activating enriched data from your warehouse.
 
 The warehouse-first approach eliminates the problems that CDP users frequently face. It solves the use cases associated with a CDP and enables many more that CDPs don’t address, all while being significantly more cost-effective, secure and accessible by other tools. Warehouse-first is a simple approach, but it’s a good one and one that we think will power the future of customer data tooling and analysis.
-
-
-
-Start building a better, warehouse-first customer data lake that delivers complete, unified data to every part of your marketing and analytics stack by signing up for [RudderStack Cloud Free](https://app.rudderlabs.com/signup?type=freetrial) today. Subscribe to our [blog](https://rudderstack.com/blog/), join [Slack](https://resources.rudderstack.com/join-rudderstack-slack) to chat with our team, check out our open-source repos on GitHub, and follow us on our socials: [Twitter](https://twitter.com/RudderStack), [LinkedIn](https://www.linkedin.com/company/rudderlabs/), [dev.to](http://dev.to/), [Medium](https://rudderstack.medium.com/), [YouTube](https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw). Don’t miss out on any updates. [Subscribe](https://rudderstack.com/blog/) to our blogs today!
