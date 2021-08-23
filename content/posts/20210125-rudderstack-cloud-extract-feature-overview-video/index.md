@@ -8,6 +8,4 @@ excerpt: "Feature overview video for RudderStack Cloud Extract."
 ***This video was originally published on [RudderStack's Youtube](https://youtu.be/HZDX7TVf848).***
 <br />
 
-<div class="Image__Medium">
-  <YouTube videoId="HZDX7TVf848" />
-</div>
+`youtube: HZDX7TVf848`
