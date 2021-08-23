@@ -8,6 +8,4 @@ excerpt: "RudderStack's video pitch as a finalist at SXSW Pitch 2021"
 ***This video was originally debuted and broadcast live at SXSW Pitch 2021 and later re-published on [RudderStack's Youtube](https://youtu.be/EC0RmpirDJs).***
 <br />
 
-<div class="Image__Medium">
-  <YouTube videoId="EC0RmpirDJs" />
-</div>
+`youtube: EC0RmpirDJs`
