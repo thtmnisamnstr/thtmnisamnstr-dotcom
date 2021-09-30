@@ -66,15 +66,18 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-rudderstack`,
+      resolve: `gatsby-plugin-segment-js`,
       options: {
-          prodKey: process.env.RUDDERSTACK_PROD_KEY,
-          devKey: process.env.RUDDERSTACK_DEV_KEY,
-          trackPage: true,
-          host: `https://thtmnisamnlzvkcowwm.dataplane.rudderstack.com`,
-          trackPageDelay: 50,
-          delayLoad: false,
-          manualLoad: false
+        // More details at https://github.com/benjaminhoffman/gatsby-plugin-segment-js
+        prodKey: process.env.SEGMENT_PROD_KEY,
+        devKey: process.env.SEGMENT_DEV_KEY,
+        trackPage: true,
+        trackPageDelay: 50,
+        //host: 'https://override-segment-endpoint',
+        delayLoad: false,
+        //delayLoadTime: 1000,
+        manualLoad: false
+        //customSnippet: '!function(){var analytics=window.analytics||[];...;analytics.load("${writeKey}");analytics.page();}}();'
       }
     }
   ],
