@@ -5,7 +5,7 @@ date: 2021-06-23
 hero: ./images/hero.jpg
 excerpt: "We partnered with Hasura to build an integration between Yugabyte Cloud and Hasura Cloud and to make building complex, global applications easier."
 ---
-**_This post was originally published on [Yugabyte’s blog](https://www.yugabyte.com/yugabyte-and-hasura-make-it-easier-to-build-complex-global-applications/)._**
+**_This post was originally published on [Yugabyte’s blog](https://blog.yugabyte.com/yugabyte-and-hasura-make-it-easier-to-build-complex-global-applications/)._**
 <br />
 
 Building innovative applications that improve user experience and exceed expectations is hard. As users, we demand a lot. We demand that your applications always be available – who knows, we may want to order a new set of tires at 3:30 am on a Wednesday. We demand that your applications be fast wherever we are – doesn’t matter if it’s Phnom Penh or Philadelphia. And we definitely expect you to give us a good experience – your application should know what we want to do next and help us get there.

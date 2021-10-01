@@ -5,7 +5,7 @@ date: 2021-07-29
 hero: ./images/hero.jpg
 excerpt: "We spotlight members of the community to recognize their contributions to making the Yugabyte community a great place. This month, we're honoring Radek Gruchalski, Managing Director and Software Engineer at Klarrio GmbH. Check out our post to learn more."
 ---
-**_This post was originally published on [Yugabyte’s blog](https://www.yugabyte.com/yugabytedb-open-source-community-spotlight-july-2021/)._**
+**_This post was originally published on [Yugabyte’s blog](https://blog.yugabyte.com/yugabytedb-open-source-community-spotlight-july-2021/)._**
 <br />
 
 _The Yugabyte community is always active and its members are constantly having interesting conversations and making valuable contributions. We spotlight members of the community to recognize their contributions to making the Yugabyte community a great place._
