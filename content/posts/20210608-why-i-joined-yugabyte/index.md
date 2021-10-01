@@ -5,7 +5,7 @@ date: 2021-06-08
 hero: ./images/hero.jpg
 excerpt: "This post is about about why I chose to work as a product marketer for Yugabyte over other companies."
 ---
-**_This post was originally published on [Yugabyte’s blog](https://www.yugabyte.com/why-i-joined-yugabyte-gavin/)._**
+**_This post was originally published on [Yugabyte’s blog](https://blog.yugabyte.com/why-i-joined-yugabyte-gavin/)._**
 <br />
 
 Hi. I’m Gavin. I joined Yugabyte on May 24, 2021, as the product marketer for Yugabyte Cloud.
