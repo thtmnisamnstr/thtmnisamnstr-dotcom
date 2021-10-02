@@ -168,7 +168,7 @@ The PetClinic sample application is now connected to your Yugabyte Cloud cluster
 
 
 That will open [http://127.0.0.1:51726/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy](http://127.0.0.1:51726/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy). Keep this tab open. You’ll use it later to check on your application deployment.
-![alt_text](images/011.png)
+![alt_text](images/012.png)
 
 
 ### **Deploy the Spring Boot PetClinic sample application image to minikube**
@@ -250,7 +250,7 @@ That will open [http://127.0.0.1:51726/api/v1/namespaces/kubernetes-dashboard/se
 7. Wait for your application to come online (3 minutes or more for me).
 
 8. If you go to the local IP and Port you configured in your yaml ([http://127.0.0.1:8080](http://127.0.0.1:8080/)), the PetClinic sample application should be available.
-    ![alt_text](images/012.png)
+    ![alt_text](images/013.png)
 
 
 The PetClinic sample application is now connected to your Yugabyte Cloud cluster and running on Kubernetes locally on minikube.
