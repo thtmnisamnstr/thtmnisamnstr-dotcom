@@ -12,15 +12,6 @@ export type Post = {
   tweets: any[];
 };
 
-export type Snippet = {
-  _id: string;
-  slug: string;
-  content: MDXRemoteSerializeResult;
-  title: string;
-  description: string;
-  logo: string;
-};
-
 export enum Form {
   Initial,
   Loading,
@@ -31,14 +22,6 @@ export enum Form {
 export type FormState = {
   state: Form;
   message?: string;
-};
-
-export type Subscribers = {
-  count: number;
-};
-
-export type Views = {
-  total: number;
 };
 
 export type Song = {
@@ -58,18 +41,4 @@ export type NowPlayingSong = {
 
 export type TopTracks = {
   tracks: Song[];
-};
-
-export type YouTube = {
-  subscriberCount: number;
-  viewCount: number;
-};
-
-export type GitHub = {
-  stars: number;
-};
-
-export type Unsplash = {
-  downloads: number;
-  views: number;
 };

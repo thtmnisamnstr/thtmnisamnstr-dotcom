@@ -3,8 +3,6 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
-import ViewCounter from 'components/ViewCounter';
 import { Post } from 'lib/types';
 import { urlForImage } from 'lib/sanity';
 
@@ -41,16 +39,11 @@ export default function BlogLayout({
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
             {post.readingTime}
-            {` • `}
-            <ViewCounter slug={post.slug} />
           </p>
         </div>
         <Suspense fallback={null}>
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
             {children}
-          </div>
-          <div className="mt-8">
-            <Subscribe />
           </div>
           <div className="text-sm text-gray-700 dark:text-gray-300">
             <a
@@ -61,14 +54,6 @@ export default function BlogLayout({
               rel="noopener noreferrer"
             >
               {'Discuss on Twitter'}
-            </a>
-            {` • `}
-            <a
-              href="https://github.com/leerob/leerob.io/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {'Suggest Change'}
             </a>
           </div>
         </Suspense>

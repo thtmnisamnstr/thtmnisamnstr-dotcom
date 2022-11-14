@@ -26,11 +26,21 @@ module.exports = {
 };
 
 // https://nextjs.org/docs/advanced-features/security-headers
-const ContentSecurityPolicy = `
+/* const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com;
     child-src *.youtube.com *.google.com *.twitter.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
+    img-src * blob: data:;
+    media-src 'none';
+    connect-src *;
+    font-src 'self';
+`; */
+const ContentSecurityPolicy = `
+    default-src 'self';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.twitter.com;
+    child-src *.twitter.com;
+    style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';
     connect-src *;
