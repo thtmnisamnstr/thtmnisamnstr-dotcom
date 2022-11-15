@@ -1,3 +1,5 @@
+If no node_modules, run `npm install --force`. Taze manages the dependencies.
+
 # My 🏠 on the ☁️
 
 My personal over-engineering site on the cloud.
