@@ -1,48 +1,36 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/hat.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/hat.png" />
+          <link rel="icon" type="image/jpg" sizes="16x16" href="/static/favicons/hat.jpg" />
+          <link rel="manifest" href="/static/favicons/site.webmanifest" />
+          <link rel="mask-icon" href="/static/favicons/hat.png" color="#fff" />
+          <meta name="msapplication-TileColor" content="#000000" />
+          <meta name="theme-color" content="#000000" />
+          <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
 
-export default function Document(props) {
-  return (
-    <Html lang="en">
-      <Head>
-        <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
-        <link href="/static/favicons/site.webmanifest" rel="manifest" />
-        <link
-          href="/static/favicons/apple-touch-icon.png"
-          rel="apple-touch-icon"
-          sizes="180x180"
-        />
-        <link
-          href="/static/favicons/favicon-32x32.png"
-          rel="icon"
-          sizes="32x32"
-          type="image/png"
-        />
-        <link
-          href="/static/favicons/favicon-16x16.png"
-          rel="icon"
-          sizes="16x16"
-          type="image/png"
-        />
-        <link
-          color="#4a9885"
-          href="/static/favicons/safari-pinned-tab.svg"
-          rel="mask-icon"
-        />
-        <meta content="#ffffff" name="theme-color" />
-        <meta content="#ffffff" name="msapplication-TileColor" />
-        <meta
-          content="/static/favicons/browserconfig.xml"
-          name="msapplication-config"
-        />
-        <meta
-          content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-          name="robots"
-        />
-      </Head>
-      <body className="bg-white dark:bg-black text-white dark:text-black">
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <body className="antialiased text-black bg-white dark:bg-dark dark:text-white">
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
 }
+
+export default MyDocument

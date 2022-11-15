@@ -1,27 +1,27 @@
-import Link from 'next/link';
+import Image from 'next/image'
+import { Twemoji, Link } from '~/components'
 
-import Container from 'components/Container';
-
-export default function NotFound() {
+export default function FourZeroFour() {
   return (
-    <Container title="404 – Lee Robinson">
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          451 – Unavailable For Legal Reasons
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">
-          Why show a generic 404 when I can make it sound mysterious? It seems
-          you've found something that used to exist, or you spelled something
-          wrong. I'm guessing you spelled something wrong. Can you double check
-          that URL?
-        </p>
-        <Link
-          href="/"
-          className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white"
-        >
-          Return Home
-        </Link>
+    <div className="flex flex-col items-center justify-center pt-4 md:pt-10 xl:pt-20">
+      <div>
+        <Image src={'/static/images/404.png'} alt="404" width={500} height={500} />
       </div>
-    </Container>
-  );
+      <div className="pt-8 md:pt-12 xl:pt-16 space-x-2 md:space-y-5">
+        <div className="max-w-md text-center">
+          <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
+            Hmm.. it seems that you're lost <Twemoji emoji={'face-with-monocle'} />
+          </p>
+          <p className="mb-8">
+            But don't worry, you can find plenty of other things on my homepage.
+          </p>
+          <Link href="/">
+            <button className="inline px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg shadow focus:outline-none focus:shadow-outline-blue hover:bg-blue-700 dark:hover:bg-blue-500">
+              Back to homepage
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 }

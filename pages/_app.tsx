@@ -1,19 +1,21 @@
-import 'styles/global.css';
+import 'css/tailwind.css'
+import 'css/twemoji.css'
 
-import { ThemeProvider } from 'next-themes';
-import { Inter } from '@next/font/google';
+import { ThemeProvider } from 'next-themes'
+import Head from 'next/head'
+import { Analytics, LayoutWrapper } from '~/components'
 
-const interVariable = Inter();
-
-export default function App({
-  Component,
-  pageProps: { ...pageProps }
-}) {
+export default function App({ Component, pageProps }) {
   return (
+    // @ts-ignore
     <ThemeProvider attribute="class">
-      <main className={interVariable.className}>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
+      <Analytics />
+      <LayoutWrapper>
         <Component {...pageProps} />
-      </main>
+      </LayoutWrapper>
     </ThemeProvider>
-  );
+  )
 }

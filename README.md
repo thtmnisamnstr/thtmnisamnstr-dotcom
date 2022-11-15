@@ -1,51 +1,36 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fleerob.io&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,SANITY_API_TOKEN,SANITY_PREVIEW_SECRET,SANITY_STUDIO_REVALIDATE_SECRET&envDescription=These%20values%20are%20needed%20to%20connect%20to%20Sanity%20and%20fetch%20content%20for%20blog%20posts.)
+# My 🏠 on the ☁️
 
-# leerob.io
+My personal over-engineering site on the cloud.
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [PlanetScale](https://planetscale.com)
-- **ORM**: [Prisma](https://prisma.io/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **CMS**: [Sanity](https://www.sanity.io/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+## Motivation
 
-## Learn More
+> Sharing is learning!
 
-I've recorded two live streams walking through this repository and answering questions.
+I believe noting down and sharing is the best way to learn! So I created this blog, where I keep things that I learned, find useful, and necessary to save for later (cause I always forget stuff and don't wanna googling the correct answer every time I need)
 
-- [Stream #2 – Nov 10, 2021 (1h 4min)](https://www.youtube.com/watch?v=WZZFW5xDjJ4)
-  - [Browse repository](https://github.com/leerob/leerob.io/tree/747479118497d31433cb78ced5c1628ed5d1583b) at this point in time.
-- [Stream #1 – Jan 27, 2021 (1h 11min)](https://www.youtube.com/watch?v=xXQsF0q8KUg)
-  - [Browse repository](https://github.com/leerob/leerob.io/tree/568df6d056a4f7ea6f10fab07786c8ec6cbbddde) at this point in time.
+Beyond technical stuff, there are personal thoughts about work and life from the perspective of a software engineer.
 
-## Overview
+It would be highly appreciated if I could read your comment on what I wrote.
 
-- `layouts/*` - The different page layouts each MDX category (blog, snippets) uses.
-- `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
-- `pages/api/*` - [API Routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://leerob.io/dashboard), newsletter subscription, guestbook, and post views.
-- `pages/blog/*` - Static pre-rendered blog pages using MDX.
-- `pages/dashboard` - [Personal dashboard](https://leerob.io/dashboard) tracking metrics.
-- `pages/sitemap.xml.tsx` - Automatically generated sitemap.
-- `pages/feed.xml.tsx` - Automatically generated RSS feed.
-- `pages/*` - All other static pages.
-- `prisma/*` - My Prisma schema, which uses a PlanetScale MySQL database.
-- `public/*` - Static assets including fonts and images.
-- `styles/*` - A small amount of global styles. I'm mostly using vanilla Tailwind CSS.
+## Stack
 
-## Running Locally
+This blog is hosted on [Vercel](https://vercel.com/), built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) using **Tailwind Nextjs Starter Blog**.
 
-This application requires Node.js v16.13+.
+A huge thanks to [Timothy Lin](https://twitter.com/timlrxx) for the minimal, lightweight, and super easy-to-customize blog starter.
 
-```bash
-git clone https://github.com/leerob/leerob.io.git
-cd leerob.io
-pnpm install
-pnpm dev
-```
+A few major changes from the original template:
 
-Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
+- Upgrading to React 18, latest version of `mdx-bundler`, all `rehype`/`remark` plugins and dependencies are up-to-date 📥
+- Adopting `typescript` 🎉
 
-## Cloning / Forking
+_And yes! This blog have a legacy version built with **Gatsby** which can be found [here](https://leo-blog-legacy.vercel.app/)_.
 
-Please review the [license](https://github.com/leerob/leerob.io/blob/main/LICENSE.txt) and remove all of my personal information (resume, blog posts, images, etc.).
+## Assets
+
+The images in this blog are from [Unsplash](https://unsplash.com/), gifs from [GIPHY](https://giphy.com/), and illustrations are from [Storyset](https://storyset.com/).
+
+Thanks for the free resources 🙏
+
+---
+
+Copyright (c) 2022 Tuan Anh Huynh (Leo) - Alrights reserved.

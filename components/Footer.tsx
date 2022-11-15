@@ -1,57 +1,51 @@
-import Link from 'next/link';
+import { siteMetadata } from '~/data'
+import { Link } from './Link'
+import { SocialIcon } from './SocialIcon'
 
-import NowPlaying from 'components/NowPlaying';
-
-const ExternalLink = ({ href, children }) => (
-  <a
-    className="text-gray-500 hover:text-gray-600 transition"
-    target="_blank"
-    rel="noopener noreferrer"
-    href={href}
-  >
-    {children}
-  </a>
-);
-
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
-      <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
-      <NowPlaying />
-      <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
-        <div className="flex flex-col space-y-4">
-          <Link
-            href="/"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            Home
-          </Link>
-          <Link
-            href="/blog"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            Blog
-          </Link>
-          <Link
-            href="/about"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            About
-          </Link>
-          <Link
-            href="/tweets"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
-            Tweets
-          </Link>
+    <footer>
+      <div className="flex flex-col items-center mt-16 mb-8">
+        <div className="flex mb-3 space-x-4">
+          <SocialIcon name="Github" href={siteMetadata.github} />
+          <SocialIcon name="Twitter" href={siteMetadata.twitter} />
+          <SocialIcon name="Linkedin" href={siteMetadata.linkedin} />
+          <SocialIcon name="Mail" href={`mailto:${siteMetadata.email}`} />
+          <SocialIcon name="Facebook" href={siteMetadata.facebook} />
+          <SocialIcon name="Youtube" href={siteMetadata.youtube} />
         </div>
-        <div className="flex flex-col space-y-4">
-          <ExternalLink href="https://twitter.com/leeerob">
-            Twitter
-          </ExternalLink>
-          <ExternalLink href="https://github.com/leerob">GitHub</ExternalLink>
+        <div className="flex my-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>{`Copyright © ${new Date().getFullYear()}`}</div>
+          <span>{` • `}</span>
+          <Link href="/">{siteMetadata.footerTitle}</Link>
         </div>
+        <Credit />
       </div>
     </footer>
-  );
+  )
+}
+
+function Credit() {
+  return (
+    <div className="text-sm text-gray-500 dark:text-gray-400">
+      <span className="font-bold">Credit : </span>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-blue-500"
+        href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
+      >
+        Tailwind Nextjs Theme
+      </a>
+      <span> by </span>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-blue-500"
+        href="https://twitter.com/timlrxx"
+      >
+        Timothy Lin
+      </a>
+    </div>
+  )
 }
