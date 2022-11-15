@@ -38,7 +38,3 @@ export type NowPlayingSong = {
   songUrl: string;
   title: string;
 };
-
-export type TopTracks = {
-  tracks: Song[];
-};
