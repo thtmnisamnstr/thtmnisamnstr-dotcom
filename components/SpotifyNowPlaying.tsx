@@ -2,7 +2,7 @@ import type { SpotifyNowPlayingData } from '~/types'
 
 export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingData) {
   return (
-    <div className="flex items-center px-3 xl:px-6 py-2 bg-gray-800">
+    <div className="flex items-center ml-3 px-3 xl:px-6 py-2">
       <svg
         className="w-5.5 h-5.5 flex-shrink-0 text-spotify"
         role="img"
@@ -24,7 +24,7 @@ export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingD
               <div className="bg-spotify mx-0.5 w-0.5 h-1/2 animate-music-bar-4"></div>
             </div>
             <a
-              className="text-gray-200 font-medium"
+              className="text-gray-900 dark:text-gray-100 font-medium"
               href={songUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -34,10 +34,10 @@ export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingD
             </a>
           </>
         ) : (
-          <p className="text-gray-200 font-medium">Not Playing</p>
+          <p className="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
         )}
-        <span className="mx-2 text-gray-300">{' – '}</span>
-        <p className="text-gray-300 max-w-max truncate">{artist || 'Spotify'}</p>
+        <span className="mx-2 text-gray-900 dark:text-gray-100">{' – '}</span>
+        <p className="text-gray-900 dark:text-gray-100 max-w-max truncate">{artist || 'Spotify'}</p>
       </div>
     </div>
   )

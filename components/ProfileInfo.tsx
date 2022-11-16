@@ -4,9 +4,9 @@ import { siteMetadata } from '~/data'
 export function ProfileCardInfo() {
   return (
     <div className="hidden xl:block xl:px-6 py-4">
-      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Gavin Johnson</h3>
+      <h3 className="text-xl font-semibold text-gray-900">Gavin Johnson</h3>
       <div className="space-y-4 mt-4 mb-2">
-        <div className="flex items-center text-gray-700 dark:text-gray-200">
+        <div className="flex items-center text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -34,7 +34,7 @@ export function ProfileCardInfo() {
             </a>
           </p>
         </div>
-        <div className="flex items-center text-gray-700 dark:text-gray-200">
+        <div className="flex items-center text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -58,7 +58,7 @@ export function ProfileCardInfo() {
 
           <p className="px-2">Los Angeles, CA</p>
         </div>
-        <div className="flex items-center text-gray-700 dark:text-gray-200">
+        <div className="flex items-center text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -77,7 +77,7 @@ export function ProfileCardInfo() {
             {siteMetadata.email}
           </a>
         </div>
-        <div className="flex items-center text-gray-700 dark:text-gray-200">
+        <div className="flex items-center text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

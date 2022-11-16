@@ -1,13 +1,15 @@
 export function ShortDescription() {
   return (
     <p className="mt-4 mb-8">
-      I started my coding journey in 2016 with C/C++/Java in college.
+      Ex-PMM at a Segment, Yugabyte, RudderStack, New Relic, and AT&T.
       <br />
-      I had my first job as a Python coding mentor in 2017.
+      Ex-tech consultant at Deloitte.
       <br />
-      I'm in love with the JS ecosystem, web dev, and eCommerce.
+      Ex-sys admin.
       <br />
-      I'm writing this blog to note down and share what I've learned as a SE.
+      (Sometimes)Ex-developer.
+      <br />
+      Brazilian Jiu Jitsu brown belt.
     </p>
   )
 }

@@ -1,12 +1,10 @@
 import { PageSeo } from 'components/SEO'
 import {
-  BlogLinks,
   FeaturedPosts,
   Greeting,
   Heading,
   ProfileCard,
   ShortDescription,
-  Twemoji,
   TypedBios,
 } from '~/components'
 import { siteMetadata } from '~/data'
@@ -33,10 +31,6 @@ export default function Home({ posts }: { posts: BlogFrontMatter[] }) {
               <Heading />
               <TypedBios />
               <ShortDescription />
-              <BlogLinks />
-              <p className="my-8">
-                Happy reading <Twemoji emoji="clinking-beer-mugs" />
-              </p>
             </div>
           </div>
         </div>
