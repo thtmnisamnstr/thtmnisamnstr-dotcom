@@ -1,7 +1,7 @@
 export let BLUR_IMAGE_DATA_URL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcvWS1LgAGJQIpt50GkgAAAABJRU5ErkJggg=='
 
-export let LOGO_IMAGE_PATH = '/static/images/logo.jpg'
+export let LOGO_IMAGE_PATH = '/static/images/gavin-johnson.png'
 
 export let HEADER_HEIGHT = '69px'
 export let FOOTER_HEIGHT = '188px'

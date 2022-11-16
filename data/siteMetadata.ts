@@ -7,25 +7,26 @@ export let siteMetadata = {
   description:
     "Leo's coding journey - work and life stories through the keyboard of an open-minded Software Engineer",
   language: 'en-us',
-  siteUrl: 'https://www.leohuynh.dev',
-  siteRepo: 'https://github.com/hta218/leohuynh.dev',
-  siteLogo: '/static/images/logo.jpg',
-  image: '/static/images/logo.jpg',
-  socialBanner: '/static/images/logo.jpg',
-  email: 'leohuynh@pm.me',
-  github: 'https://github.com/hta218',
-  twitter: 'https://twitter.com/hta218_',
-  linkedin: 'https://www.linkedin.com/in/hta218/',
+  siteUrl: 'https://thtmnisamnstr.com/',
+  siteRepo: 'https://github.com/thtmnisamnstr/thtmnisamnstr-dotcom',
+  siteLogo: '/static/images/gavin-johnson.png',
+  image: '/static/images/gavin-johnson.png',
+  socialBanner: '/static/images/gavin-johnson.png',
+  email: 'gavin@thtmnisamnstr.com',
+  github: 'https://github.com/thtmnisamnstr',
+  twitter: 'https://twitter.com/gavinjtech',
+  linkedin: 'https://www.linkedin.com/in/gavin-johnson/',
   locale: 'en-US',
   /** Choose one of these Analytics providers */
   analytics: {
     plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: false, // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: 'UA-164140501-1', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
   },
   socialAccounts: {
-    github: 'hta218',
-    twitter: 'hta218_',
+    github: 'thtmnisamnstr',
+    twitter: 'gavinjtech',
+    linkedin: 'gavin-johnson',
   },
 }

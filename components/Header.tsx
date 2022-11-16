@@ -12,8 +12,8 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
             <div className="flex items-center justify-between">
               <div className="mr-3 flex justify-center items-center">
                 <NextImage
-                  src="/static/images/logo.jpg"
-                  alt="Leo's Blog logo"
+                  src="/static/images/gavin-johnson.png"
+                  alt="Site logo"
                   width={45}
                   height={45}
                   className="rounded-full"

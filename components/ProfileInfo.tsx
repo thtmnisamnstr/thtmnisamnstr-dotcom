@@ -1,11 +1,10 @@
-import { Twemoji } from '~/components'
+import { Link } from './Link'
 import { siteMetadata } from '~/data'
 
 export function ProfileCardInfo() {
   return (
     <div className="hidden xl:block xl:px-6 py-4">
-      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Tuan Anh (Leo) Huynh</h3>
-      <h5 className="py-2 text-gray-700 dark:text-gray-400">Learner | Builder</h5>
+      <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Gavin Johnson</h3>
       <div className="space-y-4 mt-4 mb-2">
         <div className="flex items-center text-gray-700 dark:text-gray-200">
           <svg
@@ -23,7 +22,17 @@ export function ProfileCardInfo() {
             />
           </svg>
 
-          <p className="px-2">Self-employed - building products</p>
+          <p className="px-2">
+            Product & Marketing @{' '}
+            <a
+              target="_blank"
+              href="https://earthly.dev/"
+              rel="noreferrer"
+              className="hover:underline"
+            >
+              Earthly
+            </a>
+          </p>
         </div>
         <div className="flex items-center text-gray-700 dark:text-gray-200">
           <svg
@@ -47,12 +56,7 @@ export function ProfileCardInfo() {
             />
           </svg>
 
-          <p className="px-2">
-            [::1]:443 - Ha Noi,
-            <span className="align-middle flag-vn ml-1">
-              <Twemoji emoji="flag-vietnam" />
-            </span>
-          </p>
+          <p className="px-2">Los Angeles, CA</p>
         </div>
         <div className="flex items-center text-gray-700 dark:text-gray-200">
           <svg
@@ -97,7 +101,7 @@ export function ProfileCardInfo() {
             >
               gh/{siteMetadata.socialAccounts.github}
             </a>
-            ,{' '}
+            <br />
             <a
               target="_blank"
               href={siteMetadata.twitter}
@@ -105,6 +109,15 @@ export function ProfileCardInfo() {
               className="hover:underline"
             >
               tw/{siteMetadata.socialAccounts.twitter}
+            </a>
+            <br />
+            <a
+              target="_blank"
+              href={siteMetadata.linkedin}
+              rel="noreferrer"
+              className="hover:underline"
+            >
+              li/{siteMetadata.socialAccounts.linkedin}
             </a>
           </p>
         </div>
