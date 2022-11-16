@@ -44,11 +44,6 @@ export interface UnsplashPhotoProps {
   author: string
 }
 
-export interface ViewCounterProps {
-  slug: string
-  className?: string
-}
-
 export interface BlogHeaderProps {
   title: string
   date: string

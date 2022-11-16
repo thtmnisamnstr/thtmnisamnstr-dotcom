@@ -1,4 +1,4 @@
-If no node_modules, run `npm install --force`. Taze manages the dependencies.
+Taze manages the dependencies. To install modules, run `npm install --force`. If a node module needs to be uninstalled, run `npm uninstall [module_name] --force`.
 
 # My 🏠 on the ☁️
 

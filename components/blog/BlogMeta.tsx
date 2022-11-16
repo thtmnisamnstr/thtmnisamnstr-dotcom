@@ -1,4 +1,4 @@
-import { ViewCounter, Twemoji } from '~/components'
+import { Twemoji } from '~/components'
 import type { BlogMetaProps } from '~/types'
 import { formatDate } from '~/utils'
 
@@ -17,7 +17,6 @@ export function BlogMeta({ date, slug, readingTime }: BlogMetaProps) {
       <span className="mx-2">{` • `}</span>
       <div className="flex items-center">
         <Twemoji emoji="eye" size="" />
-        <ViewCounter className="ml-1.5 md:ml-2" slug={slug} />
       </div>
     </dd>
   )

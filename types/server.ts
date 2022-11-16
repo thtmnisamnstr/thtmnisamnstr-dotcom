@@ -1,11 +1,5 @@
 import type { Data, Node } from 'unist'
 
-export interface ViewApiResponse {
-  data?: {
-    total: string
-  }
-}
-
 export interface SpotifyNowPlayingData {
   isPlaying: boolean
   songUrl?: string
