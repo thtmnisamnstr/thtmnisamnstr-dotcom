@@ -1,4 +1,9 @@
-Taze manages the dependencies. To install modules, run `npm install --force`. If a node module needs to be uninstalled, run `npm uninstall [module_name] --force`.
+Taze manages dependency updates, and npm-check is used to check for unneeded dependencies.
+*   To check for unneded dependencies, run `npm run check-deps`.
+*   To update dependencies, run `npm run upgrade-deps`.
+*   To install modules, run `npm install --force`.
+*   To uninstall modules, run `npm uninstall [module_name] --force`.
+*   To lint, run `npm run prepare && npm run lint`.
 
 # My 🏠 on the ☁️
 

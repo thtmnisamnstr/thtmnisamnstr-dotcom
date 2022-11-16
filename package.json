@@ -7,7 +7,8 @@
     "analyze": "cross-env ANALYZE=true next build",
     "prepare": "husky install",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "upgrade": "taze major -w -i"
+    "upgrade-deps": "taze major -w -i",
+    "check-deps": "npm-check"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
@@ -56,6 +57,7 @@
     "husky": "^8.0.2",
     "inquirer": "^9.1.4",
     "lint-staged": "^13.0.3",
+    "npm-check": "^6.0.1",
     "prettier": "^2.7.1",
     "rehype": "^12.0.1",
     "remark-frontmatter": "^4.0.1",

@@ -1,9 +1,9 @@
 export let siteMetadata = {
-  title: "Leo's blog - Leo's coding journey",
-  author: 'Leo Huynh',
-  fullName: 'Tuan Anh Huynh',
-  headerTitle: "Leo's blog - Leo's coding journey",
-  footerTitle: "Leo's blog - Leo's coding journey",
+  title: 'thtmnisamnstr - Gavin Johnson',
+  author: 'Gavin Johnson',
+  fullName: 'Gavin Johnson',
+  headerTitle: 'thtmnisamnstr - Gavin Johnson',
+  footerTitle: 'thtmnisamnstr - Gavin Johnson',
   description:
     "Leo's coding journey - work and life stories through the keyboard of an open-minded Software Engineer",
   language: 'en-us',
@@ -15,8 +15,6 @@ export let siteMetadata = {
   email: 'leohuynh@pm.me',
   github: 'https://github.com/hta218',
   twitter: 'https://twitter.com/hta218_',
-  facebook: 'https://facebook.com/hta218',
-  youtube: 'https://www.youtube.com/channel/UCHXjj6ewfDIjx_Op3hqijlg',
   linkedin: 'https://www.linkedin.com/in/hta218/',
   locale: 'en-US',
   /** Choose one of these Analytics providers */
@@ -29,41 +27,5 @@ export let siteMetadata = {
   socialAccounts: {
     github: 'hta218',
     twitter: 'hta218_',
-  },
-}
-
-/**
- * Select a provider and use the environment variables associated to it
- * https://vercel.com/docs/environment-variables
- * --
- *
- * Visit each provider's documentation link and follow the instructions, then add the environment variable to your project.
- */
-export let commentConfig = {
-  provider: 'giscus', // 'giscus' | 'utterances' | 'disqus',
-  giscusConfig: {
-    // Ref: https://giscus.app/
-    repo: '', // `process.env.GISCUS_REPO=`
-    repositoryId: '', // `process.env.GISCUS_REPOSITORY_ID=`
-    category: '', // `process.env.GISCUS_CATEGORY=`
-    categoryId: '', // `process.env.GISCUS_CATEGORY_ID=`
-    mapping: 'title',
-    reactions: '1',
-    metadata: '0',
-    lightTheme: 'light',
-    darkTheme: 'transparent_dark',
-    themeURL: '',
-  },
-  utterancesConfig: {
-    // Ref: https://utteranc.es/
-    repo: '', // `process.env.UTTERANCES_REPO=`
-    issueTerm: '',
-    label: '',
-    lightTheme: '',
-    darkTheme: '',
-  },
-  disqus: {
-    // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-    shortname: '', // `process.env.DISQUS_SHORTNAME=`
   },
 }

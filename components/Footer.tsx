@@ -11,8 +11,6 @@ export function Footer() {
           <SocialIcon name="Twitter" href={siteMetadata.twitter} />
           <SocialIcon name="Linkedin" href={siteMetadata.linkedin} />
           <SocialIcon name="Mail" href={`mailto:${siteMetadata.email}`} />
-          <SocialIcon name="Facebook" href={siteMetadata.facebook} />
-          <SocialIcon name="Youtube" href={siteMetadata.youtube} />
         </div>
         <div className="flex my-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`Copyright © ${new Date().getFullYear()}`}</div>
@@ -33,18 +31,18 @@ function Credit() {
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-blue-500"
-        href="https://github.com/timlrx/tailwind-nextjs-starter-blog"
+        href="https://github.com/hta218/leohuynh.dev"
       >
-        Tailwind Nextjs Theme
+        hta218/leohuynh.dev
       </a>
       <span> by </span>
       <a
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-blue-500"
-        href="https://twitter.com/timlrxx"
+        href="https://www.leohuynh.dev/"
       >
-        Timothy Lin
+        Tuan Anh (Leo) Huynh
       </a>
     </div>
   )
