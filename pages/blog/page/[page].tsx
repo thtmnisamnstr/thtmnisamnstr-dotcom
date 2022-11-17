@@ -44,7 +44,7 @@ export default function PostPage(props: BlogListProps) {
   let { posts, initialDisplayPosts, pagination } = props
   return (
     <>
-      <PageSeo title={siteMetadata.title} description={siteMetadata.description} />
+      <PageSeo title={`Blog posts - ${siteMetadata.title}`} description={`Blog posts`} />
       <ListLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}

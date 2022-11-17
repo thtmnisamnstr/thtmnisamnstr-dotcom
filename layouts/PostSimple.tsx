@@ -1,4 +1,5 @@
 import {
+  AuthorDetails,
   BlogMeta,
   BlogSeo,
   BlogTags,
@@ -23,14 +24,18 @@ export function PostSimple(props: PostSimpleLayoutProps) {
       />
       <article>
         <div>
-          <header className="py-6 xl:pb-16 xl:pt-16">
+          <header className="pt-6 xl:pt-12">
             <div className="space-y-4">
               <BlogTags tags={tags} />
               <PageTitle>{title}</PageTitle>
               <dl>
-                <div>
+                <div className="pb-4">
                   <dt className="sr-only">Published on</dt>
                   <BlogMeta date={date} slug={slug} readingTime={readingTime} />
+                </div>
+                <div>
+                  <dt className="sr-only">Written by</dt>
+                  <AuthorDetails authorDetails={authorDetails} />
                 </div>
               </dl>
             </div>

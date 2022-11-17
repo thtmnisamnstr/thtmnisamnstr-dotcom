@@ -19,7 +19,7 @@ export function TypedBios() {
 
   return (
     <div>
-      <span className="text-5xl"> </span>
+      <span className="text-5xl"></span>
       <ul id="bios" className="hidden">
         <li>
           <span className="text-5xl">

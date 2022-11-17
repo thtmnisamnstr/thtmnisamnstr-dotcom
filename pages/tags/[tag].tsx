@@ -42,10 +42,7 @@ export default function Tag({ posts, tag }: { posts: BlogFrontMatter[]; tag: str
   let title = tag[0] + tag.split(' ').join('-').slice(1)
   return (
     <>
-      <PageSeo
-        title={`${tag} - ${siteMetadata.title}`}
-        description={`${tag} tags - ${siteMetadata.title}`}
-      />
+      <PageSeo title={`${tag} - ${siteMetadata.title}`} description={`${tag} blog post tags`} />
       <ListLayout posts={posts} title={`Tag: #${title}`} />
     </>
   )

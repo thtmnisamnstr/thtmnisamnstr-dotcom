@@ -2,10 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "PORT=3434 next dev",
-    "build": "npm run prepare && npm run lint && next build && tsx ./scripts/generate-sitemap",
+    "build": "npm run lint && next build && tsx ./scripts/generate-sitemap",
     "serve": "PORT=3435 next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "prepare": "husky install",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "upgrade-deps": "taze major -w -i",
     "check-deps": "npm-check"
