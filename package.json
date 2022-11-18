@@ -6,7 +6,7 @@
     "serve": "PORT=3435 next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "upgrade-deps": "taze major -w -i",
+    "upgrade-deps": "taze major -w",
     "check-deps": "npm-check"
   },
   "dependencies": {
@@ -20,7 +20,7 @@
     "image-size": "^1.0.2",
     "isomorphic-unfetch": "^3.1.0",
     "mdx-bundler": "^9.0.1",
-    "next": "^13.0.3",
+    "next": "^13.0.4",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.1",
@@ -41,13 +41,13 @@
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.0.3",
+    "@next/bundle-analyzer": "^13.0.4",
     "@svgr/webpack": "^6.5.1",
     "@types/react": "^18.0.25",
     "cross-env": "^7.0.3",
     "dedent": "^0.7.0",
     "eslint": "^8.27.0",
-    "eslint-config-next": "^13.0.3",
+    "eslint-config-next": "^13.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",

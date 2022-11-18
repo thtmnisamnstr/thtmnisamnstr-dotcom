@@ -55,7 +55,7 @@ module.exports = {
       colors: {
         primary: colors.sky,
         gray: colors.gray,
-        dark: '#0f172a',
+        dark: colors.slate[900],
         code: {
           green: '#b5f4a5',
           yellow: '#ffe484',

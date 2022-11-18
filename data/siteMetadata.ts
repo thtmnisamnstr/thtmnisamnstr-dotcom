@@ -5,7 +5,7 @@ export let siteMetadata = {
   headerTitle: 'thtmnisamnstr - Gavin Johnson',
   footerTitle: 'thtmnisamnstr - Gavin Johnson',
   description:
-    "Leo's coding journey - work and life stories through the keyboard of an open-minded Software Engineer",
+    "Gavin Johnson's personal site. Resume, blog posts, tech product marketing stuff, maybe some tech-y stuff too.",
   language: 'en-us',
   siteUrl: 'https://thtmnisamnstr.com/',
   siteRepo: 'https://github.com/thtmnisamnstr/thtmnisamnstr-dotcom',
