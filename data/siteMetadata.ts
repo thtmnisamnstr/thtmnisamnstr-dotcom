@@ -7,7 +7,7 @@ export let siteMetadata = {
   description:
     "Gavin Johnson's personal site. Resume, blog posts, tech product marketing stuff, maybe some tech-y stuff too.",
   language: 'en-us',
-  siteUrl: 'https://thtmnisamnstr.com/',
+  siteUrl: 'https://thtmnisamnstr.com',
   siteRepo: 'https://github.com/thtmnisamnstr/thtmnisamnstr-dotcom',
   siteLogo: '/static/images/gavin-johnson.png',
   image: '/static/images/gavin-johnson.png',
