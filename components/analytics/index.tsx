@@ -1,18 +1,17 @@
 import { siteMetadata } from '~/data'
 import { GAScript } from './GoogleAnalytics'
-import { SimpleAnalyticsScript } from './SimpleAnalytics'
-import { UmamiScript } from './Umami'
+import { SegmentScript } from './SegmentAnalytics'
 
 let isProduction = process.env.NODE_ENV === 'production'
 
 export function Analytics() {
   if (isProduction) {
     let { analytics } = siteMetadata
-    let { simpleAnalytics, umamiWebsiteId, googleAnalyticsId } = analytics
+    let { googleAnalyticsId } = analytics
+    let { segmentWriteKey } = analytics
     return (
       <>
-        {simpleAnalytics && <SimpleAnalyticsScript />}
-        {umamiWebsiteId && <UmamiScript />}
+        {segmentWriteKey && <SegmentScript />}
         {googleAnalyticsId && <GAScript />}
       </>
     )
