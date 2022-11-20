@@ -1,6 +1,6 @@
 export function Greeting() {
   let headingColorClass =
-    'bg-gradient-to-r from-cyan-500 to-indigo-900 dark:bg-gradient-to-r dark:from-indigo-500 dark:to-cyan-200'
+    'bg-gradient-to-r from-purple-600 via-blue-500 to-green-300 dark:bg-gradient-to-r dark:from-green-300 dark:via-blue-500 dark:to-purple-600'
 
   return (
     <div

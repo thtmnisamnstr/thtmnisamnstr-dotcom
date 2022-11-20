@@ -1,10 +1,13 @@
 ---
-title: Getting Started with Kafka Connect for New Relic
-author: Rahul Bhattacharya, Gavin Johnson
-date: 2020-10-09
-hero: ./images/nr-confluent.png
-excerpt: Easily build real-time observability pipelines with the New Relic Kafka connector. Learn how to set up the connector for both events and metrics, and start sending data.
+title: "Getting Started with Kafka Connect for New Relic"
+date: '2020-10-09'
+tags: ['new-relic', 'tutorial']
+draft: false
+summary: "Easily build real-time observability pipelines with the New Relic Kafka connector. Learn how to set up the connector for both events and metrics, and start sending data."
+images: ['/static/images/blog/20201009-getting-started-with-kafka-connect-for-new-relic/nr-confluent.png']
+authors: ['gavin-johnson','rahul-bhattacharya']
 ---
+
 ***This post was originally published on [Confluent's blog](https://www.confluent.io/blog/kafka-connect-for-new-relic/) as part of a small go-to-market for the Kafka Connector for New Relic. It was republished on the [New Relic blog](https://blog.newrelic.com/product-news/kafka-connect-for-new-relic/). I co-wrote this post with Rahul Bhattacharya from Confluent.***
 <br />
 
@@ -15,7 +18,7 @@ Traditionally, the telemetry data that is stored in New Relic’s [Telemetry Dat
 The below tutorial details how to set up the connector for both events and metrics and provides simplified examples of sending data in both data types to New Relic through the connector.
 New Relic without Kafka Connect
 
-![Alt Text](./images/diagram.png)
+![Alt Text](/static/images/blog/20201009-getting-started-with-kafka-connect-for-new-relic/diagram.png)
 
 ## New Relic Connector for Kafka Connect
 The New Relic connector for Kafka Connect allows you to ingest data from Apache Kafka® topics into the New Relic platform without writing a single line of code. Because we’re working with Kafka Connect, the connector is purely driven by configuration, which you apply using the Kafka Connect REST API. Things like retries, error handling, and dead letter queues are handled for you by Kafka Connect and can be customized as required. Achieving this with a Kafka consumer would require many hours of development time and testing.
@@ -70,7 +73,7 @@ The above JSON will create a connector with the name `events-connector`. It will
 
 The above message creates two events in New Relic of the type `Purchase`. **Make sure you use the current timestamp.** You can list them in New Relic One’s [Query Builder](https://docs.newrelic.com/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder) by running a query like `SELECT * from Purchase`.
 
-![Alt Text](./images/query-builder-1.png)
+![Alt Text](/static/images/blog/20201009-getting-started-with-kafka-connect-for-new-relic/query-builder-1.png)
 
 Your messages in the topic should adhere to this format. For an event, `eventType` and `timestamp` are required fields.The `EventsConverter` is responsible for validating these messages and will flag them as errors if they do not comply with the required format.
 
@@ -145,7 +148,7 @@ The above configuration will create a connector named `metrics-connector`, which
 
 After you add the message to the Kafka topic, head over to New Relic One’s Query Builder and run a query like `SELECT * from Metric`. You should see the three metrics above created.
 
-![Alt Text](./images/query-builder-2.png)
+![Alt Text](/static/images/blog/20201009-getting-started-with-kafka-connect-for-new-relic/query-builder-2.png)
 
 The required fields in a Metric are explained in the [documentation](https://docs.newrelic.com/docs/telemetry-data-platform/get-data/apis/report-metrics-metric-api#json-payload-keys). Also, note that you can control how many times you want the connector tasks to retry in the case of network issues using these two extra fields in your JSON config: `nr.max.retries` (maximum number of retries, default 5) and `nr.retry.interval.ms` (interval between retries in milliseconds, default 1,000).
 

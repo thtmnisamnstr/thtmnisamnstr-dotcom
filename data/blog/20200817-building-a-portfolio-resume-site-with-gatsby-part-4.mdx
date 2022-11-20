@@ -1,10 +1,13 @@
 ---
-title: Building a Portfolio/Resume Site with Gatsby, Part 4 - Automating deploys to Firebase with GitHub Actions
-author: Gavin Johnson
-date: 2020-08-17
-hero: ./images/devcommunity-logo.png
-excerpt: This is after your site is good to go and already and you want to eliminate some toil. This shows how to create GitHub Actions to build and deploy your Gastby site.
+title: "Building a Portfolio/Resume Site with Gatsby, Part 4 - Automating deploys to Firebase with GitHub Actions"
+date: '2020-08-17'
+tags: ['website', 'personal', 'tutorial']
+draft: false
+summary: "This is after your site is good to go and already and you want to eliminate some toil. This shows how to create GitHub Actions to build and deploy your Gastby site."
+images: ['/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/devcommunity-logo.png']
+authors: ['gavin-johnson']
 ---
+
 ***This post is the fourth in a series and was originally published on [Dev.to](https://dev.to/thtmnisamnstr/building-a-portfolio-resume-site-with-gatsby-part-4-automating-deploys-to-firebase-with-github-actions-l41).***
 <br />
 
@@ -23,12 +26,12 @@ Alright, part 4, automating deploys with GitHub Actions. GitHub Actions seems to
 ### Add your Firebase token to your GitHub repo
 * In Terminal, `firebase login:ci`
 * This will open up a Google sign-in page
-![Alt Text](./images/qev5to3cngk6gctajulo.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/qev5to3cngk6gctajulo.png)
 * Select your Google account that you use for Firebase
 * You will be asked to authorize Firebase CLI to access your Google account. Click the Allow button.
-![Alt Text](./images/7119wnbb52nnr170fo82.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/7119wnbb52nnr170fo82.png)
 * You should get a login successful screen *(you can close this window)*
-![Alt Text](./images/6bfiacdj67lu9phomm5k.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/6bfiacdj67lu9phomm5k.png)
 * In Terminal, the output should be something like...
 
 ```
@@ -41,39 +44,39 @@ Example: firebase deploy --token "$FIREBASE_TOKEN"
 
 * Copy your token and/or don't close your terminal so you can copy it later
 * Login to GitHub and go to your site's repo and click on the Settings navigation tab
-![Alt Text](./images/qf26ea3sqkmkb0fx18on.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/qf26ea3sqkmkb0fx18on.png)
 * Click Secrets in the left navigation menu
-![Alt Text](./images/i1tpejugaqcm03zrlvek.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/i1tpejugaqcm03zrlvek.png)
 * Click the New Secret button
-![Alt Text](./images/ahn7c1xx6kprsdwc82im.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/ahn7c1xx6kprsdwc82im.png)
 * For Name, enter 'FIREBASE_TOKEN'
 * For Value, enter the Firebase token you copied earlier from Terminal
 * Click the Add Secret button
-![Alt Text](./images/2osv1el57qf0ifh324tw.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/2osv1el57qf0ifh324tw.png)
 
 You should see the new secret in your GitHub repo. Here's mine.
-![Alt Text](./images/y4na2bioqao76wln0b0o.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/y4na2bioqao76wln0b0o.png)
 
 ### Add GitHub Actions to automate deployment
 * In your site's repo in GitHub, click on Actions navigation tab
-![Alt Text](./images/gzaga031obxa67oao9le.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/gzaga031obxa67oao9le.png)
 * Click the Setup this Workflow button under the Simple Workflow section
-![Alt Text](./images/ijr64ycxemezibhnk7da.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/ijr64ycxemezibhnk7da.png)
 * Change your Actions YAML name and click the Start Commit button *(I named mine `build-deploy.yml`)*
-![Alt Text](./images/92tki6q1gjvzwvq7je4z.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/92tki6q1gjvzwvq7je4z.png)
 * Add a commit subject and message and click the Commit New File button
 * In Terminal, cd to site's root directory
 * `git checkout main`
 * `git pull` *(your `build-deploy.yml` file should pull down to your local machine)*
 * Open './.github/workflows/build-deploy.yml'
 * Go the the [GitHub Action for Gatsby CLA](https://github.com/marketplace/actions/github-action-for-gatsby-cli) and click the Use Latest Version button
-![Alt Text](./images/1dsw9bdxil90ghhpyvg9.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/1dsw9bdxil90ghhpyvg9.png)
 * Copy the text and paste it at the top of your `build-deploy.yml` file
-![Alt Text](./images/eikmpay183klaz508548.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/eikmpay183klaz508548.png)
 * Go the the [GitHub Action for Firebase](https://github.com/marketplace/actions/github-action-for-firebase) and click the Use Latest Version button
-![Alt Text](./images/wnenrpf5knae8ljcju8g.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/wnenrpf5knae8ljcju8g.png)
 * Copy the text and paste it at the top of your `build-deploy.yml` file below the Gatsby action you pasted earlier
-![Alt Text](./images/uerbwftuzm5l3jrtze9b.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/uerbwftuzm5l3jrtze9b.png)
 * In your `build-deploy.yml` file, add your build and deploy and save. Here's mine.
 
 ```
@@ -206,17 +209,17 @@ yarn-error.log
 *So... Great. How can you tell if this works?*
 When you pushed you your main repo to origin (GitHub), the action should have automatically run. Your Action will run when you push to your main branch, merge a PR into your main branch, or manually re-run your Action. I'll describe how to re-run an Action manually because everything for it will apply to the other automated runs.
 * In your GitHub repo, click on Actions.
-![Alt Text](./images/fq73mia7fcfivp5bnbax.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/fq73mia7fcfivp5bnbax.png)
 * You can see your Actions on the left and your Action running on the right, if it's running *(You can also see my failures on the right in the screenshot)*. Click on the Action you just created.
-![Alt Text](./images/8dye812u7jt007l5njjw.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/8dye812u7jt007l5njjw.png)
 * Click on the most recent run of your Action. *It might be a failure. It doesn't matter, just click it.*
-![Alt Text](./images/0a283rsedbwgausmzn7g.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/0a283rsedbwgausmzn7g.png)
 * Click Re-run jobs > Re-run all jobs.
-![Alt Text](./images/npn9ydkeav2alt2q4ilc.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/npn9ydkeav2alt2q4ilc.png)
 * Your Action will queue, then run. Its status will change to In Progress and the spinners will start spinning.
-![Alt Text](./images/glltnvb80dsykbibb1va.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/glltnvb80dsykbibb1va.png)
 * If you click on the Action in the left nav panel, you can see it run (or troubleshoot failures).
-![Alt Text](./images/r9eibt6stszw7jct88kl.png)
+![Alt Text](/static/images/blog/20200817-building-a-portfolio-resume-site-with-gatsby-part-4/r9eibt6stszw7jct88kl.png)
 
 
 **Boom!** Now your Gatsby site is automatically building and deploying when you merge a pull request to your `main` branch. Professional level CI on a personal site, easy, and free. Is it overkill? Maybe. Am I going to continue overkilling my personal site and doing write-ups like this? Probably.

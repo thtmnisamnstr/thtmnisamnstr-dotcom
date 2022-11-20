@@ -1,4 +1,4 @@
-import { headerNavLinks } from 'data'
+import { siteMetadata, headerNavLinks } from 'data'
 import NextImage from 'next/image'
 import { Link } from './Link'
 import { ThemeSwitcher } from './ThemeSwitcher'
@@ -16,16 +16,14 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
       <div className="mx-auto max-w-3xl xl:max-w-5xl flex items-center justify-between px-3 xl:px-0">
         <div>
           <div className="mr-3 flex justify-center items-center">
-            <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson">
-              <NextImage
-                src="/static/images/gavin-johnson.png"
-                alt="Site logo"
-                width={45}
-                height={45}
-                className="rounded-full"
-              />
-            </Link>
-            <SpotifyNowPlaying {...nowPlayingData} />
+            <span className="inline-block w-8">
+              <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson">
+                <NextImage src={siteMetadata.siteLogo} alt="Site logo" width={32} height={32} />
+              </Link>
+            </span>
+            <span className="inline-block">
+              <SpotifyNowPlaying {...nowPlayingData} />
+            </span>
           </div>
         </div>
         <div className="flex items-center text-base leading-5">

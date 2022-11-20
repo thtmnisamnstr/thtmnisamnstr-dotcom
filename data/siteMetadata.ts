@@ -9,7 +9,7 @@ export let siteMetadata = {
   language: 'en-us',
   siteUrl: 'https://thtmnisamnstr.com',
   siteRepo: 'https://github.com/thtmnisamnstr/thtmnisamnstr-dotcom',
-  siteLogo: '/static/images/gavin-johnson.png',
+  siteLogo: '/static/images/logo_mobile.svg',
   image: '/static/images/gavin-johnson.png',
   socialBanner: '/static/images/gavin-johnson.png',
   email: 'gavin@thtmnisamnstr.com',

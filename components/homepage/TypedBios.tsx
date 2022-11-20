@@ -22,7 +22,7 @@ export function TypedBios() {
       <span className="text-5xl"></span>
       <ul id="bios" className="hidden">
         <li>
-          <span className="text-5xl">
+          <span className="text-5xl font-mono" style={{ color: '#33ff00' }}>
             <b className="font-heavy">thtmnisamnstr</b>
           </span>
         </li>
