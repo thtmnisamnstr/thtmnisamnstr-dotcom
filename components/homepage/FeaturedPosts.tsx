@@ -2,6 +2,7 @@ import { BlogTags, Link } from '~/components'
 import { FEATURED_POSTS } from '~/constant'
 import type { BlogFrontMatter } from '~/types'
 import { formatDate } from '~/utils'
+import Image from 'next/image'
 
 export function FeaturedPosts({ posts }: { posts: BlogFrontMatter[] }) {
   return (
@@ -19,6 +20,16 @@ export function FeaturedPosts({ posts }: { posts: BlogFrontMatter[] }) {
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                       <time dateTime={date}>{formatDate(date)}</time>
                     </dd>
+                    <div>
+                      <Image
+                        src={frontMatter.images[0]}
+                        alt="hero"
+                        width="0"
+                        height="0"
+                        sizes="100vw"
+                        className="w-11/12 h-auto"
+                      />
+                    </div>
                   </dl>
                   <div className="space-y-5 xl:col-span-3">
                     <div className="space-y-6">

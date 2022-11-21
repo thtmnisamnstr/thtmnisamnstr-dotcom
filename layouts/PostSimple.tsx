@@ -9,6 +9,7 @@ import {
 } from '~/components'
 import { siteMetadata } from '~/data'
 import type { PostSimpleLayoutProps } from '~/types'
+import Image from 'next/image'
 
 export function PostSimple(props: PostSimpleLayoutProps) {
   let { frontMatter, type, children, authorDetails } = props
@@ -33,11 +34,21 @@ export function PostSimple(props: PostSimpleLayoutProps) {
                   <dt className="sr-only">Published on</dt>
                   <BlogMeta date={date} slug={slug} readingTime={readingTime} />
                 </div>
-                <div>
+                <div className="pb-4">
                   <dt className="sr-only">Written by</dt>
                   <AuthorDetails authorDetails={authorDetails} />
                 </div>
               </dl>
+              <div className="pb-8">
+                <Image
+                  src={frontMatter.images[0]}
+                  alt="hero"
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </header>
           <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>

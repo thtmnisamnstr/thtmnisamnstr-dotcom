@@ -2,7 +2,7 @@ import { Twemoji } from '~/components'
 
 export function ShortDescription() {
   return (
-    <p className="mt-4 mb-8">
+    <p className="mt-10   mb-8">
       <span className="flex items-center mt-4 mb-4">
         Ex-PMM at a Segment, Yugabyte, RudderStack, New Relic, and AT&T &nbsp;&nbsp;{' '}
         <Twemoji className="twa-2x" emoji="chart-increasing" size="" />

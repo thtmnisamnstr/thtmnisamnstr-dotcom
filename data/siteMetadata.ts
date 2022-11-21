@@ -15,16 +15,18 @@ export let siteMetadata = {
   email: 'gavin@thtmnisamnstr.com',
   github: 'https://github.com/thtmnisamnstr',
   twitter: 'https://twitter.com/gavinjtech',
+  instagram: 'https://www.instagram.com/thtmnisamnstr/',
   linkedin: 'https://www.linkedin.com/in/gavin-johnson/',
   locale: 'en-US',
-  /** Choose one of these Analytics providers */
+  /** Choose one of these Analytics providers and save your write key in your .env */
   analytics: {
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
-    segmentWriteKey: 'LGpnwTKlRkHQqFbCS22wFiETGQLMey6h',
+    useGoogleAnalytics: false,
+    useSegment: true,
   },
   socialAccounts: {
     github: 'thtmnisamnstr',
     twitter: 'gavinjtech',
     linkedin: 'gavin-johnson',
+    instagram: 'thtmnisamnstr',
   },
 }

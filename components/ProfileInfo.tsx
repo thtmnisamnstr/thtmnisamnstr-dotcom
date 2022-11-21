@@ -113,6 +113,15 @@ export function ProfileCardInfo() {
             <br />
             <a
               target="_blank"
+              href={siteMetadata.instagram}
+              rel="noreferrer"
+              className="hover:underline"
+            >
+              ig/{siteMetadata.socialAccounts.instagram}
+            </a>
+            <br />
+            <a
+              target="_blank"
               href={siteMetadata.linkedin}
               rel="noreferrer"
               className="hover:underline"

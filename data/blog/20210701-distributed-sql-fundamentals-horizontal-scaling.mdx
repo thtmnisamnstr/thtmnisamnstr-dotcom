@@ -1,14 +1,24 @@
 ---
 title: "Distributed SQL Fundamentals: Horizontal Scaling"
-author: Gavin Johnson
-date: 2021-07-01
-hero: ./images/hero.jpg
-excerpt: "Scaling your SQL database can be difficult. Most traditional, legacy SQL databases are monolithic – they are constrained to a single server, VM, or container ..."
+date: '2021-07-01'
+tags: ['yugabyte', 'video']
+draft: false
+summary: "Scaling your SQL database can be difficult. Most traditional, legacy SQL databases are monolithic – they are constrained to a single server, VM, or container ..."
+images: ['/static/images/blog/20210701-distributed-sql-fundamentals-horizontal-scaling/hero.jpg']
+authors: ['gavin-johnson']
 ---
+
 **_This was a live webinar that was recorded and later re-published on [Yugabyte’s Vimeo](https://vimeo.com/570078769)._**
 <br />
 
-`vimeo: 570078769`
+<iframe
+    width="881"
+    height="450"
+    src="https://player.vimeo.com/video/570078769"
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+></iframe>
 
 Scaling your SQL database can be difficult. Most traditional, legacy SQL databases are monolithic – they are constrained to a single server, VM, or container. If your database exceeds the CPU, memory, or storage resources, you either have to move to a new, more powerful instance or upgrade the existing one. Vertical scaling works fine until your database or transaction volumes get large. Since you can only increase the resources for an instance so far, your database can only scale so far. Then you will inevitably start running into latency and stability issues with your database.
 

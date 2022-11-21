@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "thtmnisamnstr.com server-side debugging",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceRoot}/thtmnisamnstr-dotcom",
+      "command": "npm run dev"
+    },
+    {
+      "name": "thtmnisamnstr.com client-side debugging",
+      "type": "chrome",
+      "request": "launch",
+      "cwd": "${workspaceRoot}/thtmnisamnstr-dotcom",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "thtmnisamnstr.com full stack debugging",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceRoot}/thtmnisamnstr-dotcom",
+      "localRoot": "${workspaceRoot}/thtmnisamnstr-dotcom",
+      "command": "npm run dev",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
+  ]
+}

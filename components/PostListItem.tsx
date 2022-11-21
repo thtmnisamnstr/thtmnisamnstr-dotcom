@@ -1,6 +1,7 @@
 import { Link, Tag } from '~/components'
 import type { MdxFrontMatter } from '~/types'
 import { formatDate } from '~/utils'
+import Image from 'next/image'
 
 export function PostListItem({ frontMatter }: { frontMatter: MdxFrontMatter }) {
   let { slug, date, title, summary, tags } = frontMatter
@@ -12,6 +13,16 @@ export function PostListItem({ frontMatter }: { frontMatter: MdxFrontMatter }) {
           <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
             <time dateTime={date}>{formatDate(date)}</time>
           </dd>
+          <div>
+            <Image
+              src={frontMatter.images[0]}
+              alt="hero"
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="w-11/12 h-auto"
+            />
+          </div>
         </dl>
         <div className="space-y-3 xl:col-span-3">
           <div>

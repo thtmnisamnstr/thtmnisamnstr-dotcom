@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "PORT=3434 next dev",
+    "dev": "next dev",
     "build": "npm run lint && next build && tsx ./scripts/generate-sitemap",
-    "serve": "PORT=3435 next start",
+    "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "upgrade-deps": "taze major -w",
@@ -14,7 +14,7 @@
     "@tailwindcss/typography": "^0.5.8",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
-    "esbuild": "^0.15.14",
+    "esbuild": "^0.15.15",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "image-size": "^1.0.2",
@@ -77,6 +77,6 @@
     ]
   },
   "optionalDependencies": {
-    "esbuild-linux-64": "^0.15.14"
+    "esbuild-linux-64": "^0.15.15"
   }
 }
