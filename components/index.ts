@@ -1,3 +1,4 @@
+export * from './analytics'
 export * from './blog'
 export * from './homepage'
 export * from './Footer'
