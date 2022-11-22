@@ -1,4 +1,5 @@
 import { PageSeo } from 'components/SEO'
+import { useSegment } from '~/components'
 import fs from 'fs'
 import path from 'path'
 import { siteMetadata } from '~/data'
@@ -40,6 +41,10 @@ export async function getStaticProps({ params }: { params: { tag: string } }) {
 export default function Tag({ posts, tag }: { posts: BlogFrontMatter[]; tag: string }) {
   // Capitalize first letter and convert space to dash
   let title = tag[0] + tag.split(' ').join('-').slice(1)
+
+  const { analytics: segment } = useSegment()
+  segment.page(`/tags/${title}`)
+
   return (
     <>
       <PageSeo title={`${tag} - ${siteMetadata.title}`} description={`${tag} blog post tags`} />

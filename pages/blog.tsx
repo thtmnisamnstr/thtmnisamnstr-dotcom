@@ -1,4 +1,4 @@
-import { PageSeo } from '~/components'
+import { PageSeo, useSegment } from '~/components'
 import { POSTS_PER_PAGE } from '~/constant'
 import { siteMetadata } from '~/data'
 import { ListLayout } from '~/layouts'
@@ -17,6 +17,9 @@ export function getStaticProps() {
 }
 
 export default function Blog({ posts, initialDisplayPosts, pagination }: BlogListProps) {
+  const { analytics: segment } = useSegment()
+  segment.page('/blog')
+
   return (
     <>
       <PageSeo title={`All posts - ${siteMetadata.title}`} description={`All blog posts`} />

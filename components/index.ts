@@ -1,4 +1,4 @@
-export * from './analytics'
+export * from './Segment'
 export * from './blog'
 export * from './homepage'
 export * from './Footer'

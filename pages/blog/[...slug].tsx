@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { MDXLayoutRenderer, PageTitle } from '~/components'
+import { MDXLayoutRenderer, PageTitle, useSegment } from '~/components'
 import { POSTS_PER_PAGE } from '~/constant'
 import { formatSlug, generateRss, getFiles } from '~/libs'
 import { getAllFilesFrontMatter, getFileBySlug } from '~/libs/mdx'
@@ -46,6 +46,9 @@ export async function getStaticProps({ params }: { params: { slug: string[] } })
 export default function Blog(props: BlogProps) {
   let { post, ...rest } = props
   let { mdxSource, frontMatter } = post
+
+  const { analytics: segment } = useSegment()
+  segment.page(`/blog/${frontMatter.slug}`)
 
   return (
     <>

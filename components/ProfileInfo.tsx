@@ -1,7 +1,10 @@
 import { Link } from './Link'
 import { siteMetadata } from '~/data'
+import { useSegment } from '~/components'
 
 export function ProfileCardInfo() {
+  const { analytics: segment } = useSegment()
+
   return (
     <div className="hidden xl:block xl:px-6 py-4">
       <h3 className="text-xl font-semibold text-gray-900">Gavin Johnson</h3>
@@ -73,7 +76,13 @@ export function ProfileCardInfo() {
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
             />
           </svg>
-          <a className="px-2" href={`mailto:${siteMetadata.email}`}>
+          <a
+            className="px-2"
+            href={`mailto:${siteMetadata.email}`}
+            onClick={() => {
+              segment.track('social-profile-link-Mail')
+            }}
+          >
             {siteMetadata.email}
           </a>
         </div>
@@ -98,6 +107,9 @@ export function ProfileCardInfo() {
               href={siteMetadata.github}
               rel="noreferrer"
               className="hover:underline"
+              onClick={() => {
+                segment.track('social-profile-link-Github')
+              }}
             >
               gh/{siteMetadata.socialAccounts.github}
             </a>
@@ -107,6 +119,9 @@ export function ProfileCardInfo() {
               href={siteMetadata.twitter}
               rel="noreferrer"
               className="hover:underline"
+              onClick={() => {
+                segment.track('social-profile-link-Twitter')
+              }}
             >
               tw/{siteMetadata.socialAccounts.twitter}
             </a>
@@ -116,6 +131,9 @@ export function ProfileCardInfo() {
               href={siteMetadata.instagram}
               rel="noreferrer"
               className="hover:underline"
+              onClick={() => {
+                segment.track('social-profile-link-Instagram')
+              }}
             >
               ig/{siteMetadata.socialAccounts.instagram}
             </a>
@@ -125,6 +143,9 @@ export function ProfileCardInfo() {
               href={siteMetadata.linkedin}
               rel="noreferrer"
               className="hover:underline"
+              onClick={() => {
+                segment.track('social-profile-link-Linkedin')
+              }}
             >
               li/{siteMetadata.socialAccounts.linkedin}
             </a>

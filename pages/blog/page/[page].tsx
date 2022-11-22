@@ -1,4 +1,5 @@
 import { PageSeo } from 'components/SEO'
+import { useSegment } from '~/components'
 import ListLayout from 'layouts/ListLayout'
 import { POSTS_PER_PAGE } from '~/constant'
 import { siteMetadata } from '~/data'
@@ -42,6 +43,14 @@ export async function getStaticProps({ params }: { params: { page: string } }) {
 
 export default function PostPage(props: BlogListProps) {
   let { posts, initialDisplayPosts, pagination } = props
+
+  const { analytics: segment } = useSegment()
+  if (pagination.currentPage > 1) {
+    segment.page(`/blog/page/${pagination.currentPage}`)
+  } else {
+    segment.page(`/blog`)
+  }
+
   return (
     <>
       <PageSeo title={`Blog posts - ${siteMetadata.title}`} description={`Blog posts`} />

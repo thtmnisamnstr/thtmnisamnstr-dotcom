@@ -1,7 +1,10 @@
 import Image from 'next/image'
-import { Twemoji, Link } from '~/components'
+import { Twemoji, Link, useSegment } from '~/components'
 
 export default function FourZeroFour() {
+  const { analytics: segment } = useSegment()
+  segment.page('/404')
+
   return (
     <div className="flex flex-col items-center justify-center pt-4 md:pt-10 xl:pt-20">
       <div>

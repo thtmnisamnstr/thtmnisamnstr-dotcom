@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { useSegment } from '~/components'
 
 export function ThemeSwitcher() {
   let [mounted, setMounted] = useState(false)
@@ -9,12 +10,17 @@ export function ThemeSwitcher() {
   useEffect(() => setMounted(true), [])
   let isDark = theme === 'dark' || resolvedTheme === 'dark'
 
+  const { analytics: segment } = useSegment()
+
   return (
     <button
       aria-label="Toggle Dark Mode"
       type="button"
       className="w-8 h-8 p-1 ml-1 rounded sm:ml-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      onClick={() => {
+        setTheme(isDark ? 'light' : 'dark')
+        segment.track(isDark ? 'toggle-mode-light' : 'toggle-mode-dark')
+      }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -18,11 +18,6 @@ export let siteMetadata = {
   instagram: 'https://www.instagram.com/thtmnisamnstr/',
   linkedin: 'https://www.linkedin.com/in/gavin-johnson/',
   locale: 'en-US',
-  /** Choose one of these Analytics providers and save your write key in your .env */
-  analytics: {
-    useGoogleAnalytics: false,
-    useSegment: true,
-  },
   socialAccounts: {
     github: 'thtmnisamnstr',
     twitter: 'gavinjtech',

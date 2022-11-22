@@ -6,6 +6,7 @@ import {
   ProfileCard,
   ShortDescription,
   TypedBios,
+  useSegment,
 } from '~/components'
 import { siteMetadata } from '~/data'
 import { getAllFilesFrontMatter } from '~/libs/mdx'
@@ -17,6 +18,9 @@ export function getStaticProps() {
 }
 
 export default function Home({ posts }: { posts: BlogFrontMatter[] }) {
+  const { analytics: segment } = useSegment()
+  segment.page('/')
+
   return (
     <>
       <PageSeo title={siteMetadata.title} description={siteMetadata.description} />

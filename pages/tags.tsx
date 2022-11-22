@@ -1,4 +1,4 @@
-import { PageSeo, Link, Tag } from '~/components'
+import { PageSeo, Link, Tag, useSegment } from '~/components'
 import { siteMetadata } from '~/data'
 import { getAllTags } from '~/libs'
 import type { TagsCount } from '~/types'
@@ -11,6 +11,9 @@ export function getStaticProps() {
 
 export default function Tags({ tags }: { tags: TagsCount }) {
   let sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
+
+  const { analytics: segment } = useSegment()
+  segment.page('/tags')
 
   return (
     <>

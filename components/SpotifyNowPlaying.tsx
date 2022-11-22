@@ -1,6 +1,12 @@
 import type { SpotifyNowPlayingData } from '~/types'
+import { useSegment } from '~/components'
 
 export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingData) {
+  const { analytics: segment } = useSegment()
+  if (songUrl) {
+    segment.track('spotify-now-playing', { artist, title, songUrl })
+  }
+
   return (
     <div className="flex items-center ml-3 px-3 xl:px-6 py-2">
       <svg

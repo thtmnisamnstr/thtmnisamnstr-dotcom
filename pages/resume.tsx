@@ -1,4 +1,4 @@
-import { MDXLayoutRenderer } from '~/components'
+import { MDXLayoutRenderer, useSegment } from '~/components'
 import { getFileBySlug } from '~/libs/mdx'
 import type { MdxFileData } from '~/types'
 
@@ -7,8 +7,11 @@ export async function getStaticProps() {
   return { props: { resumeData } }
 }
 
-export default function About({ resumeData }: { resumeData: MdxFileData }) {
+export default function Resume({ resumeData }: { resumeData: MdxFileData }) {
   let { mdxSource, frontMatter } = resumeData
+
+  const { analytics: segment } = useSegment()
+  segment.page('/resume')
 
   return (
     <MDXLayoutRenderer
