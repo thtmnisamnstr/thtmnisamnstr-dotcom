@@ -35,6 +35,9 @@ export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingD
               target="_blank"
               rel="noopener noreferrer"
               title={`${title} - ${artist || 'Spotify'}`}
+              onClick={() => {
+                segment.track('spotify-link', { artist, title, songUrl })
+              }}
             >
               {title}
             </a>
