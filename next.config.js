@@ -6,10 +6,26 @@ module.exports = withBundleAnalyzer({
   // reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   eslint: {
-    dirs: ['components', 'constant', 'layouts', 'libs', 'pages', 'scripts', 'utils'],
+    dirs: [
+      'components',
+      'constant',
+      'css',
+      'data',
+      'layouts',
+      'libs',
+      'pages',
+      'scripts',
+      'types',
+      'utils',
+    ],
   },
   images: {
-    domains: ['img.shields.io', 'i.scdn.co'],
+    domains: [
+      'thtmnisamnstr.com',
+      'www.thtmnisamnstr.com',
+      'thtmnisamnstr.netlify.app/',
+      'localhost:3000',
+    ],
   },
   typescript: { tsconfigPath: './tsconfig.json' },
   webpack: (config, { dev, isServer }) => {
@@ -18,10 +34,6 @@ module.exports = withBundleAnalyzer({
       use: [
         {
           loader: 'file-loader',
-          options: {
-            publicPath: '/_next',
-            name: 'static/media/[name].[hash].[ext]',
-          },
         },
       ],
     })

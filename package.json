@@ -2,14 +2,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run lint && next build && tsx ./scripts/generate-sitemap",
+    "build": "tsx ./scripts/generate-sitemap && npm run lint && next build",
     "serve": "next start",
-    "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
+    "clean": "rm -rf .next .netlify node_modules public/tags && rm public/feed.xml public/sitemap.xml",
+    "lint": "next lint --fix --dir components --dir constant --dir css --dir data --dir layouts --dir libs --dir pages --dir scripts --dir types --dir utils",
     "upgrade-deps": "taze major -w",
-    "check-deps": "npm-check"
+    "check-deps": "npm-check",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
+    "@netlify/functions": "^1.3.0",
+    "@netlify/plugin-nextjs": "^4.29.2",
     "@segment/analytics-next": "^1.46.3",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.8",

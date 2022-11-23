@@ -1,0 +1,17 @@
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[build]
+command = "npm run build"
+functions = "/pages/api"
+publish = ".next"
+
+[[redirects]]
+from = "/_next/static/*"
+to = "/static/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"

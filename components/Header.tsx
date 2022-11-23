@@ -21,7 +21,7 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
                 <NextImage src={siteMetadata.siteLogo} alt="Site logo" width={32} height={32} />
               </Link>
             </span>
-            <span className="inline-block">
+            <span className="inline-block w-72">
               <SpotifyNowPlaying {...nowPlayingData} />
             </span>
           </div>

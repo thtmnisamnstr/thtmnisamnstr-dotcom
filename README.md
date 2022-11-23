@@ -1,43 +1,39 @@
+# thtmnisamnstr-dotcom
+![image info](./public/static/images/thtmnisamnstr-dotcom-screenshot.png)
+This is the source code for my personal website at https://thtmnisamnstr.com. It is a modified version of [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\].
+
+## Tech Stack
+*   Node.js 19
+*   Next.js 13
+*   [Netlify](https://www.netlify.com/) for hosting
+*   [Segment](https://segment.com/) for analytics
+*   [Earthly](http://earthly.dev/) for builds
+
+## How to run, build, and upgrade dependencies
+### Running dev locally
+*   Clone the repo
+*   Run `npm install --force` (have to use `--force` because the site uses Taze for dependency updating).
+*   Run `npm run dev`, and the site will run on http://localhost:3000.
+
+### Deploying the site
+Deploying the site requires building at deploy. The site uses `next/image`. Netlify requires `@netlify/plugin-nextjs` and running `netlify deploy` with the `--build` argument to work with `next/image`.
+*   Clone the repo.
+*   Run `earthly --push +deploy --NODE_ENV=production`, and the site will build and deploy to Netlify based on your Netlify environment variables.
+    *   Make sure Docker is started before running Earthly commands.
+**Note:** You must add the `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` environment variables to your Netlify site.
+
+### Building the site
+Building the site standalone isn't super useful unless you want to debug your Netlify build. Since build is required at deploy, build and deploy can't be isolated.
+*   Clone the repo.
+*   Run `earthly +build`, and the site will build and save build outputs to your project.
+    *   Make sure Docker is started before running Earthly commands.
+
+### Dependency management and package install/uninstall
 Taze manages dependency updates, and npm-check is used to check for unneeded dependencies.
-*   To check for unneded dependencies, run `npm run check-deps`.
+*   To check for unneeded dependencies, run `npm run check-deps`.
 *   To update dependencies, run `npm run upgrade-deps`.
 *   To install modules, run `npm install --force`.
 *   To uninstall modules, run `npm uninstall [module_name] --force`.
-*   To lint, run `npm run prepare && npm run lint`.
 
-# My 🏠 on the ☁️
-
-My personal over-engineering site on the cloud.
-
-## Motivation
-
-> Sharing is learning!
-
-I believe noting down and sharing is the best way to learn! So I created this blog, where I keep things that I learned, find useful, and necessary to save for later (cause I always forget stuff and don't wanna googling the correct answer every time I need)
-
-Beyond technical stuff, there are personal thoughts about work and life from the perspective of a software engineer.
-
-It would be highly appreciated if I could read your comment on what I wrote.
-
-## Stack
-
-This blog is hosted on [Vercel](https://vercel.com/), built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) using **Tailwind Nextjs Starter Blog**.
-
-A huge thanks to [Timothy Lin](https://twitter.com/timlrxx) for the minimal, lightweight, and super easy-to-customize blog starter.
-
-A few major changes from the original template:
-
-- Upgrading to React 18, latest version of `mdx-bundler`, all `rehype`/`remark` plugins and dependencies are up-to-date 📥
-- Adopting `typescript` 🎉
-
-_And yes! This blog have a legacy version built with **Gatsby** which can be found [here](https://leo-blog-legacy.vercel.app/)_.
-
-## Assets
-
-The images in this blog are from [Unsplash](https://unsplash.com/), gifs from [GIPHY](https://giphy.com/), and illustrations are from [Storyset](https://storyset.com/).
-
-Thanks for the free resources 🙏
-
----
-
-Copyright (c) 2022 Tuan Anh Huynh (Leo) - Alrights reserved.
+## Thanks
+Thanks to [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\] for making his website open source.

@@ -63,7 +63,7 @@ export default function Blog(props: BlogProps) {
       ) : (
         <div className="mt-24 text-center">
           <PageTitle>
-            Under letruction{' '}
+            Under construction{' '}
             <span role="img" aria-label="roadwork sign">
               🚧
             </span>
