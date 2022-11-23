@@ -1,71 +1,39 @@
-<a href="https://novela.narative.co" target="_blank">
-<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-hero.jpg" alt="gatsby-novela-theme hero image" />
-</a>
+# thtmnisamnstr-dotcom
+![image info](./public/static/images/thtmnisamnstr-dotcom-screenshot.png)
+This is the source code for my personal website at https://thtmnisamnstr.com. It is a modified version of [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\].
 
-<br/>
+## Tech Stack
+*   Node.js 19
+*   Next.js 13
+*   [Netlify](https://www.netlify.com/) for hosting
+*   [Segment](https://segment.com/) for analytics
+*   [Earthly](http://earthly.dev/) for builds
 
-# Gatsby Starter Novela
+## How to run, build, and upgrade dependencies
+### Running dev locally
+*   Clone the repo
+*   Run `npm install --force` (have to use `--force` because the site uses Taze for dependency updating).
+*   Run `npm run dev`, and the site will run on http://localhost:3000.
 
-With minimal styling and maximum features — including multiple homepage layouts, built-in social sharing and dark mode — Novela makes it easy to start publishing beautiful articles and stories with Gatsby.
+### Deploying the site
+Deploying the site requires building at deploy. The site uses `next/image`. Netlify requires `@netlify/plugin-nextjs` and running `netlify deploy` with the `--build` argument to work with `next/image`.
+*   Clone the repo.
+*   Run `earthly --push +deploy --NODE_ENV=production`, and the site will build and deploy to Netlify based on your Netlify environment variables.
+    *   Make sure Docker is started before running Earthly commands.
+**Note:** You must add the `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` environment variables to your Netlify site.
 
-Novela is built by the team at [Narative](https://www.narative.co), and built for everyone that loves the web.
+### Building the site
+Building the site standalone isn't super useful unless you want to debug your Netlify build. Since build is required at deploy, build and deploy can't be isolated.
+*   Clone the repo.
+*   Run `earthly +build`, and the site will build and save build outputs to your project.
+    *   Make sure Docker is started before running Earthly commands.
 
-<div>
-<a href="https://novela.narative.co" target="_blank">
-<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-cta-demo.jpg" alt="gatsby-novela-theme live demo" width="295px" />
-</a>
-</div>
+### Dependency management and package install/uninstall
+Taze manages dependency updates, and npm-check is used to check for unneeded dependencies.
+*   To check for unneeded dependencies, run `npm run check-deps`.
+*   To update dependencies, run `npm run upgrade-deps`.
+*   To install modules, run `npm install --force`.
+*   To uninstall modules, run `npm uninstall [module_name] --force`.
 
-<div>
-<a href="https://www.narative.co/design/open/novela" target="_blank">
-<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-cta-figma.jpg" alt="gatsby-novela-theme figma link" width="295px" />
-</a>
-</div>
-
-# Using Gatsby Starter Novela
-
-This guide will take you through setting up Novela with Gatsby Starter Novela.
-
-### Step 1: Starter installation
-
-##### With `gatsby-cli`:
-
-```sh
-gatsby new novela-site https://github.com/narative/gatsby-starter-novela
-```
-
-##### With `git clone`:
-
-```sh
-git clone git@github.com:narative/gatsby-starter-novela.git novela-site
-
-cd novela-site
-
-yarn
-```
-
-### Step 2: Develop & Build
-
-Once installed or cloned locally and all packages are installed you can begin developing your site.
-
-```sh
-# Run localhost
-yarn dev
-
-# Build your Gatsby site
-yarn build
-```
-
-If wanting to use Netlify CMS as the content editor, then you need to be run the proxy in another terminal tab. Then visit
-http://localhost:8000/admin to view the editor.
-```sh
-# Run proxy
-yarn proxy
-```
-
-### Help
-
-If you don't have *yarn* installed follow the [yarn getting started guide](https://classic.yarnpkg.com/en/docs/getting-started) 
-
-For more information visit the [Theme repository](https://github.com/narative/gatsby-theme-novela)
-
+## Thanks
+Thanks to [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\] for making his website open source.
