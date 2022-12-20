@@ -35,5 +35,8 @@ Taze manages dependency updates, and npm-check is used to check for unneeded dep
 *   To install modules, run `npm install --force`.
 *   To uninstall modules, run `npm uninstall [module_name] --force`.
 
+## License 🤝
+[MIT](./LICENSE)
+
 ## Thanks
 Thanks to [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\] for making his website open source.
