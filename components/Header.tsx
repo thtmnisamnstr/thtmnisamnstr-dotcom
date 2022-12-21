@@ -16,12 +16,25 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
       <div className="mx-auto max-w-3xl xl:max-w-5xl flex items-center justify-between px-3 xl:px-0">
         <div>
           <div className="mr-3 flex justify-center items-center">
-            <span className="inline-block w-8">
+            <span className="inline-block w-8 md:w-96">
               <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson">
-                <NextImage src={siteMetadata.siteLogo} alt="Site logo" width={32} height={32} />
+                <NextImage
+                  className="md:hidden"
+                  src={siteMetadata.siteMobileLogo}
+                  alt="Site logo"
+                  width={32}
+                  height={32}
+                />
+                <NextImage
+                  className="hidden md:block"
+                  src={siteMetadata.siteLogo}
+                  alt="Site logo"
+                  width={367}
+                  height={32}
+                />
               </Link>
             </span>
-            <span className="inline-block w-60">
+            <span className="inline-block w-56 md:w-72">
               <SpotifyNowPlaying {...nowPlayingData} />
             </span>
           </div>
