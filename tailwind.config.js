@@ -32,6 +32,12 @@ module.exports = {
           '35.7%': { height: '0%' },
           '85.7%': { height: '70%' },
         },
+        'song-title': {
+          '0%': { transform: 'translateX(0%)' },
+          '25%': { transform: 'translateX(0%)' },
+          '95%': { transform: 'translateX(-85%)' },
+          '100%': { transform: 'translateX(-85%)' },
+        },
       },
       animation: {
         wiggle: 'wiggle 7s linear infinite',
@@ -39,6 +45,7 @@ module.exports = {
         'music-bar-2': 'music-bar-2 .8s linear infinite',
         'music-bar-3': 'music-bar-3 .8s linear infinite',
         'music-bar-4': 'music-bar-4 .8s linear infinite',
+        'song-title': 'song-title 10s linear infinite',
       },
       spacing: {
         '9/16': '56.25%',
