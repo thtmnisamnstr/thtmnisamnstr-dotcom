@@ -8,7 +8,7 @@ export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingD
   }
 
   return (
-    <div className="flex items-center ml-3 px-3 xl:px-6 py-2">
+    <div className="flex items-center ml-3 px-2 xl:py-2">
       <svg
         className="w-5.5 h-5.5 flex-shrink-0 text-spotify"
         role="img"
@@ -23,30 +23,30 @@ export function SpotifyNowPlaying({ songUrl, title, artist }: SpotifyNowPlayingD
       <div className="ml-2 inline-flex truncate">
         {songUrl ? (
           <>
-            <div className="h-5 flex items-end mr-2 pt-1 pb-0.5">
-              <div className="bg-spotify w-0.5 h-full animate-music-bar-1"></div>
-              <div className="bg-spotify mx-0.5 w-0.5 h-1/2 animate-music-bar-2"></div>
-              <div className="bg-spotify w-0.5 h-full animate-music-bar-3"></div>
-              <div className="bg-spotify mx-0.5 w-0.5 h-1/2 animate-music-bar-4"></div>
+            <div className="flex animate-song-title">
+              <div className="h-5 flex items-end mr-2 pt-1 pb-0.5">
+                <div className="bg-spotify w-0.5 h-full animate-music-bar-1"></div>
+                <div className="bg-spotify mx-0.5 w-0.5 h-1/2 animate-music-bar-2"></div>
+                <div className="bg-spotify w-0.5 h-full animate-music-bar-3"></div>
+                <div className="bg-spotify mx-0.5 w-0.5 h-1/2 animate-music-bar-4"></div>
+              </div>
+              <a
+                className="text-gray-800 dark:text-gray-200 font-medium"
+                href={songUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${title} - ${artist || 'Spotify'}`}
+                onClick={() => {
+                  segment.track('spotify-link', { artist, title, songUrl })
+                }}
+              >
+                {title + ' – ' + artist}
+              </a>
             </div>
-            <a
-              className="text-gray-900 dark:text-gray-100 font-medium"
-              href={songUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`${title} - ${artist || 'Spotify'}`}
-              onClick={() => {
-                segment.track('spotify-link', { artist, title, songUrl })
-              }}
-            >
-              {title}
-            </a>
           </>
         ) : (
-          <p className="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
+          <p className="text-gray-800 dark:text-gray-200 font-medium">Not Playing – Spotify</p>
         )}
-        <span className="mx-2 text-gray-900 dark:text-gray-100">{' – '}</span>
-        <p className="text-gray-900 dark:text-gray-100 max-w-max truncate">{artist || 'Spotify'}</p>
       </div>
     </div>
   )
