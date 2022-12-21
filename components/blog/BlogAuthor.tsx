@@ -3,7 +3,7 @@ import type { AuthorFrontMatter } from '~/types'
 
 export function AuthorDetails({ authorDetails }: { authorDetails: AuthorFrontMatter[] }) {
   return (
-    <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-6">
+    <ul className="flex flex-wrap justify-left">
       {authorDetails.map((author) => (
         <Author key={author.name} author={author} />
       ))}
@@ -13,7 +13,7 @@ export function AuthorDetails({ authorDetails }: { authorDetails: AuthorFrontMat
 
 export function Author({ author }: { author: AuthorFrontMatter }) {
   return (
-    <li className="flex items-center space-x-2">
+    <li className="flex items-center space-x-2 mr-8 mb-4">
       {author.avatar && (
         <Image
           src={author.avatar}
