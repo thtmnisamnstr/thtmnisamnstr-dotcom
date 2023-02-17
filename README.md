@@ -10,10 +10,9 @@ This is the source code for my personal website at https://thtmnisamnstr.com. It
 *   [Earthly](http://earthly.dev/) for builds
 
 ## How to run, build, and upgrade dependencies
-### Running dev locally
+### Running locally
 *   Clone the repo
-*   Run `npm install --force` (have to use `--force` because the site uses Taze for dependency updating).
-*   Run `npm run dev`, and the site will run on http://localhost:3000.
+*   Run `earthly +preview`, and the site will run on http://localhost:8081.
 
 ### Deploying the site
 Deploying the site requires building at deploy. The site uses `next/image`. Netlify requires `@netlify/plugin-nextjs` and running `netlify deploy` with the `--build` argument to work with `next/image`.
@@ -29,9 +28,8 @@ Building the site standalone isn't super useful unless you want to debug your Ne
     *   Make sure Docker is started before running Earthly commands.
 
 ### Dependency management and package install/uninstall
-Taze manages dependency updates, and npm-check is used to check for unneeded dependencies.
-*   To check for unneeded dependencies, run `npm run check-deps`.
-*   To update dependencies, run `npm run upgrade-deps`.
+*   To update dependencies and remove unneeded dependencies, run `earthly +upgrade`. `npm-check` and `taze` are used to maintain dependencies.
+    * Manually upgrade by running `npm run deps-npm-check` and `npm run deps-taze`.
 *   To install modules, run `npm install --force`.
 *   To uninstall modules, run `npm uninstall [module_name] --force`.
 
