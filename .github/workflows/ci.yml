@@ -19,6 +19,13 @@ jobs:
       with:
         version: v0.7.4
     - uses: actions/checkout@v2
+      with:
+        SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+        SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+        SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+        NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
     - name: Put back the git branch into git (Earthly uses it for tagging)
       run: |
         branch=""
@@ -29,11 +36,4 @@ jobs:
         fi
         git checkout -b "$branch" || true
     - name: Run build
-      with:
-        SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
-        SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-        SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-        NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-    - run: earthly --ci --push +deploy
+      run: earthly --ci --push +deploy
