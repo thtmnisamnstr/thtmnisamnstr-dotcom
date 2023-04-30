@@ -17,7 +17,8 @@ This is the source code for my personal website at https://thtmnisamnstr.com. It
 ### Deploying the site
 Deploying the site requires building at deploy. The site uses `next/image`. Netlify requires `@netlify/plugin-nextjs` and running `netlify deploy` with the `--build` argument to work with `next/image`.
 *   Clone the repo.
-*   Run `earthly --push +deploy --NODE_ENV=production`, and the site will build and deploy to Netlify based on your Netlify environment variables.
+*   Make sure to set the `NODE_ENV` environment variable.
+*   Run `earthly --push +deploy`, and the site will build and deploy to Netlify based on your Netlify environment variables.
     *   Make sure Docker is started before running Earthly commands.
 **Note:** You must add the `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` environment variables to your Netlify site.
 
