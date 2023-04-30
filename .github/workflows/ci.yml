@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+      NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      NODE_ENV: ${{ env.NODE_ENV }}
+      EARTHLY_BUILDKIT_HOST: ${{ env.EARTHLY_BUILDKIT_HOST }}
       FORCE_COLOR: 1
     steps:
     - uses: earthly/actions-setup@v1.0.7
