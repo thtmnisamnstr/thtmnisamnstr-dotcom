@@ -1,4 +1,4 @@
-VERSION 0.6
+VERSION 0.7
 
 deps-build:
     FROM --platform=linux/amd64 node:latest
@@ -60,5 +60,5 @@ preview:
   LOCALLY
   WITH DOCKER --load thtmnisamnstr-dotcom:preview=+docker-preview
     RUN docker rm -f thtmnisamnstr-dotcom && \
-        docker run -p 8081:3000 --rm --name thtmnisamnstr-dotcom thtmnisamnstr-dotcom:preview
+        docker run -p 3000:3000 --rm --name thtmnisamnstr-dotcom thtmnisamnstr-dotcom:preview
   END

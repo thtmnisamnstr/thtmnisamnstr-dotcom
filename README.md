@@ -12,7 +12,7 @@ This is the source code for my personal website at https://thtmnisamnstr.com. It
 ## How to run, build, and upgrade dependencies
 ### Running locally
 *   Clone the repo
-*   Run `earthly +preview`, and the site will run on http://localhost:8081.
+*   Run `earthly +preview`, and the site will run on http://localhost:3000.
 
 ### Deploying the site
 Deploying the site requires building at deploy. The site uses `next/image`. Netlify requires `@netlify/plugin-nextjs` and running `netlify deploy` with the `--build` argument to work with `next/image`.
