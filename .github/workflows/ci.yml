@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
+      SPOTIFY_CLIENT_ID: ${{ vars.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ vars.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ vars.SPOTIFY_REFRESH_TOKEN }}
+      NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ vars.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
+      NETLIFY_AUTH_TOKEN: ${{ vars.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
       NODE_ENV: ${{ vars.NODE_ENV }}
       EARTHLY_BUILDKIT_HOST: ${{ vars.EARTHLY_BUILDKIT_HOST }}
       FORCE_COLOR: 1
@@ -19,13 +25,6 @@ jobs:
       with:
         version: v0.7.4
     - uses: actions/checkout@v2
-      with:
-        SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
-        SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-        SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
-        NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
     - name: Put back the git branch into git (Earthly uses it for tagging)
       run: |
         branch=""
