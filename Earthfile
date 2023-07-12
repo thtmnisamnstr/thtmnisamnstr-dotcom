@@ -2,7 +2,7 @@ VERSION 0.7
 PROJECT thtmnisamnstr/thtmnisamnstr-dotcom
 
 ci-deploy:
-  PIPELINE -push
+  PIPELINE --push
   TRIGGER push main
   BUILD +deploy
 
