@@ -1,4 +1,10 @@
 VERSION 0.7
+PROJECT gavin/thtmnisamnstr-dotcom
+
+ci-deploy:
+  PIPELINE
+  TRIGGER push main
+  BUILD +deploy
 
 deps-build:
     FROM --platform=linux/amd64 node:latest
