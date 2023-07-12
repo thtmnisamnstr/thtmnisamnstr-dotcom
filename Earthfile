@@ -1,5 +1,5 @@
 VERSION 0.7
-PROJECT gavin/thtmnisamnstr-dotcom
+PROJECT thtmnisamnstr/thtmnisamnstr-dotcom
 
 ci-deploy:
   PIPELINE
