@@ -31,6 +31,7 @@ Building the site standalone isn't super useful unless you want to debug your Ne
 ### Dependency management and package install/uninstall
 *   To update dependencies and remove unneeded dependencies, run `earthly +upgrade`. `npm-check` and `taze` are used to maintain dependencies.
     * Manually upgrade by running `npm run deps-npm-check` and `npm run deps-taze`.
+    * Or, even more manually, run `npx npm-check -u` and `npx taze`.
 *   To install modules, run `npm install --force`.
 *   To uninstall modules, run `npm uninstall [module_name] --force`.
 
