@@ -1,5 +1,4 @@
 VERSION 0.7
-PROJECT thtmnisamnstr/thtmnisamnstr-dotcom
 
 deps-build:
     FROM --platform=linux/amd64 node:latest
