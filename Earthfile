@@ -1,11 +1,6 @@
 VERSION 0.7
 PROJECT thtmnisamnstr/thtmnisamnstr-dotcom
 
-ci-deploy:
-  PIPELINE --push
-  TRIGGER push main
-  BUILD +deploy
-
 deps-build:
     FROM --platform=linux/amd64 node:latest
     WORKDIR /app
