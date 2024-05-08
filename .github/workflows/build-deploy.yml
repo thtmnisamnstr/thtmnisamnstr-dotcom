@@ -1,6 +1,6 @@
 name: Deploy thtmnisamnstr-dotcom to Netlify
 
-# on:
+on:
 #   push:
 #     branches: [ main ]
 

@@ -1,6 +1,6 @@
 name: Verify that thtmnisamnstr-dotcom builds correctly
 
-# on:
+on:
 #   pull_request:
 #     branches: [ main ]
 
