@@ -1,0 +1,22 @@
+name: Verify that thtmnisamnstr-dotcom builds correctly
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
+      FORCE_COLOR: 1
+    steps:
+      - uses: earthly/actions-setup@v1
+        with:
+          version: v0.8.13
+      - uses: actions/checkout@v4
+      - name: Docker Login
+        run: docker login --username "thtmnisamnstr" --password "$DOCKERHUB_TOKEN"
+      - name: Run build
+        run: earthly --org thtmnisamnstr --sat thtmnisamnstr-dotcom-sat --ci --push +deploy-preview
