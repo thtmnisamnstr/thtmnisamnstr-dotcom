@@ -8,12 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
       FORCE_COLOR: 1
     steps:
       - uses: earthly/actions-setup@v1
         with:
-          version: v0.7.10
-      - uses: actions/checkout@v2
+          version: v0.8.13
+      - uses: actions/checkout@v4
+      - name: Docker Login
+        run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
       - name: Run build
         run: earthly --org thtmnisamnstr --sat thtmnisamnstr-dotcom-sat --ci --push +deploy

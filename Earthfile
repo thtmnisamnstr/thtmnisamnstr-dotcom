@@ -1,8 +1,9 @@
-VERSION 0.7
+VERSION 0.8
 PROJECT thtmnisamnstr/thtmnisamnstr-dotcom
 
 deps-build:
-    FROM --platform=linux/amd64 node:latest
+    #FROM --platform=linux/amd64 node:latest
+    FROM --platform=linux/amd64 node:18.20.2
     WORKDIR /app
     # Install the Netlify CLI (global)
     RUN npm install netlify-cli -g
@@ -10,7 +11,7 @@ deps-build:
     COPY package.json package-lock.json ./
     # Install the Netlify CLI (local) and Netlify Next.js plugin and required packages
     RUN npm install netlify-cli --save-dev --force
-    RUN npm install @netlify/plugin-nextjs --save-dev --force
+    RUN npm install @netlify/plugin-nextjs@4.39.1 --save-dev --force
     RUN npm install --force
     # Copy files and directories required for building
     COPY .eslintignore .eslintrc.js netlify.toml next-env.d.ts next.config.js postcss.config.js prettier.config.js tailwind.config.js tsconfig.json ./
@@ -26,6 +27,11 @@ build:
     SAVE ARTIFACT ./public/tags public/tags/ AS LOCAL ./public/
     SAVE ARTIFACT ./public/feed.xml public/feed.xml AS LOCAL ./public/
     SAVE ARTIFACT ./public/sitemap.xml public/sitemap.xml AS LOCAL ./public/
+
+deploy-preview:
+    FROM +deps-build
+    # Build and deploy a preview site (required because site uses `next/image` which requires `@netlify/plugin-nextjs` and build to happen as part of deploy)
+    RUN --push --secret SPOTIFY_CLIENT_ID --secret SPOTIFY_CLIENT_SECRET --secret SPOTIFY_REFRESH_TOKEN --secret NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD --secret NETLIFY_AUTH_TOKEN --secret NETLIFY_SITE_ID netlify deploy --build --context deploy-preview
 
 deploy:
     FROM +deps-build
