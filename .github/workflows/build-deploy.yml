@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [earthly-satellite#thtmnisamnstr-dotcom-sat]
     env:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
