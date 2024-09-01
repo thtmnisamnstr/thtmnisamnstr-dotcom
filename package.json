@@ -28,7 +28,7 @@
     "next-themes": "^0.2.1",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.3.3",
-    "preact": "^10.21.0",
+    "preact": "^10.23.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-share": "^4.4.1",
