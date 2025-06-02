@@ -1,8 +1,9 @@
 name: Deploy thtmnisamnstr-dotcom to Netlify
 
-on:
-  push:
-    branches: [ main ]
+# Runs stopped; Runs on pushes to main
+# on:
+#   push:
+#     branches: [ main ]
 
 jobs:
   build:
