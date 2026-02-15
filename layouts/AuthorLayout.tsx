@@ -1,12 +1,19 @@
-import React from 'react'
-import { PageSeo, ProfileCard } from '~/components'
+import Image from 'next/image'
+import { Link, PageSeo } from '~/components'
 import { siteMetadata } from '~/data'
 import type { AuthorLayoutProps } from '~/types'
-import Image from 'next/image'
+import fallbackAvatar from '~/src/assets/images/authors/gavin-johnson.png'
 
-export function AuthorLayout({ children }: AuthorLayoutProps) {
+export function AuthorLayout({ children, frontMatter }: AuthorLayoutProps) {
   let title = 'About me'
   let description = 'About page for thtmnisamnstr.com - Gavin Johnson'
+
+  let socialLinks = [
+    frontMatter.email ? { label: 'Email', href: `mailto:${frontMatter.email}` } : null,
+    frontMatter.github ? { label: 'GitHub', href: frontMatter.github } : null,
+    frontMatter.twitter ? { label: 'Twitter', href: frontMatter.twitter } : null,
+    frontMatter.linkedin ? { label: 'LinkedIn', href: frontMatter.linkedin } : null,
+  ].filter(Boolean)
 
   return (
     <>
@@ -17,16 +24,25 @@ export function AuthorLayout({ children }: AuthorLayoutProps) {
             {title}
           </h1>
         </div>
-        <div className="items-start space-y-2 xl:grid xl:grid-cols-1 xl:space-y-0 pt-8">
+        <div className="items-start space-y-3 xl:grid xl:grid-cols-1 xl:space-y-0 pt-8">
           <div className="flex px-3 xl:px-6 py-2">
             <Image
-              src={'/static/images/gavin-johnson.png'}
+              src={frontMatter.avatar || fallbackAvatar}
               alt="avatar"
               width={220}
               height={220}
               className="rounded-full mx-auto"
             />
           </div>
+          {socialLinks.length > 0 && (
+            <div className="text-sm flex flex-wrap justify-center gap-x-4 gap-y-2 px-3 xl:px-6">
+              {socialLinks.map((social) => (
+                <Link key={social.label} href={social.href} className="vscode-author-link">
+                  {social.label}
+                </Link>
+              ))}
+            </div>
+          )}
           <div className="pb-8 xl:pl-8 prose prose-lg dark:prose-dark max-w-none xl:col-span-1">
             {children}
           </div>

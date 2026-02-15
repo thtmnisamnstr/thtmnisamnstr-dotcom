@@ -1,32 +1,32 @@
-import { PageSeo, useSegment } from '~/components'
+import { useEffect } from 'react'
+import { PageSeo } from 'components/SEO'
+import { useSegment } from '~/components'
+import ListLayout from '~/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '~/constant'
 import { siteMetadata } from '~/data'
-import { ListLayout } from '~/layouts'
 import { getAllFilesFrontMatter } from '~/libs/mdx'
-import type { BlogListProps } from '~/types'
+import type { BlogFrontMatter } from '~/types'
 
 export function getStaticProps() {
   let posts = getAllFilesFrontMatter('blog')
   let initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
-  let pagination = {
-    currentPage: 1,
-    totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
-  }
 
-  return { props: { posts, initialDisplayPosts, pagination } }
+  return { props: { initialDisplayPosts, posts } }
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination }: BlogListProps) {
+export default function Blog({ posts, initialDisplayPosts }) {
   const { analytics: segment } = useSegment()
-  segment.page('/blog')
+
+  useEffect(() => {
+    segment.page('/blog')
+  }, [segment])
 
   return (
     <>
-      <PageSeo title={`All posts - ${siteMetadata.title}`} description={`All blog posts`} />
+      <PageSeo title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} />
       <ListLayout
-        posts={posts}
+        posts={posts as BlogFrontMatter[]}
         initialDisplayPosts={initialDisplayPosts}
-        pagination={pagination}
         title="All Posts"
       />
     </>

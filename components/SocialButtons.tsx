@@ -1,11 +1,8 @@
-import { FacebookShareButton, TwitterShareButton } from 'react-share'
-import TwitterIcon from '~/icons/twitter.svg'
-import FacebookIcon from '~/icons/facebook.svg'
 import { siteMetadata } from '~/data'
 import { Link } from './Link'
 import type { SocialButtonsProps } from '~/types'
 
-export function SocialButtons({ postUrl, title, fileName }: SocialButtonsProps) {
+export function SocialButtons({ fileName }: SocialButtonsProps) {
   let creatEditOnGithubUrl = (fileName: string) =>
     `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
 

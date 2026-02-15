@@ -11,7 +11,7 @@ export function getAllTags(type: string): TagsCount {
   let tagsCount: TagsCount = {}
 
   // Iterate through each post, putting all found tags into `tags`
-  files.forEach((file, i) => {
+  files.forEach((file) => {
     let source = fs.readFileSync(path.join(root, 'data', type, file), 'utf8')
     let grayMatterData = matter(source)
     let data = grayMatterData.data as MdxFrontMatter

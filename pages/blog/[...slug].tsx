@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import fs from 'fs'
 import { MDXLayoutRenderer, PageTitle, useSegment } from '~/components'
 import { POSTS_PER_PAGE } from '~/constant'
@@ -48,7 +49,10 @@ export default function Blog(props: BlogProps) {
   let { mdxSource, frontMatter } = post
 
   const { analytics: segment } = useSegment()
-  segment.page(`/blog/${frontMatter.slug}`)
+
+  useEffect(() => {
+    segment.page(`/blog/${frontMatter.slug}`)
+  }, [frontMatter.slug, segment])
 
   return (
     <>

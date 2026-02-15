@@ -5,8 +5,18 @@ interface Props {
   children: React.ReactNode
 }
 
+type SegmentClient = {
+  page: (..._args: unknown[]) => void
+  track: (..._args: unknown[]) => void
+}
+
+const noopAnalytics: SegmentClient = {
+  page: () => undefined,
+  track: () => undefined,
+}
+
 const SegmentContext = React.createContext<{
-  analytics: AnalyticsBrowser
+  analytics: SegmentClient
   writeKey: string
 }>(undefined)
 
@@ -14,9 +24,13 @@ export const SegmentProvider: React.FC<Props> = ({ children }) => {
   const writeKey = getSegmentWriteKey()
 
   const analytics = React.useMemo(() => {
-    console.log(`AnalyticsBrowser loading...`, JSON.stringify({ writeKey }))
+    if (!writeKey) {
+      return noopAnalytics
+    }
+
     return AnalyticsBrowser.load({ writeKey })
   }, [writeKey])
+
   return (
     <SegmentContext.Provider value={{ analytics, writeKey }}>{children}</SegmentContext.Provider>
   )
@@ -39,5 +53,5 @@ export function getSegmentWriteKey() {
   } else {
     segmentWriteKey = process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY_DEV
   }
-  return segmentWriteKey
+  return segmentWriteKey || ''
 }

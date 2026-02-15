@@ -1,30 +1,21 @@
-import Image from 'next/image'
-import { Twemoji, Link, useSegment } from '~/components'
+import { useEffect } from 'react'
+import { Link, useSegment } from '~/components'
 
 export default function FourZeroFour() {
   const { analytics: segment } = useSegment()
-  segment.page('/404')
+
+  useEffect(() => {
+    segment.page('/404')
+  }, [segment])
 
   return (
-    <div className="flex flex-col items-center justify-center pt-4 md:pt-10 xl:pt-20">
-      <div>
-        <Image src={'/static/images/404.png'} alt="404" width={500} height={500} />
-      </div>
-      <div className="pt-8 md:pt-12 xl:pt-16 space-x-2 md:space-y-5">
-        <div className="max-w-md text-center">
-          <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
-            Hmm.. it seems that you're lost <Twemoji emoji={'face-with-monocle'} />
-          </p>
-          <p className="mb-8">
-            But don't worry, you can find plenty of other things on my homepage.
-          </p>
-          <Link href="/">
-            <button className="inline px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg shadow focus:outline-none focus:shadow-outline-blue hover:bg-blue-700 dark:hover:bg-blue-500">
-              Back to homepage
-            </button>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <section className="vscode-page-block">
+      <h1 className="vscode-page-title">404</h1>
+      <p className="mb-3">This file does not exist in the current workspace.</p>
+      <p className="mb-6">Use the tab bar to navigate, or return to the home page.</p>
+      <Link href="/" className="vscode-action-link">
+        Go to Home
+      </Link>
+    </section>
   )
 }

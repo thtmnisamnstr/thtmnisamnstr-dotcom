@@ -9,7 +9,7 @@ let MDXComponents = {
   Image,
   a: Link,
   pre: Pre,
-  wrapper: ({ components, layout, ...rest }) => {
+  wrapper: ({ layout, ...rest }) => {
     let Layout = require(`../layouts/${layout}`).default
     return <Layout {...rest} />
   },

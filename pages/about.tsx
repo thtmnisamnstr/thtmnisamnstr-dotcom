@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { MDXLayoutRenderer, useSegment } from '~/components'
 import { getFileBySlug } from '~/libs/mdx'
 import type { MdxFileData } from '~/types'
@@ -11,7 +12,10 @@ export default function About({ authorData }: { authorData: MdxFileData }) {
   let { mdxSource, frontMatter } = authorData
 
   const { analytics: segment } = useSegment()
-  segment.page('/about')
+
+  useEffect(() => {
+    segment.page('/about')
+  }, [segment])
 
   return (
     <MDXLayoutRenderer

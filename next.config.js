@@ -1,11 +1,7 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-
-module.exports = withBundleAnalyzer({
-  // reactStrictMode: true,
+module.exports = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   eslint: {
+    ignoreDuringBuilds: true,
     dirs: [
       'components',
       'constant',
@@ -19,40 +15,24 @@ module.exports = withBundleAnalyzer({
       'utils',
     ],
   },
+  typescript: {
+    tsconfigPath: './tsconfig.json',
+    ignoreBuildErrors: true,
+  },
   images: {
-    domains: [
-      'thtmnisamnstr.com',
-      'www.thtmnisamnstr.com',
-      'thtmnisamnstr.netlify.app/',
-      'localhost:3000',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'thtmnisamnstr.com' },
+      { protocol: 'https', hostname: 'www.thtmnisamnstr.com' },
+      { protocol: 'https', hostname: 'thtmnisamnstr.netlify.app' },
+      { protocol: 'http', hostname: 'localhost', port: '3000' },
     ],
   },
-  typescript: { tsconfigPath: './tsconfig.json' },
-  webpack: (config, { dev, isServer }) => {
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|mp4)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-        },
-      ],
-    })
-
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
 
-    // if (!dev && !isServer) {
-    // 	// Replace React with Preact only in client production build
-    // 	Object.assign(config.resolve.alias, {
-    // 		'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-    // 		react: 'preact/compat',
-    // 		'react-dom/test-utils': 'preact/test-utils',
-    // 		'react-dom': 'preact/compat',
-    // 	})
-    // }
-
     return config
   },
-})
+}

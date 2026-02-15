@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { PageSeo } from 'components/SEO'
 import { useSegment } from '~/components'
 import ListLayout from 'layouts/ListLayout'
@@ -45,11 +46,15 @@ export default function PostPage(props: BlogListProps) {
   let { posts, initialDisplayPosts, pagination } = props
 
   const { analytics: segment } = useSegment()
-  if (pagination.currentPage > 1) {
-    segment.page(`/blog/page/${pagination.currentPage}`)
-  } else {
-    segment.page(`/blog`)
-  }
+
+  useEffect(() => {
+    if (pagination.currentPage > 1) {
+      segment.page(`/blog/page/${pagination.currentPage}`)
+      return
+    }
+
+    segment.page('/blog')
+  }, [pagination.currentPage, segment])
 
   return (
     <>

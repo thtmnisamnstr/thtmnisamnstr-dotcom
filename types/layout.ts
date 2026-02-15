@@ -4,7 +4,7 @@ import type { PaginationType } from './server'
 
 export interface AuthorLayoutProps {
   children: React.ReactNode
-  frontMatter: BlogFrontMatter
+  frontMatter: AuthorFrontMatter
 }
 
 export interface ListLayoutProps {

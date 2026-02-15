@@ -1,77 +1,43 @@
-import { BlogTags, Link } from '~/components'
+import { Link, Tag } from '~/components'
 import { FEATURED_POSTS } from '~/constant'
 import type { BlogFrontMatter } from '~/types'
 import { formatDate } from '~/utils'
-import Image from 'next/image'
 
 export function FeaturedPosts({ posts }: { posts: BlogFrontMatter[] }) {
   return (
-    <div className="border-t border-gray-200 dark:border-gray-700">
+    <section className="vscode-page-block border-t border-gray-200 dark:border-gray-700">
+      <h2 className="vscode-section-title">Recent Posts</h2>
       <ul className="divide-y divide-gray-200 dark:divide-gray-700">
         {!posts.length && 'No posts found.'}
         {posts.slice(0, FEATURED_POSTS).map((frontMatter) => {
           let { slug, date, title, summary, tags } = frontMatter
           return (
-            <li key={slug} className="py-12">
-              <article>
-                <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                  <dl>
-                    <dt className="sr-only">Published on</dt>
-                    <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{formatDate(date)}</time>
-                    </dd>
-                    <div>
-                      <Image
-                        src={frontMatter.images[0]}
-                        alt="hero"
-                        width="0"
-                        height="0"
-                        sizes="100vw"
-                        className="w-11/12 h-auto"
-                      />
-                    </div>
-                  </dl>
-                  <div className="space-y-5 xl:col-span-3">
-                    <div className="space-y-6">
-                      <div>
-                        <h2 className="text-3xl font-bold mb-1 tracking-tight">
-                          <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
-                            {title}
-                          </Link>
-                        </h2>
-                        <BlogTags tags={tags} />
-                      </div>
-                      <div className="prose text-gray-500 max-w-none dark:text-gray-400">
-                        {summary}
-                      </div>
-                    </div>
-                    <div className="text-base font-medium leading-6">
-                      <Link
-                        href={`/blog/${slug}`}
-                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                        aria-label={`Read "${title}"`}
-                      >
-                        Read more &rarr;
-                      </Link>
-                    </div>
-                  </div>
+            <li key={slug} className="py-6">
+              <article className="space-y-2">
+                <time className="block text-sm opacity-80" dateTime={date}>
+                  {formatDate(date)}
+                </time>
+                <h3 className="text-xl font-semibold">
+                  <Link href={`/blog/${slug}`}>{title}</Link>
+                </h3>
+                <div className="flex flex-wrap">
+                  {tags.map((tag) => (
+                    <Tag key={tag} text={tag} />
+                  ))}
                 </div>
+                <p>{summary}</p>
               </article>
             </li>
           )
         })}
       </ul>
       {posts.length > FEATURED_POSTS && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="all posts"
-          >
-            All Posts &rarr;
+        <div className="pt-4 text-sm">
+          <Link href="/blog" aria-label="all posts">
+            All Posts →
           </Link>
         </div>
       )}
-    </div>
+    </section>
   )
 }

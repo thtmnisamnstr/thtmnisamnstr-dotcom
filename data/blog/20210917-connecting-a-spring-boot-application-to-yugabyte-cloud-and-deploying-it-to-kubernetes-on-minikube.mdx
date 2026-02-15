@@ -4,7 +4,7 @@ date: '2021-09-17 17:00'
 tags: ['yugabyte', 'tutorial']
 draft: false
 summary: "The post walks you through deploying a Spring Boot app to Kubernetes locally on minikube and connecting it to a YugabyteDB database on Yugabyte Cloud."
-images: ['/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/hero.jpg']
+images: ['/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/hero.jpg']
 authors: ['gavin-johnson']
 ---
 
@@ -44,29 +44,29 @@ Note: Anything in brackets [ ] needs to be replaced with information from your d
 1. Go to [https://cloud.yugabyte.com/signup](https://cloud.yugabyte.com/signup) and sign up for a Yugabyte Cloud account. After you’ve signed up and verified your email address, go to [https://cloud.yugabyte.com/login](https://cloud.yugabyte.com/login) and sign in.
 
 2. Click the Create a Free Cluster button.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/001.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/001.png)
 
 3. Select Yugabyte Cloud Free and click the Next button.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/002.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/002.png)
 
 4. Select a cloud provider for your cluster, name your cluster, select a region, and click the Next button.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/003.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/003.png)
 
 5. Copy the default admin credentials by clicking the Copy Credentials link. Then check the “I have copied the admin credentials” checkbox and click the Create Cluster button.
 
     a. You can also set your own admin credentials by selecting the “Add your own credentials” radio button and entering your own credentials.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/004.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/004.png)
 
 6. Wait for your cluster to be provisioned. Click on “Add IP Allow List” in the top section of the Clusters page.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/005.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/005.png)
 
 7. Click the Create New List and Add to Cluster button.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/006.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/006.png)
 
 8. In the Name text box, enter “all-ips”. In the IP Address(es) or Range text box, enter “0.0.0.0/0”. Click the Save button. This will allow traffic from all IP addresses to your cluster.
 
     a. Allowing all IPs access to your cluster is for development purposes only. When you deploy an application to Production, you will want to specify only the specific IP addresses or ranges that need access to your cluster.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/007.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/007.png)
 
 
 Your cluster is now created in Yugabyte Cloud and is accessible to all IP addresses. Leave this page open, as you’ll be accessing the Cloud Shell later to create an application database and user.
@@ -93,15 +93,15 @@ Note: Instructions for how to connect this application to YugabyteDB are in `spr
 3. Copy the contents of `spring-petclinic/src/main/resources/db/yugabytedb/user.sql`.
 
 4. In Yugabyte Cloud, click on “Connect”. Click on Connect to your Application.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/008.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/008.png)
 
 5. Save your host address and port (highlighted in the screenshot below) for later. Click the Back link in the Connect to Cluster navigation breadcrumb.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/009.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/009.png)
 
 6. Click the Launch Cloud Shell button.
 
 7. Leave the default Database Name, Database User Name, and API Type. Click the Confirm button. This will launch the Cloud Shell.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/010.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/010.png)
 
 8. Enter the admin password you copied previously. After you enter the password, you will have a standard YSQL shell (exactly like a PSQL shell in PostgreSQL) that you can interact with from your browser.
     ```
@@ -114,7 +114,7 @@ Note: Instructions for how to connect this application to YugabyteDB are in `spr
     ```
 
 9. Go to [http://localhost:8080](http://localhost:8080/). The PetClinic sample application should be available.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/011.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/011.png)
 
 
 The PetClinic sample application is now connected to your Yugabyte Cloud cluster and running locally.
@@ -171,7 +171,7 @@ The PetClinic sample application is now connected to your Yugabyte Cloud cluster
 
 
 That will open [http://127.0.0.1:51726/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy](http://127.0.0.1:51726/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy). Keep this tab open. You’ll use it later to check on your application deployment.
-![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/012.png)
+![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/012.png)
 
 
 ### **Deploy the Spring Boot PetClinic sample application image to minikube**
@@ -253,7 +253,7 @@ That will open [http://127.0.0.1:51726/api/v1/namespaces/kubernetes-dashboard/se
 7. Wait for your application to come online (3 minutes or more for me).
 
 8. If you go to the local IP and Port you configured in your yaml ([http://127.0.0.1:8080](http://127.0.0.1:8080/)), the PetClinic sample application should be available.
-    ![alt_text](/static/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/013.png)
+    ![alt_text](/images/blog/20210917-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-to-kubernetes-on-minikube/013.png)
 
 
 The PetClinic sample application is now connected to your Yugabyte Cloud cluster and running on Kubernetes locally on minikube.

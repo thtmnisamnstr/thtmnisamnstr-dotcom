@@ -1,14 +1,5 @@
 import type { Data, Node } from 'unist'
 
-export interface SpotifyNowPlayingData {
-  isPlaying: boolean
-  songUrl?: string
-  title?: string
-  artist?: string
-  album?: string
-  albumImageUrl?: string
-}
-
 export interface TagsCount {
   [tag: string]: number
 }

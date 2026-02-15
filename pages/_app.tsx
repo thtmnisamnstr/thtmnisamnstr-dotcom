@@ -3,14 +3,31 @@ import 'css/twemoji.css'
 
 import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
-import { LayoutWrapper, SegmentProvider } from '~/components'
+import { LayoutWrapper, SegmentProvider, ThemeModeSync } from '~/components'
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="vscode-dark-plus"
+      themes={[
+        'vscode-dark-plus',
+        'vscode-light-plus',
+        'dracula',
+        'monokai',
+        'solarized-dark',
+        'solarized-light',
+        'one-dark-pro',
+        'night-owl',
+        'github-dark',
+        'github-light',
+      ]}
+      enableSystem={false}
+    >
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
+      <ThemeModeSync />
       <SegmentProvider>
         <LayoutWrapper>
           <Component {...pageProps} />

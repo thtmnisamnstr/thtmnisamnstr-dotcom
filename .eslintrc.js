@@ -25,7 +25,7 @@ module.exports = {
       },
     ],
     'react/prop-types': 0,
-    'no-unused-vars': 0,
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'react/no-unescaped-entities': 0,
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',

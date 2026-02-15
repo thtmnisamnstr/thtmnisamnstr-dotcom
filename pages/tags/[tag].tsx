@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { PageSeo } from 'components/SEO'
 import { useSegment } from '~/components'
 import fs from 'fs'
@@ -8,6 +9,14 @@ import { getAllTags, generateRss } from '~/libs'
 import { getAllFilesFrontMatter } from '~/libs/mdx'
 import type { BlogFrontMatter } from '~/types'
 import { kebabCase } from '~/utils'
+
+function formatTagLabel(tag: string) {
+  return tag
+    .split('-')
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(' ')
+}
 
 export function getStaticPaths() {
   let tags = getAllTags('blog')
@@ -39,16 +48,21 @@ export async function getStaticProps({ params }: { params: { tag: string } }) {
 }
 
 export default function Tag({ posts, tag }: { posts: BlogFrontMatter[]; tag: string }) {
-  // Capitalize first letter and convert space to dash
-  let title = tag[0] + tag.split(' ').join('-').slice(1)
+  let tagLabel = formatTagLabel(tag)
 
   const { analytics: segment } = useSegment()
-  segment.page(`/tags/${title}`)
+
+  useEffect(() => {
+    segment.page(`/tags/${tag}`)
+  }, [segment, tag])
 
   return (
     <>
-      <PageSeo title={`${tag} - ${siteMetadata.title}`} description={`${tag} blog post tags`} />
-      <ListLayout posts={posts} title={`Tag: #${title}`} />
+      <PageSeo
+        title={`${tagLabel} - ${siteMetadata.title}`}
+        description={`${tagLabel} blog post tags`}
+      />
+      <ListLayout posts={posts} title={`Tag: #${tagLabel}`} />
     </>
   )
 }

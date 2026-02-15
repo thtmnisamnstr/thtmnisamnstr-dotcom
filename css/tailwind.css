@@ -135,9 +135,305 @@ html.lightbox-loading * {
 }
 
 * {
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    color 0.15s ease-in-out;
 }
 
 .flag-vn i {
   background-position: 50% -200%;
+}
+
+:root {
+  --vscode-bg: #1e1e1e;
+  --vscode-fg: #d4d4d4;
+  --vscode-header: #3c3c3c;
+  --vscode-tabbar: #252526;
+  --vscode-tab-inactive: #2d2d2d;
+  --vscode-tab-active: #1e1e1e;
+  --vscode-panel: #1e1e1e;
+  --vscode-border: #3f3f46;
+  --vscode-link: #4fc1ff;
+  --vscode-selection: #264f78;
+}
+
+.vscode-light-plus,
+.github-light,
+.solarized-light {
+  --vscode-bg: #f3f3f3;
+  --vscode-fg: #24292f;
+  --vscode-header: #dddddd;
+  --vscode-tabbar: #ececec;
+  --vscode-tab-inactive: #e2e2e2;
+  --vscode-tab-active: #ffffff;
+  --vscode-panel: #ffffff;
+  --vscode-border: #cecece;
+  --vscode-link: #0969da;
+  --vscode-selection: #add6ff;
+}
+
+.dracula {
+  --vscode-bg: #282a36;
+  --vscode-fg: #f8f8f2;
+  --vscode-header: #44475a;
+  --vscode-tabbar: #21222c;
+  --vscode-tab-inactive: #343746;
+  --vscode-tab-active: #282a36;
+  --vscode-panel: #282a36;
+  --vscode-border: #6272a4;
+  --vscode-link: #8be9fd;
+  --vscode-selection: #44475a;
+}
+
+.monokai {
+  --vscode-bg: #272822;
+  --vscode-fg: #f8f8f2;
+  --vscode-header: #3e3d32;
+  --vscode-tabbar: #1f201b;
+  --vscode-tab-inactive: #31322c;
+  --vscode-tab-active: #272822;
+  --vscode-panel: #272822;
+  --vscode-border: #5c5c4f;
+  --vscode-link: #66d9ef;
+  --vscode-selection: #49483e;
+}
+
+.solarized-dark {
+  --vscode-bg: #002b36;
+  --vscode-fg: #93a1a1;
+  --vscode-header: #073642;
+  --vscode-tabbar: #00212b;
+  --vscode-tab-inactive: #073642;
+  --vscode-tab-active: #002b36;
+  --vscode-panel: #002b36;
+  --vscode-border: #586e75;
+  --vscode-link: #2aa198;
+  --vscode-selection: #073642;
+}
+
+.solarized-light {
+  --vscode-bg: #fdf6e3;
+  --vscode-fg: #586e75;
+  --vscode-header: #eee8d5;
+  --vscode-tabbar: #f5efdc;
+  --vscode-tab-inactive: #eee8d5;
+  --vscode-tab-active: #fdf6e3;
+  --vscode-panel: #fdf6e3;
+  --vscode-border: #93a1a1;
+  --vscode-link: #268bd2;
+  --vscode-selection: #eee8d5;
+}
+
+.one-dark-pro {
+  --vscode-bg: #282c34;
+  --vscode-fg: #abb2bf;
+  --vscode-header: #21252b;
+  --vscode-tabbar: #1f2329;
+  --vscode-tab-inactive: #2c313a;
+  --vscode-tab-active: #282c34;
+  --vscode-panel: #282c34;
+  --vscode-border: #4b5263;
+  --vscode-link: #61afef;
+  --vscode-selection: #3e4451;
+}
+
+.night-owl {
+  --vscode-bg: #011627;
+  --vscode-fg: #d6deeb;
+  --vscode-header: #0b253a;
+  --vscode-tabbar: #0d2130;
+  --vscode-tab-inactive: #10273a;
+  --vscode-tab-active: #011627;
+  --vscode-panel: #011627;
+  --vscode-border: #1d3b53;
+  --vscode-link: #82aaff;
+  --vscode-selection: #1d3b53;
+}
+
+.github-dark {
+  --vscode-bg: #0d1117;
+  --vscode-fg: #c9d1d9;
+  --vscode-header: #161b22;
+  --vscode-tabbar: #0d1117;
+  --vscode-tab-inactive: #161b22;
+  --vscode-tab-active: #0d1117;
+  --vscode-panel: #0d1117;
+  --vscode-border: #30363d;
+  --vscode-link: #58a6ff;
+  --vscode-selection: #1f6feb44;
+}
+
+body {
+  background: var(--vscode-bg);
+  color: var(--vscode-fg);
+  font-family: 'Segoe UI', 'Segoe WPC', Tahoma, Arial, sans-serif;
+}
+
+.vscode-workbench {
+  min-height: 100vh;
+  background: var(--vscode-bg);
+}
+
+.vscode-header {
+  background: var(--vscode-header);
+  border-bottom: 1px solid var(--vscode-border);
+}
+
+.vscode-header-inner {
+  margin: 0 auto;
+}
+
+.vscode-logo-row {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0;
+}
+
+.vscode-tabbar {
+  background: var(--vscode-header);
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.vscode-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.62rem 0.9rem;
+  font-size: 0.8rem;
+  border-top: 1px solid transparent;
+  border-right: 1px solid var(--vscode-border);
+  background: var(--vscode-tab-inactive);
+  color: var(--vscode-fg);
+}
+
+.vscode-tab:hover,
+.vscode-tab:focus-visible {
+  background: var(--vscode-selection);
+}
+
+.vscode-tab.is-active {
+  background: var(--vscode-tab-active);
+  border-top-color: var(--vscode-link);
+}
+
+.vscode-theme-select,
+.vscode-mobile-trigger,
+.vscode-mobile-close {
+  background: var(--vscode-tab-inactive);
+  color: var(--vscode-fg);
+  border: 1px solid var(--vscode-border);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.55rem;
+}
+
+.vscode-theme-select-wrap,
+.vscode-theme-select-placeholder {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.45rem 0;
+}
+
+.vscode-editor-shell {
+  border-left: 1px solid var(--vscode-border);
+  border-right: 1px solid var(--vscode-border);
+  background: var(--vscode-panel);
+}
+
+.vscode-editor-content {
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  line-height: 1.7;
+  padding-top: 1rem;
+}
+
+.vscode-editor-content a,
+.vscode-author-link {
+  color: var(--vscode-link);
+}
+
+.vscode-tag-link {
+  color: var(--vscode-link);
+}
+
+.vscode-tag-link:hover {
+  color: var(--vscode-fg);
+}
+
+.vscode-action-link {
+  display: inline-block;
+  border: 1px solid var(--vscode-border);
+  background: var(--vscode-tab-inactive);
+  color: var(--vscode-fg);
+  padding: 0.4rem 0.65rem;
+}
+
+.vscode-action-link:hover {
+  background: var(--vscode-selection);
+}
+
+.vscode-footer {
+  border-top: 1px solid var(--vscode-border);
+  margin-top: 1.5rem;
+}
+
+.vscode-footer-meta {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  padding: 1rem 0;
+}
+
+.vscode-page-block {
+  padding: 0.75rem 0 1rem;
+}
+
+.vscode-page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.vscode-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.vscode-input {
+  width: 100%;
+  background: var(--vscode-panel);
+  color: var(--vscode-fg);
+  border: 1px solid var(--vscode-border);
+  padding: 0.45rem 0.6rem;
+}
+
+.vscode-mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--vscode-tabbar);
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.vscode-mobile-nav.open {
+  transform: translateX(0);
+}
+
+.vscode-mobile-close {
+  margin: 1rem;
+}
+
+.vscode-mobile-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+}
+
+.vscode-mobile-link {
+  border: 1px solid var(--vscode-border);
+  margin-bottom: 0.5rem;
+  padding: 0.7rem;
 }

@@ -30,7 +30,10 @@ export interface BlogFrontMatter extends MdxFrontMatter {
 
 export interface AuthorFrontMatter extends MdxFrontMatter {
   avatar: string
+  email?: string
   github?: string
+  twitter?: string
+  linkedin?: string
 }
 
 export interface MdxFileData {

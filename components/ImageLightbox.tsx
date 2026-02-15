@@ -1,3 +1,4 @@
+import NextImage from 'next/image'
 import { useTheme } from 'next-themes'
 import React, { useState, useEffect, useCallback, KeyboardEvent as ReactKeyboardEvent } from 'react'
 import type { ImageLightBoxProps } from '~/types'
@@ -58,13 +59,16 @@ export function ImageLightbox({ src, closeLightbox }: ImageLightBoxProps) {
             <Twemoji emoji="cross-mark" />
           </button>
         </div>
-        {/* eslint-disable @next/next/no-img-element */}
-        <img
-          src={src.toString()}
-          onLoad={() => setImgLoaded(true)}
-          className="cursor-zoom-out max-w-[90vw] max-h-[80vh]"
-          alt="Lightbox"
-        />
+        <div className="relative w-[90vw] h-[80vh]">
+          <NextImage
+            src={src.toString()}
+            alt="Lightbox"
+            fill
+            sizes="90vw"
+            className="cursor-zoom-out object-contain"
+            onLoadingComplete={() => setImgLoaded(true)}
+          />
+        </div>
       </div>
     </div>
   )
