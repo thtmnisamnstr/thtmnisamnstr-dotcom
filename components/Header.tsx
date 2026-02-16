@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { headerNavLinks } from 'data'
 import { Link } from './Link'
-import { DesktopLogo } from './Logo'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 function isLinkActive(pathname: string, href: string) {
@@ -20,7 +19,7 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
       <div className="vscode-header-inner max-w-3xl mx-auto xl:max-w-5xl">
         <div className="vscode-logo-row">
           <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson" className="vscode-logo-link">
-            <DesktopLogo />
+            <span className="vscode-site-logo" aria-hidden="true" />
           </Link>
         </div>
 
