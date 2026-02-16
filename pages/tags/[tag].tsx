@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { PageSeo } from 'components/SEO'
 import { useSegment } from '~/components'
-import fs from 'fs'
-import path from 'path'
 import { siteMetadata } from '~/data'
 import { ListLayout } from '~/layouts'
-import { getAllTags, generateRss } from '~/libs'
+import { getAllTags } from '~/libs'
 import { getAllFilesFrontMatter } from '~/libs/mdx'
 import type { BlogFrontMatter } from '~/types'
 import { kebabCase } from '~/utils'
@@ -36,13 +34,6 @@ export async function getStaticProps({ params }: { params: { tag: string } }) {
   let filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   )
-
-  // rss
-  let root = process.cwd()
-  let rss = generateRss(filteredPosts, `tags/${params.tag}/feed.xml`)
-  let rssPath = path.join(root, 'public', 'tags', params.tag)
-  fs.mkdirSync(rssPath, { recursive: true })
-  fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)
 
   return { props: { posts: filteredPosts, tag: params.tag } }
 }

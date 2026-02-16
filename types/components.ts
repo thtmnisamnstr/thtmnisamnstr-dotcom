@@ -26,11 +26,6 @@ export type TwemojiProps = {
   className?: string
 }
 
-export interface UnsplashPhotoProps {
-  photoURL: string
-  author: string
-}
-
 export interface BlogHeaderProps {
   title: string
   date: string

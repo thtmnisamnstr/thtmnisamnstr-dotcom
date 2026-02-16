@@ -1,13 +1,8 @@
-import {
-  AuthorDetails,
-  BackToPosts,
-  BlogHeader,
-  BlogSeo,
-  BlogTags,
-  ScrollTopButton,
-  SectionContainer,
-  SocialButtons,
-} from '~/components'
+import { AuthorDetails, BackToPosts, BlogHeader, BlogTags } from '~/components/blog'
+import { BlogSeo } from '~/components/SEO'
+import { ScrollTopButton } from '~/components/ScrollTopButton'
+import { SectionContainer } from '~/components/SectionContainer'
+import { SocialButtons } from '~/components/SocialButtons'
 import { siteMetadata } from '~/data'
 import type { PostLayoutProps } from '~/types'
 

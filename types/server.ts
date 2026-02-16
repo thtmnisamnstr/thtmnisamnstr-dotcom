@@ -1,4 +1,4 @@
-import type { Data, Node } from 'unist'
+import type { Node } from 'unist'
 
 export interface TagsCount {
   [tag: string]: number
@@ -9,12 +9,12 @@ export interface PaginationType {
   totalPages: number
 }
 
-export interface UnistTreeType extends Node<Data> {
-  children: Node<Data>[]
+export interface UnistTreeType extends Node {
+  children: UnistNodeType[]
 }
-export interface UnistNodeType extends Node<Data> {
+export interface UnistNodeType extends Node {
   lang?: string
-  children: Node<Data>[]
+  children: UnistNodeType[]
   properties?: { [key: string]: string[] }
   depth?: number
 }

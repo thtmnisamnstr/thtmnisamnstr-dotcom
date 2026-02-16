@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import { globby } from 'globby'
+import matter from 'gray-matter'
 import prettier from 'prettier'
 const SITE_URL = 'https://thtmnisamnstr.com'
 const POSTS_PER_PAGE = 5
@@ -15,9 +16,15 @@ function normalizePostRoute(postPath) {
   return postPath.replace(/^data\/blog/, '/blog').replace(/\.(md|mdx)$/, '')
 }
 
+function isPublishedPost(postPath) {
+  let source = fs.readFileSync(postPath, 'utf8')
+  let { data } = matter(source)
+  return data.draft !== true
+}
+
 async function generateSitemap() {
   console.log('Generating sitemap...')
-  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
+  const prettierConfig = (await prettier.resolveConfig('./prettier.config.js')) || {}
 
   const staticPages = await globby([
     'pages/**/*.tsx',
@@ -29,7 +36,8 @@ async function generateSitemap() {
     '!pages/tags/[tag].tsx',
   ])
 
-  const postPages = await globby(['data/blog/**/*.mdx', 'data/blog/**/*.md'])
+  const allPostPages = await globby(['data/blog/**/*.mdx', 'data/blog/**/*.md'])
+  const postPages = allPostPages.filter(isPublishedPost)
   const tagFeeds = await globby(['public/tags/**/feed.xml'])
 
   const postCount = postPages.length
@@ -60,7 +68,7 @@ async function generateSitemap() {
     </urlset>
   `
 
-  const formatted = prettier.format(sitemap, {
+  const formatted = await prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html',
   })

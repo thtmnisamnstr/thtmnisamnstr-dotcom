@@ -10,6 +10,9 @@
 
 # testing
 /coverage
+/playwright-report
+/test-results
+/tests/artifacts
 
 # next.js
 /.next
@@ -20,10 +23,12 @@
 
 # production
 /build
-*.xml
 # rss feed
 /public/feed.xml
 /public/tags
+
+# lighthouse artifacts
+/.lighthouseci
 
 # misc
 .DS_Store

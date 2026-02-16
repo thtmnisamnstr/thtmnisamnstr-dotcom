@@ -1,5 +1,4 @@
 import React from 'react'
-import { AnalyticsBrowser } from '@segment/analytics-next'
 
 interface Props {
   children: React.ReactNode
@@ -21,14 +20,28 @@ const SegmentContext = React.createContext<{
 }>(undefined)
 
 export const SegmentProvider: React.FC<Props> = ({ children }) => {
-  const writeKey = getSegmentWriteKey()
+  let writeKey = getSegmentWriteKey()
+  let [analytics, setAnalytics] = React.useState<SegmentClient>(noopAnalytics)
 
-  const analytics = React.useMemo(() => {
-    if (!writeKey) {
-      return noopAnalytics
+  React.useEffect(() => {
+    let active = true
+
+    async function loadAnalytics() {
+      if (!writeKey) {
+        setAnalytics(noopAnalytics)
+        return
+      }
+
+      let { AnalyticsBrowser } = await import('@segment/analytics-next')
+      if (active) {
+        setAnalytics(AnalyticsBrowser.load({ writeKey }))
+      }
     }
 
-    return AnalyticsBrowser.load({ writeKey })
+    loadAnalytics()
+    return () => {
+      active = false
+    }
   }, [writeKey])
 
   return (
@@ -45,7 +58,7 @@ export const useSegment = () => {
   return result
 }
 
-export function getSegmentWriteKey() {
+function getSegmentWriteKey() {
   let isProduction = process.env.NODE_ENV === 'production'
   var segmentWriteKey
   if (isProduction) {

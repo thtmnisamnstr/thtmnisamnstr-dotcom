@@ -9,6 +9,12 @@ class MyDocument extends Document {
           <link
             rel="icon"
             type="image/png"
+            sizes="96x96"
+            href="/images/favicons/android-chrome-96x96.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
             sizes="32x32"
             href="/images/favicons/favicon-32x32.png"
           />
@@ -19,7 +25,8 @@ class MyDocument extends Document {
             href="/images/favicons/favicon-16x16.png"
           />
           <link rel="manifest" href="/images/favicons/site.webmanifest" />
-          <link rel="mask-icon" href="/images/favicons/icon-72x72.png" color="#fff" />
+          <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#fff" />
+          <meta name="msapplication-TileImage" content="/images/favicons/mstile-150x150.png" />
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="theme-color" content="#000000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />

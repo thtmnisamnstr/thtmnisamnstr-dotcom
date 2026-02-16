@@ -1,9 +1,9 @@
-import { Link } from '~/components'
+import { Link } from '~/components/Link'
 import type { AuthorFrontMatter } from '~/types'
 
 export function AuthorDetails({ authorDetails }: { authorDetails: AuthorFrontMatter[] }) {
   return (
-    <ul className="flex flex-wrap justify-left">
+    <ul className="flex flex-wrap justify-start">
       {authorDetails.map((author) => (
         <Author key={author.name} author={author} />
       ))}
@@ -11,7 +11,7 @@ export function AuthorDetails({ authorDetails }: { authorDetails: AuthorFrontMat
   )
 }
 
-export function Author({ author }: { author: AuthorFrontMatter }) {
+function Author({ author }: { author: AuthorFrontMatter }) {
   return (
     <li className="flex items-center mr-8 mb-4">
       <dl className="text-sm font-medium leading-5 whitespace-nowrap">

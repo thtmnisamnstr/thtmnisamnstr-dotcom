@@ -5,12 +5,14 @@ import type { AuthorSEO, BlogSeoProps, PageSeoProps } from '~/types'
 
 export function PageSeo({ title, description }: PageSeoProps) {
   let router = useRouter()
+  let canonicalUrl = `${siteMetadata.siteUrl}${router.asPath}`
+
   return (
     <Head>
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
-      <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={siteMetadata.title} />
       <meta property="og:description" content={description} />
@@ -21,6 +23,7 @@ export function PageSeo({ title, description }: PageSeoProps) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`${siteMetadata.siteUrl}${siteMetadata.socialBanner}`} />
+      <link rel="canonical" href={canonicalUrl} />
     </Head>
   )
 }
@@ -35,8 +38,8 @@ export function BlogSeo(props: BlogSeoProps) {
     images.length === 0
       ? [siteMetadata.socialBanner]
       : typeof images === 'string'
-      ? [images]
-      : images
+        ? [images]
+        : images
 
   let featuredImages = imagesArr.map((img) => {
     return {

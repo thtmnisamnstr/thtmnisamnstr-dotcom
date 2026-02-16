@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
-import fs from 'fs'
 import { MDXLayoutRenderer, PageTitle, useSegment } from '~/components'
 import { POSTS_PER_PAGE } from '~/constant'
-import { formatSlug, generateRss, getFiles } from '~/libs'
+import { formatSlug, getFiles } from '~/libs'
 import { getAllFilesFrontMatter, getFileBySlug } from '~/libs/mdx'
 import type { AuthorFrontMatter, BlogProps, MdxPageLayout } from '~/types'
 
@@ -32,14 +31,10 @@ export async function getStaticProps({ params }: { params: { slug: string[] } })
   let authorDetails = await Promise.all(
     authors.map(async (author) => {
       let authorData = await getFileBySlug('authors', author)
-      // eslint-disable-next-line
+
       return authorData.frontMatter as unknown as AuthorFrontMatter
     })
   )
-
-  // rss
-  let rss = generateRss(allPosts)
-  fs.writeFileSync('./public/feed.xml', rss)
 
   return { props: { post, authorDetails, prev, next, page } }
 }

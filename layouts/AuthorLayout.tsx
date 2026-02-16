@@ -1,8 +1,10 @@
 import Image from 'next/image'
-import { Link, PageSeo } from '~/components'
+import { Link } from '~/components/Link'
+import { PageSeo } from '~/components/SEO'
 import { siteMetadata } from '~/data'
 import type { AuthorLayoutProps } from '~/types'
-import fallbackAvatar from '~/src/assets/images/authors/gavin-johnson.png'
+
+const FALLBACK_AVATAR = '/images/authors/gavin-johnson.png'
 
 export function AuthorLayout({ children, frontMatter }: AuthorLayoutProps) {
   let title = 'About me'
@@ -27,7 +29,7 @@ export function AuthorLayout({ children, frontMatter }: AuthorLayoutProps) {
         <div className="items-start space-y-3 xl:grid xl:grid-cols-1 xl:space-y-0 pt-8">
           <div className="flex px-3 xl:px-6 py-2">
             <Image
-              src={frontMatter.avatar || fallbackAvatar}
+              src={frontMatter.avatar || FALLBACK_AVATAR}
               alt="avatar"
               width={220}
               height={220}

@@ -1,7 +1,12 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "thtmnisamnstr - Gavin Johnson",
+  "short_name": "thtmnisamnstr",
   "icons": [
+    {
+      "src": "/images/favicons/android-chrome-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
     {
       "src": "/images/favicons/icon-72x72.png",
       "sizes": "72x72",

@@ -23,10 +23,17 @@ export default function Home({ posts }: { posts: BlogFrontMatter[] }) {
       <section className="vscode-page-block">
         <h1 className="vscode-page-title">README.md</h1>
         <p>Hi. I&apos;m Gavin. This is my site.</p>
-        <p>
-          You can find recent writing on the home page below, all writing in Blog, background in
-          About, and work history in Resume.
-        </p>
+        <p>You can find me floating around the internet as thtmnisamnstr</p>
+        <ul>
+          <li>
+            Product marketer at Pinecone. Director of Product & Marketing at Earthly. Ex-PMM at
+            Earthly, Segment, Yugabyte, RudderStack, New Relic, and AT&T
+          </li>
+          <li>Ex-tech consultant at Deloitte</li>
+          <li>Ex-sys admin</li>
+          <li>(Sometimes)Ex-developer</li>
+          <li>Brazilian Jiu Jitsu black belt</li>
+        </ul>
       </section>
       <FeaturedPosts posts={posts} />
     </>

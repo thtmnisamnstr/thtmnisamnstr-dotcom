@@ -1,5 +1,5 @@
 import { PageSeo } from 'components/SEO'
-import { ScrollTopButton } from '~/components'
+import { ScrollTopButton } from '~/components/ScrollTopButton'
 import { siteMetadata } from '~/data'
 import type { ResumeLayoutProps } from '~/types'
 

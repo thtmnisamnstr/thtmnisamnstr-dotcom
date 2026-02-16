@@ -5,7 +5,7 @@ import type { RemarkTocHeadingOptions, UnistNodeType, UnistTreeType } from '~/ty
 
 export function remarkTocHeading(options: RemarkTocHeadingOptions) {
   return (tree: UnistTreeType) =>
-    visit(tree, 'heading', (node: UnistNodeType) => {
+    visit(tree as any, 'heading', (node: UnistNodeType) => {
       let textContent = toString(node)
       options.exportRef.push({
         value: textContent,

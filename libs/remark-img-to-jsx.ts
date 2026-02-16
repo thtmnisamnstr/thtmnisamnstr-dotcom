@@ -1,22 +1,22 @@
 import fs from 'fs'
-import sizeOf from 'image-size'
+import path from 'path'
+import { imageSize } from 'image-size'
 import { visit } from 'unist-util-visit'
 import type { UnistImageNode, UnistNodeType, UnistTreeType } from '~/types'
 
 export function remarkImgToJsx() {
   return (tree: UnistTreeType) => {
-    return visit(tree, 'paragraph', (node: UnistNodeType) => {
-      // Only visit `p` tags that contain an `img` element
-      let hasImage = node.children.some((n) => n.type === 'image')
-      if (!hasImage) return
-
-      let imageNode = node.children.find((n) => n.type === 'image') as UnistImageNode
+    return visit(tree as any, 'paragraph', (node: UnistNodeType) => {
+      // Only convert paragraphs that contain exactly one image node.
+      // This avoids dropping adjacent text/captions from mixed-content paragraphs.
+      if (node.children.length !== 1 || node.children[0].type !== 'image') return
+      let imageNode = node.children[0] as UnistImageNode
 
       // Convert original `image` to `next/image` for local files only
-      let imageLocalPath = `${process.cwd()}/public${imageNode.url}`
+      let imageLocalPath = path.join(process.cwd(), 'public', imageNode.url.replace(/^\/+/, ''))
       if (fs.existsSync(imageLocalPath)) {
-        let dimensions = sizeOf(imageLocalPath)
-        imageNode.type = 'mdxJsxFlowElement'
+        let dimensions = imageSize(fs.readFileSync(imageLocalPath))
+        ;(imageNode as any).type = 'mdxJsxFlowElement'
         imageNode.name = 'Image'
         imageNode.attributes = [
           { type: 'mdxJsxAttribute', name: 'alt', value: imageNode.alt },
@@ -26,8 +26,8 @@ export function remarkImgToJsx() {
         ]
 
         // Change node type from p to div to avoid nesting error
-        node.type = 'div'
-        node.children = [imageNode]
+        ;(node as any).type = 'div'
+        node.children = [imageNode as any]
       }
     })
   }

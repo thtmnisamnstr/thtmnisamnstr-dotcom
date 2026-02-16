@@ -1,6 +1,7 @@
 import NextImage from 'next/image'
 import { useTheme } from 'next-themes'
-import React, { useState, useEffect, useCallback, KeyboardEvent as ReactKeyboardEvent } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
 import type { ImageLightBoxProps } from '~/types'
 import { Twemoji } from './Twemoji'
 
@@ -43,19 +44,19 @@ export function ImageLightbox({ src, closeLightbox }: ImageLightBoxProps) {
 
   return (
     <div
-      role="button"
-      tabIndex={0}
       className="lightbox-overlay fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-300 ease-out"
       style={style}
       onClick={handleClose}
-      onKeyDown={handleKeydown}
     >
-      <div className="w-full h-full relative flex justify-center items-center">
+      <div
+        className="w-full h-full relative flex justify-center items-center"
+        onClick={(event) => event.stopPropagation()}
+      >
         <div className="absolute flex justify-between top-0 inset-x-0">
-          <button className="p-4 text-xl text-white" onClick={handleClose}>
+          <button type="button" className="p-4 text-xl text-white" onClick={handleClose}>
             Esc
           </button>
-          <button className="p-4" onClick={handleClose}>
+          <button type="button" className="p-4" onClick={handleClose}>
             <Twemoji emoji="cross-mark" />
           </button>
         </div>

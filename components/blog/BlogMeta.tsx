@@ -1,4 +1,4 @@
-import { Twemoji } from '~/components'
+import { Twemoji } from '~/components/Twemoji'
 import type { BlogMetaProps } from '~/types'
 import { formatDate } from '~/utils'
 
