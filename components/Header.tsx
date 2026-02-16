@@ -1,7 +1,7 @@
-import NextImage from 'next/image'
 import { useRouter } from 'next/router'
-import { headerNavLinks, siteMetadata } from 'data'
+import { headerNavLinks } from 'data'
 import { Link } from './Link'
+import { DesktopLogo } from './Logo'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 function isLinkActive(pathname: string, href: string) {
@@ -19,21 +19,8 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
     <header className="vscode-header sticky top-0 z-40">
       <div className="vscode-header-inner max-w-3xl mx-auto xl:max-w-5xl">
         <div className="vscode-logo-row">
-          <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson">
-            <NextImage
-              className="md:hidden"
-              src={siteMetadata.siteMobileLogo}
-              alt="Site logo"
-              width={32}
-              height={32}
-            />
-            <NextImage
-              className="hidden md:block"
-              src={siteMetadata.siteLogo}
-              alt="Site logo"
-              width={367}
-              height={32}
-            />
+          <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson" className="vscode-logo-link">
+            <DesktopLogo />
           </Link>
         </div>
 

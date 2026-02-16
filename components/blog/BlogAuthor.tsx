@@ -16,7 +16,7 @@ function Author({ author }: { author: AuthorFrontMatter }) {
     <li className="flex items-center mr-8 mb-4">
       <dl className="text-sm font-medium leading-5 whitespace-nowrap">
         <dt className="sr-only">Name</dt>
-        <dd className="text-gray-900 dark:text-gray-100 mb-0.5">
+        <dd className="vscode-strong-text mb-0.5">
           {author.linkedin ? (
             <Link href={author.linkedin} className="vscode-author-link">
               {author.name}

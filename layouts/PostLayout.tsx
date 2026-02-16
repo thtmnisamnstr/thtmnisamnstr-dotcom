@@ -18,11 +18,11 @@ export function PostLayout(props: PostLayoutProps) {
         <div>
           <BlogHeader title={title} date={date} readingTime={readingTime} />
           <div
-            className="pb-8 divide-y divide-gray-200 dark:divide-gray-700 xl:divide-y-0 xl:grid xl:grid-cols-4 xl:gap-x-6"
+            className="pb-8 divide-y vscode-divide-y xl:divide-y-0 xl:grid xl:grid-cols-4 xl:gap-x-6"
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div>
-              <div className="hidden xl:block py-4 xl:py-8 border-b border-gray-200 dark:border-gray-700">
+              <div className="hidden xl:block py-4 xl:py-8 border-b vscode-divider">
                 <BackToPosts page={page} />
               </div>
               <dl className="pt-6 pb-10 xl:pt-11">
@@ -32,8 +32,10 @@ export function PostLayout(props: PostLayoutProps) {
                 </dd>
               </dl>
             </div>
-            <div className="!border-t-0 divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
-              <div className="pt-10 pb-8 prose prose-lg dark:prose-dark max-w-none">{children}</div>
+            <div className="!border-t-0 divide-y vscode-divide-y xl:pb-0 xl:col-span-3 xl:row-span-2">
+              <div className="vscode-body-copy pt-10 pb-8 prose prose-lg dark:prose-dark max-w-none">
+                {children}
+              </div>
             </div>
             <footer>
               <div className="text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2">

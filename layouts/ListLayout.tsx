@@ -15,7 +15,7 @@ export function ListLayout(props: ListLayoutProps) {
 
   return (
     <>
-      <div className="vscode-page-block divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="vscode-page-block divide-y vscode-divide-y">
         <div className="pt-2 pb-8 space-y-4">
           <h1 className="vscode-page-title">{title}</h1>
           <PostsSearch onChange={setSearchValue} />

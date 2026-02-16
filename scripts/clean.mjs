@@ -1,5 +1,4 @@
 import fs from 'node:fs'
-import path from 'node:path'
 import { globby } from 'globby'
 
 const DRY_RUN = process.argv.includes('--dry-run') || process.argv.includes('--dry')

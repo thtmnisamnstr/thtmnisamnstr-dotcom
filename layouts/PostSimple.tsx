@@ -52,7 +52,7 @@ export function PostSimple(props: PostSimpleLayoutProps) {
           </header>
           <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>
             <div className="xl:pb-0 xl:col-span-3 xl:row-span-2">
-              <div className="pb-8 prose prose-lg md:prose-xl dark:prose-dark max-w-none">
+              <div className="vscode-body-copy pb-8 prose prose-lg md:prose-xl dark:prose-dark max-w-none">
                 {children}
               </div>
             </div>

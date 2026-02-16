@@ -1,9 +1,9 @@
 # thtmnisamnstr-dotcom
 ![image info](./public/images/thtmnisamnstr-dotcom-screenshot.png)
-This is the source code for my personal website at [https://thtmnisamnstr.com](https://thtmnisamnstr.com).
+This is the source code for my personal website at [https://thtmnisamnstr.com](https://thtmnisamnstr.com). It is a Next.js site with a theme inspired by VS Code.
 
 ## Tech Stack
-* Node.js 22
+* Node.js >=22 <26
 * Next.js 16
 * [Netlify](https://www.netlify.com/) for hosting
 * [Segment](https://segment.com/) for analytics
@@ -43,5 +43,5 @@ This is the source code for my personal website at [https://thtmnisamnstr.com](h
 * Deploy via your Netlify site configuration connected to this repository.
 * Ensure required environment variables are set in Netlify (for example Segment keys if used).
 
-## License 🤝
+## License
 [MIT](./LICENSE)

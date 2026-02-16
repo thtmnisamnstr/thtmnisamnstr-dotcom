@@ -22,14 +22,14 @@ export default function Home({ posts }: { posts: BlogFrontMatter[] }) {
       <PageSeo title={siteMetadata.title} description={siteMetadata.description} />
       <section className="vscode-page-block">
         <h1 className="vscode-page-title">Hi. I&apos;m Gavin. This is my site.</h1>
-        <p className="mb-4 prose prose-lg md:prose-xl dark:prose-dark">
+        <p className="vscode-body-copy mb-4">
           You can find me floating around the internet as{' '}
-          <span className="vscode-page-title vscode-special-text">thtmnisamnstr</span>.
+          <span className="vscode-special-text">thtmnisamnstr</span>.
         </p>
-        <p className="mt-4">
+        <p className="vscode-body-copy mt-4">
           <span className="flex items-center mt-4 mb-4">
-            Product marketer at Pinecone. Director of Product & Marketing at Earthly. Ex-PMM at
-            Earthly, Segment, Yugabyte, RudderStack, New Relic, and AT&T
+            Product marketer at Pinecone. Ex-PMM at Pulumi, Earthly, Segment, Yugabyte, RudderStack,
+            New Relic, and AT&T
             <span className="mx-4">
               <Twemoji size="twa-3x" emoji="chart-increasing" />
             </span>

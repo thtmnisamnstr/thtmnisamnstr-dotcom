@@ -5,9 +5,9 @@ import { formatDate } from '~/utils'
 
 export function FeaturedPosts({ posts }: { posts: BlogFrontMatter[] }) {
   return (
-    <section className="vscode-page-block border-t border-gray-200 dark:border-gray-700">
+    <section className="vscode-page-block border-t vscode-divider">
       <h2 className="vscode-section-title">Recent Posts</h2>
-      <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+      <ul className="divide-y vscode-divide-y">
         {!posts.length && 'No posts found.'}
         {posts.slice(0, FEATURED_POSTS).map((frontMatter) => {
           let { slug, date, title, summary, tags } = frontMatter
@@ -25,7 +25,7 @@ export function FeaturedPosts({ posts }: { posts: BlogFrontMatter[] }) {
                     <Tag key={tag} text={tag} />
                   ))}
                 </div>
-                <p>{summary}</p>
+                <p className="vscode-list-body-copy">{summary}</p>
               </article>
             </li>
           )

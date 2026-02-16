@@ -7,6 +7,8 @@ const LEGACY_THEME_STORAGE_KEY = 'theme'
 const ALL_THEMES = new Set([
   'vscode-dark-plus',
   'vscode-light-plus',
+  'vscode-hc-black',
+  'vscode-hc-light',
   'dracula',
   'monokai',
   'solarized-dark',
@@ -19,12 +21,20 @@ const ALL_THEMES = new Set([
 
 const DARK_THEMES = new Set([
   'vscode-dark-plus',
+  'vscode-hc-black',
   'dracula',
   'monokai',
   'solarized-dark',
   'one-dark-pro',
   'night-owl',
   'github-dark',
+])
+
+const LIGHT_THEMES = new Set([
+  'vscode-light-plus',
+  'vscode-hc-light',
+  'solarized-light',
+  'github-light',
 ])
 
 export function ThemeModeSync() {
@@ -51,11 +61,35 @@ export function ThemeModeSync() {
   }, [setTheme])
 
   useEffect(() => {
-    if (!theme) {
+    if (!theme || !ALL_THEMES.has(theme)) {
       return
     }
 
-    document.documentElement.classList.toggle('dark', DARK_THEMES.has(theme))
+    document.documentElement.classList.toggle(
+      'dark',
+      DARK_THEMES.has(theme) && !LIGHT_THEMES.has(theme)
+    )
+
+    let frame = window.requestAnimationFrame(() => {
+      let themeColorMeta = document.querySelector('meta[name=\"theme-color\"]')
+      if (!(themeColorMeta instanceof HTMLMetaElement)) {
+        return
+      }
+
+      let activeColor =
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--vscode-titlebar-active-background')
+          .trim() ||
+        getComputedStyle(document.documentElement).getPropertyValue('--vscode-bg').trim()
+
+      if (activeColor) {
+        themeColorMeta.setAttribute('content', activeColor)
+      }
+    })
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+    }
   }, [theme])
 
   return null

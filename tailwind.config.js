@@ -43,45 +43,46 @@ module.exports = {
         'zoom-in': 'zoom-in',
         'zoom-out': 'zoom-out',
       },
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.700'),
+            color: 'var(--vscode-editor-foreground)',
             a: {
-              color: theme('colors.primary.500'),
+              color: 'var(--vscode-text-link-foreground)',
               '&:hover': {
-                color: theme('colors.primary.600'),
+                color: 'var(--vscode-text-link-active-foreground)',
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: 'var(--vscode-text-link-foreground)' },
             },
             h1: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.900'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h2: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.900'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h3: {
               fontWeight: '600',
-              color: theme('colors.gray.900'),
+              color: 'var(--vscode-editor-foreground)',
             },
             h4: {
               fontSize: '1.166667em',
             },
             'h4,h5,h6': {
-              color: theme('colors.gray.900'),
+              color: 'var(--vscode-editor-foreground)',
             },
             code: {
-              color: theme('colors.pink.500'),
-              backgroundColor: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
+              backgroundColor: 'var(--vscode-text-code-block-background)',
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '2px',
               paddingBottom: '2px',
               borderRadius: '0.25rem',
+              border: '1px solid var(--vscode-editor-group-border)',
             },
             'code::before': {
               content: 'none',
@@ -89,18 +90,19 @@ module.exports = {
             'code::after': {
               content: 'none',
             },
-            hr: { borderColor: theme('colors.gray.200') },
+            hr: { borderColor: 'var(--vscode-editor-group-border)' },
             'ol li::before': {
               fontWeight: '600',
-              color: theme('colors.gray.500'),
+              color: 'var(--vscode-description-foreground)',
             },
             'ul li::before': {
-              backgroundColor: theme('colors.gray.500'),
+              backgroundColor: 'var(--vscode-description-foreground)',
             },
-            strong: { color: theme('colors.gray.600') },
+            strong: { color: 'var(--vscode-editor-foreground)' },
             blockquote: {
-              color: theme('colors.gray.900'),
-              borderLeftColor: theme('colors.gray.200'),
+              color: 'var(--vscode-editor-foreground)',
+              borderLeftColor: 'var(--vscode-text-blockquote-border)',
+              backgroundColor: 'var(--vscode-text-blockquote-background)',
             },
           },
         },
@@ -120,51 +122,52 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.300'),
+            color: 'var(--vscode-editor-foreground)',
             a: {
-              color: theme('colors.primary.400'),
+              color: 'var(--vscode-text-link-foreground)',
               '&:hover': {
-                color: theme('colors.primary.200'),
+                color: 'var(--vscode-text-link-active-foreground)',
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: 'var(--vscode-text-link-foreground)' },
             },
             h1: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.100'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h2: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.100'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h3: {
               fontWeight: '600',
-              color: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
             },
             'h4,h5,h6': {
-              color: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
             },
-            hr: { borderColor: theme('colors.gray.700') },
+            hr: { borderColor: 'var(--vscode-editor-group-border)' },
             'ol li:before': {
               fontWeight: '600',
-              color: theme('colors.gray.400'),
+              color: 'var(--vscode-description-foreground)',
             },
             'ul li:before': {
-              backgroundColor: theme('colors.gray.400'),
+              backgroundColor: 'var(--vscode-description-foreground)',
             },
-            strong: { color: theme('colors.gray.100') },
+            strong: { color: 'var(--vscode-editor-foreground)' },
             thead: {
-              color: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
             },
             tbody: {
               tr: {
-                borderBottomColor: theme('colors.gray.700'),
+                borderBottomColor: 'var(--vscode-editor-group-border)',
               },
             },
             blockquote: {
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.700'),
+              color: 'var(--vscode-editor-foreground)',
+              borderLeftColor: 'var(--vscode-text-blockquote-border)',
+              backgroundColor: 'var(--vscode-text-blockquote-background)',
             },
           },
         },

@@ -14,14 +14,16 @@ export default function App({ Component, pageProps }) {
       themes={[
         'vscode-dark-plus',
         'vscode-light-plus',
-        'dracula',
-        'monokai',
-        'solarized-dark',
-        'solarized-light',
-        'one-dark-pro',
-        'night-owl',
         'github-dark',
         'github-light',
+        'one-dark-pro',
+        'dracula',
+        'monokai',
+        'night-owl',
+        'solarized-dark',
+        'solarized-light',
+        'vscode-hc-black',
+        'vscode-hc-light',
       ]}
       enableSystem={false}
     >

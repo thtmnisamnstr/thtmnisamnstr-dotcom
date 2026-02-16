@@ -14,12 +14,6 @@ export interface ImageProps extends NextImageProps {
   shouldOpenLightbox?: boolean
 }
 
-export interface SocialButtonsProps {
-  postUrl: string
-  title: string
-  fileName: string
-}
-
 export type TwemojiProps = {
   emoji: string
   size?: string

@@ -4,14 +4,16 @@ import { useTheme } from 'next-themes'
 const THEMES = [
   { value: 'vscode-dark-plus', label: 'Dark+ (default dark)' },
   { value: 'vscode-light-plus', label: 'Light+ (default light)' },
-  { value: 'dracula', label: 'Dracula' },
-  { value: 'monokai', label: 'Monokai' },
-  { value: 'solarized-dark', label: 'Solarized Dark' },
-  { value: 'solarized-light', label: 'Solarized Light' },
-  { value: 'one-dark-pro', label: 'One Dark Pro' },
-  { value: 'night-owl', label: 'Night Owl' },
   { value: 'github-dark', label: 'GitHub Dark' },
   { value: 'github-light', label: 'GitHub Light' },
+  { value: 'one-dark-pro', label: 'One Dark Pro' },
+  { value: 'dracula', label: 'Dracula' },
+  { value: 'monokai', label: 'Monokai' },
+  { value: 'night-owl', label: 'Night Owl' },
+  { value: 'solarized-dark', label: 'Solarized Dark' },
+  { value: 'solarized-light', label: 'Solarized Light' },
+  { value: 'vscode-hc-black', label: 'High Contrast Black' },
+  { value: 'vscode-hc-light', label: 'High Contrast Light' },
 ]
 
 export function ThemeSwitcher() {

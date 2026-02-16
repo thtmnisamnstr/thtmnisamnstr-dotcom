@@ -19,7 +19,7 @@ export function PostListItem({ frontMatter }: { frontMatter: MdxFrontMatter }) {
             <Tag key={tag} text={tag} />
           ))}
         </div>
-        <p>{summary}</p>
+        <p className="vscode-list-body-copy">{summary}</p>
       </article>
     </li>
   )
