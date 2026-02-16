@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider
       attribute="class"
+      storageKey="thtmnisamnstr-theme"
       defaultTheme="vscode-dark-plus"
       themes={[
         'vscode-dark-plus',

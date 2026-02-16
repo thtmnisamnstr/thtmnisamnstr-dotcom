@@ -2,13 +2,12 @@ import { AuthorDetails, BackToPosts, BlogHeader, BlogTags } from '~/components/b
 import { BlogSeo } from '~/components/SEO'
 import { ScrollTopButton } from '~/components/ScrollTopButton'
 import { SectionContainer } from '~/components/SectionContainer'
-import { SocialButtons } from '~/components/SocialButtons'
 import { siteMetadata } from '~/data'
 import type { PostLayoutProps } from '~/types'
 
 export function PostLayout(props: PostLayoutProps) {
   let { frontMatter, authorDetails, page, children } = props
-  let { slug, fileName, date, title, tags, readingTime } = frontMatter
+  let { slug, date, title, tags, readingTime } = frontMatter
   let postUrl = `${siteMetadata.siteUrl}/blog/${slug}`
 
   return (
@@ -35,7 +34,6 @@ export function PostLayout(props: PostLayoutProps) {
             </div>
             <div className="!border-t-0 divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
               <div className="pt-10 pb-8 prose prose-lg dark:prose-dark max-w-none">{children}</div>
-              <SocialButtons postUrl={postUrl} title={title} fileName={fileName} />
             </div>
             <footer>
               <div className="text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2">

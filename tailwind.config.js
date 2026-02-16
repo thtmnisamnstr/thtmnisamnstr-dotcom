@@ -2,7 +2,6 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
   content: ['./(components|constant|layouts|pages)/**/*.(ts|tsx)', './data/(blog|authors)/*.mdx'],
   darkMode: 'class',
   theme: {
@@ -171,9 +170,6 @@ module.exports = {
         },
       }),
     },
-  },
-  variants: {
-    typography: ['dark'],
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }

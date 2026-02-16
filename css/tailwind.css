@@ -408,12 +408,16 @@ body {
   padding: 0.45rem 0.6rem;
 }
 
+.vscode-special-text {
+  color: var(--vscode-link);
+}
+
 .vscode-mobile-nav {
   position: fixed;
   inset: 0;
   z-index: 60;
   background: var(--vscode-tabbar);
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 0.2s ease-in-out;
 }
 

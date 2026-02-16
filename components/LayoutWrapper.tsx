@@ -12,9 +12,12 @@ export function LayoutWrapper({ children }) {
     <div className="vscode-workbench">
       <MobileNav navShow={navShow} onToggleNav={onToggleNav} />
       <Header onToggleNav={onToggleNav} />
-      <div className="vscode-editor-shell max-w-3xl px-3 xl:px-0 mx-auto sm:px-6 xl:max-w-5xl">
+      <div className="vscode-editor-shell max-w-3xl mx-auto xl:max-w-5xl">
         <div className="flex flex-col justify-between">
-          <main className="vscode-editor-content" style={{ minHeight: MAIN_CONTENT_MIN_HEIGHT }}>
+          <main
+            className="vscode-editor-content px-3 sm:px-6"
+            style={{ minHeight: MAIN_CONTENT_MIN_HEIGHT }}
+          >
             {children}
           </main>
           <Footer />

@@ -28,7 +28,11 @@ export function ListLayout(props: ListLayoutProps) {
         </ul>
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
-        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+        <Pagination
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+          basePath={pagination.basePath}
+        />
       )}
     </>
   )

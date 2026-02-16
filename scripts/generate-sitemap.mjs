@@ -3,7 +3,7 @@ import { globby } from 'globby'
 import matter from 'gray-matter'
 import prettier from 'prettier'
 const SITE_URL = 'https://thtmnisamnstr.com'
-const POSTS_PER_PAGE = 5
+const POSTS_PER_PAGE = 10
 
 function normalizePageRoute(pagePath) {
   return pagePath
@@ -20,6 +20,11 @@ function isPublishedPost(postPath) {
   let source = fs.readFileSync(postPath, 'utf8')
   let { data } = matter(source)
   return data.draft !== true
+}
+
+function getPostData(postPath) {
+  let source = fs.readFileSync(postPath, 'utf8')
+  return matter(source).data
 }
 
 async function generateSitemap() {
@@ -39,13 +44,33 @@ async function generateSitemap() {
   const allPostPages = await globby(['data/blog/**/*.mdx', 'data/blog/**/*.md'])
   const postPages = allPostPages.filter(isPublishedPost)
   const tagFeeds = await globby(['public/tags/**/feed.xml'])
+  const tagsCount = {}
+
+  postPages.forEach((postPath) => {
+    const data = getPostData(postPath)
+    if (!Array.isArray(data.tags)) return
+    data.tags.forEach((tag) => {
+      const normalizedTag = String(tag)
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+      if (!normalizedTag) return
+      tagsCount[normalizedTag] = (tagsCount[normalizedTag] || 0) + 1
+    })
+  })
 
   const postCount = postPages.length
   const totalPages = Math.ceil(postCount / POSTS_PER_PAGE)
-  const blogPaginationRoutes = Array.from(
-    { length: totalPages },
-    (_, index) => `/blog/page/${index + 1}`
-  )
+  const blogPaginationRoutes =
+    totalPages > 1
+      ? Array.from({ length: totalPages - 1 }, (_, index) => `/blog/page/${index + 2}`)
+      : []
+  const tagPaginationRoutes = Object.entries(tagsCount).flatMap(([tag, count]) => {
+    const tagTotalPages = Math.ceil(count / POSTS_PER_PAGE)
+    if (tagTotalPages <= 1) return []
+    return Array.from({ length: tagTotalPages - 1 }, (_, index) => `/tags/${tag}/page/${index + 2}`)
+  })
 
   const routes = new Set([
     '/',
@@ -55,6 +80,7 @@ async function generateSitemap() {
       (tagFeedPath) => `/${tagFeedPath.replace(/^public\//, '').replace(/\/feed\.xml$/, '')}`
     ),
     ...blogPaginationRoutes,
+    ...tagPaginationRoutes,
   ])
 
   const orderedRoutes = [...new Set([...routes].map((route) => route || '/'))]

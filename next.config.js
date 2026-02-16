@@ -14,4 +14,18 @@ module.exports = {
       { protocol: 'http', hostname: 'localhost', port: '3000' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog/page/1',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/tags/:tag/page/1',
+        destination: '/tags/:tag',
+        permanent: true,
+      },
+    ]
+  },
 }

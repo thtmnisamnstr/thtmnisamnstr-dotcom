@@ -17,7 +17,7 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
 
   return (
     <header className="vscode-header sticky top-0 z-40">
-      <div className="vscode-header-inner max-w-3xl px-3 xl:px-0 mx-auto sm:px-6 xl:max-w-5xl">
+      <div className="vscode-header-inner max-w-3xl mx-auto xl:max-w-5xl">
         <div className="vscode-logo-row">
           <Link href="/" aria-label="thtmnisamnstr - Gavin Johnson">
             <NextImage
@@ -51,8 +51,7 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
-            <ThemeSwitcher />
+          <div className="flex items-center gap-2 w-full justify-between sm:w-auto sm:justify-start">
             <button
               className="vscode-mobile-trigger sm:hidden"
               type="button"
@@ -61,6 +60,7 @@ export function Header({ onToggleNav }: { onToggleNav: () => void }) {
             >
               ☰
             </button>
+            <ThemeSwitcher />
           </div>
         </div>
       </div>

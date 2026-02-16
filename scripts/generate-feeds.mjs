@@ -78,6 +78,10 @@ function generateRss(posts, feedPath = 'feed.xml') {
 async function generateFeeds() {
   console.log('Generating RSS feeds...')
   let postPaths = await globby(['data/blog/**/*.mdx', 'data/blog/**/*.md'])
+  let tagsRootDir = path.join(process.cwd(), 'public', 'tags')
+
+  // Remove stale tag feeds so deleted/renamed tags do not linger in output.
+  fs.rmSync(tagsRootDir, { recursive: true, force: true })
 
   let posts = postPaths
     .map((postPath) => {
@@ -105,7 +109,7 @@ async function generateFeeds() {
   }
 
   for (let [tagSlug, taggedPosts] of postsByTag.entries()) {
-    let tagDir = path.join(process.cwd(), 'public', 'tags', tagSlug)
+    let tagDir = path.join(tagsRootDir, tagSlug)
     fs.mkdirSync(tagDir, { recursive: true })
     fs.writeFileSync(
       path.join(tagDir, 'feed.xml'),

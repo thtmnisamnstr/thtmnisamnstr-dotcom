@@ -10,8 +10,8 @@ import type { BlogListProps } from '~/types'
 export async function getStaticPaths() {
   let totalPosts = getAllFilesFrontMatter('blog')
   let totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
-  let paths = Array.from({ length: totalPages }, (_, i) => ({
-    params: { page: (i + 1).toString() },
+  let paths = Array.from({ length: Math.max(totalPages - 1, 0) }, (_, i) => ({
+    params: { page: (i + 2).toString() },
   }))
 
   return {
@@ -31,6 +31,7 @@ export async function getStaticProps({ params }: { params: { page: string } }) {
   let pagination = {
     currentPage: pageNumber,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
+    basePath: '/blog',
   }
 
   return {

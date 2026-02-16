@@ -22,8 +22,7 @@ The more of the cached "cake" we can reuse, the faster our builds get. We want t
 
 ## Structuring Earthfiles to Efficiently Cache Dependencies
 
-![Structure](/images/blog/20240521-efficiently-cache-dependencies-earthfiles/structure.png)\
-
+![Structure](/images/blog/20240521-efficiently-cache-dependencies-earthfiles/structure.png)
 ### Copying Files into the Build Context as Late as Possible
 
 Let's say you have a simple Go application with three files:  `go.mod`, `go.sum`, and `main.go`. In this example, the `go.mod` and `go.sum` files are updated locally by running `go mod tidy`.

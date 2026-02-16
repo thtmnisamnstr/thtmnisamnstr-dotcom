@@ -20,8 +20,7 @@ This announcement is related to that third area, speed. We're excited to announc
 
 ## What Is Auto-Skip
 
-![What](/images/blog/20240326-auto-skip/what.png)\
-
+![What](/images/blog/20240326-auto-skip/what.png)
 Auto-Skip allows Earthly to skip large parts of a build in certain situations and is especially useful in monorepo setups, where you are building multiple projects at once, and only one of them has changed. It is a global cache stored in a cloud database that is only available to users of Earthly Cloud.
 
 Auto-Skip is an all-or-nothing type of cache. Either the entire target is skipped, or none of it is. This is because Auto-Skip doesn't know which parts of the target have changed. Instead, it traverses the full Earthly target graph and creates a cache key using a hash of all the graph's values and files. If the cache key matches the last run, it skips the target. If the cache keys don't match, Earthly will fallback to the other forms of caching, [layer-based caching](https://docs.earthly.dev/docs/caching/caching-in-earthfiles#id-1.-layer-based-caching) and [cache mounts](https://docs.earthly.dev/docs/caching/caching-in-earthfiles#id-2.-cache-mounts), to run the build as efficiently as possible.
@@ -41,6 +40,5 @@ _[Visit our docs from more information and details about using Auto-Skip](https:
 
 ## Sign Up for Earthly Cloud and Start Using Auto-Skip Today
 
-![How](/images/blog/20240326-auto-skip/how.png)\
-
+![How](/images/blog/20240326-auto-skip/how.png)
 [Sign up for Earthly Cloud](https://cloud.earthly.dev/login) to start using Auto-Skip. It's available to all Earthly Cloud users. Try it out, and let us know how it works for you.

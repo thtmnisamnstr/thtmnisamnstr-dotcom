@@ -19,33 +19,58 @@ function formatTagLabel(tag: string) {
 
 export function getStaticPaths() {
   let tags = getAllTags('blog')
+  let allPosts = getAllFilesFrontMatter('blog')
 
-  return {
-    paths: Object.keys(tags).map((tag) => ({
+  let paths = Object.keys(tags).flatMap((tag) => {
+    let filteredPosts = allPosts.filter(
+      (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(tag)
+    )
+    let totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
+    if (totalPages <= 1) {
+      return []
+    }
+
+    return Array.from({ length: totalPages - 1 }, (_, index) => ({
       params: {
         tag,
+        page: (index + 2).toString(),
       },
-    })),
+    }))
+  })
+
+  return {
+    paths,
     fallback: false,
   }
 }
 
-export async function getStaticProps({ params }: { params: { tag: string } }) {
+export async function getStaticProps({ params }: { params: { tag: string; page: string } }) {
   let allPosts = getAllFilesFrontMatter('blog')
   let filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   )
-  let initialDisplayPosts = filteredPosts.slice(0, POSTS_PER_PAGE)
+  let pageNumber = parseInt(params.page)
+  let initialDisplayPosts = filteredPosts.slice(
+    POSTS_PER_PAGE * (pageNumber - 1),
+    POSTS_PER_PAGE * pageNumber
+  )
   let pagination = {
-    currentPage: 1,
+    currentPage: pageNumber,
     totalPages: Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
     basePath: `/tags/${params.tag}`,
   }
 
-  return { props: { posts: filteredPosts, initialDisplayPosts, pagination, tag: params.tag } }
+  return {
+    props: {
+      posts: filteredPosts,
+      initialDisplayPosts,
+      pagination,
+      tag: params.tag,
+    },
+  }
 }
 
-export default function Tag({
+export default function TagPage({
   posts,
   initialDisplayPosts,
   pagination,
@@ -61,8 +86,13 @@ export default function Tag({
   const { analytics: segment } = useSegment()
 
   useEffect(() => {
+    if (pagination.currentPage > 1) {
+      segment.page(`/tags/${tag}/page/${pagination.currentPage}`)
+      return
+    }
+
     segment.page(`/tags/${tag}`)
-  }, [segment, tag])
+  }, [pagination.currentPage, segment, tag])
 
   return (
     <>

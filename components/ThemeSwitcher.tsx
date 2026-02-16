@@ -28,13 +28,15 @@ export function ThemeSwitcher() {
     )
   }
 
+  let selectedTheme = theme || 'vscode-dark-plus'
+
   return (
     <label className="vscode-theme-select-wrap">
       <span className="sr-only">Select VS Code theme</span>
       <select
         aria-label="Select VS Code theme"
         className="vscode-theme-select"
-        value={theme}
+        value={selectedTheme}
         onChange={(event) => setTheme(event.target.value)}
       >
         {THEMES.map((item) => (

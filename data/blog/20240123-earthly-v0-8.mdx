@@ -12,8 +12,7 @@ authors: ['gavin-johnson']
 
 Today, we're announcing the release of Earthly v0.8. Earthly v0.8 introduces new features and improvements, such as Auto-skip (in Beta) for improved performance in monorepos, enhanced ARG handling, improved performance for outputting images from remote runners, new Earthly Satellites instance sizes, and more.
 
-![New](/images/blog/20240123-earthly-v0-8/new.png)\
-
+![New](/images/blog/20240123-earthly-v0-8/new.png)
 We do not take major or minor releases lightly at Earthly. We've never had a major release, and our last minor release was almost a year ago, in February 2023 (read about it in [Announcing Earthly v0.7](https://earthly.dev/blog/earthly-v0-7/)). That's because we know that the reliability and stability of your build and CI/CD processes are of the utmost importance. In every minor release of Earthly (and also eventually when we have a major release), all features promoted to General Availability (GA) have finalized APIs and have been through thorough testing. That's why we are comfortable enabling all features promoted to GA by default.
 
 ## Auto-Skip: Faster Monorepo Builds (Beta)
@@ -79,8 +78,7 @@ For more details, visit the [`LET`](https://docs.earthly.dev/docs/earthfile#let)
 
 ## Improved Performance for Remote Runners
 
-![Performance](/images/blog/20240123-earthly-v0-8/performance.png)\
-
+![Performance](/images/blog/20240123-earthly-v0-8/performance.png)
 Outputting images from a remote runner, such as Earthly Satellites, has improved performance as it no longer transfers layers that are already present locally. Previously a full tar.gz was transferred which contained all layers in the image. Now, Earthly performs a docker pull which only downloads required image layers.
 
 ## New Earthly Satellites Instance Sizes
@@ -124,6 +122,5 @@ For more detailed information on Earthly v0.8, read the [Earthly v0.8 release no
 
 ## Thank You to the Earthly Community
 
-![Thank You](/images/blog/20240123-earthly-v0-8/thank.png)\
-
+![Thank You](/images/blog/20240123-earthly-v0-8/thank.png)
 Huge thank you to the Earthly community! From the 1,500+ developers that have signed up for [Earthly Cloud](https://cloud.earthly.dev/login) to the 10K+ that have starred us on [GitHub](https://github.com/earthly/earthly) to our 1,200+ member community Slack ([click to join](https://earthly.dev/slack)), you all have played an instrumental role in the development of Earthly v0.8. Your code contributions, feature requests, and feedback made this release possible. We are so grateful to have such a dedicated and supportive community of developers from all over the world that believe in Earthly and want to make it better.

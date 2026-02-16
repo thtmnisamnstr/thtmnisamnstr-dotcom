@@ -7,6 +7,7 @@ export interface TagsCount {
 export interface PaginationType {
   currentPage: number
   totalPages: number
+  basePath?: string
 }
 
 export interface UnistTreeType extends Node {
@@ -14,6 +15,7 @@ export interface UnistTreeType extends Node {
 }
 export interface UnistNodeType extends Node {
   lang?: string
+  value?: string
   children: UnistNodeType[]
   properties?: { [key: string]: string[] }
   depth?: number

@@ -31,4 +31,21 @@ describe('mdx content integration', () => {
     )
     expect(post.mdxSource).toContain('quarter for scale')
   })
+
+  it('does not render trailing markdown hard-break markers after image-only paragraphs', async () => {
+    let post = await getFileBySlug('blog', '20240604-earthly-cloud-ui-updates')
+    expect(post.mdxSource).toContain('/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-01.png')
+    expect(post.mdxSource).not.toContain('earthly-cloud-ui-updates-01.png\\\\')
+  })
+
+  it('converts local markdown images in mixed paragraphs/lists to the Image component', async () => {
+    let post = await getFileBySlug(
+      'blog',
+      '20200720-building-a-portfolio-resume-site-with-gatsby-part-1'
+    )
+    expect(post.mdxSource).toMatch(/Image:n\}=e/)
+    expect(post.mdxSource).not.toContain(
+      '(0,i.jsx)(e.img,{alt:"Alt Text",src:"/images/blog/20200720-building-a-portfolio-resume-site-with-gatsby-part-1/7vq44fvx5kehvo54rkol.png"})'
+    )
+  })
 })

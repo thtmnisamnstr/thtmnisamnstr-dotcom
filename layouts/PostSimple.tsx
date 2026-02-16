@@ -2,7 +2,6 @@ import { AuthorDetails, BlogMeta } from '~/components/blog'
 import { BlogSeo } from '~/components/SEO'
 import { PageTitle } from '~/components/PageTitle'
 import { SectionContainer } from '~/components/SectionContainer'
-import { SocialButtons } from '~/components/SocialButtons'
 import { BlogTags } from '~/components/blog/BlogTags'
 import { siteMetadata } from '~/data'
 import type { PostSimpleLayoutProps } from '~/types'
@@ -10,8 +9,7 @@ import Image from 'next/image'
 
 export function PostSimple(props: PostSimpleLayoutProps) {
   let { frontMatter, type, children, authorDetails } = props
-  let { date, title, slug, fileName, tags, readingTime, images = [] } = frontMatter
-  let postUrl = `${siteMetadata.siteUrl}/${type}/${slug}`
+  let { date, title, slug, tags, readingTime, images = [] } = frontMatter
   let heroImage = images[0]
 
   return (
@@ -56,9 +54,6 @@ export function PostSimple(props: PostSimpleLayoutProps) {
             <div className="xl:pb-0 xl:col-span-3 xl:row-span-2">
               <div className="pb-8 prose prose-lg md:prose-xl dark:prose-dark max-w-none">
                 {children}
-              </div>
-              <div className="border-t border-gray-200 dark:border-gray-700">
-                <SocialButtons postUrl={postUrl} title={title} fileName={fileName} />
               </div>
             </div>
           </div>

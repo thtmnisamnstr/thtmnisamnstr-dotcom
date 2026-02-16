@@ -1,6 +1,6 @@
 # thtmnisamnstr-dotcom
 ![image info](./public/images/thtmnisamnstr-dotcom-screenshot.png)
-This is the source code for my personal website at https://thtmnisamnstr.com. It is a modified version of [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\].
+This is the source code for my personal website at [https://thtmnisamnstr.com](https://thtmnisamnstr.com).
 
 ## Tech Stack
 * Node.js 22
@@ -8,16 +8,16 @@ This is the source code for my personal website at https://thtmnisamnstr.com. It
 * [Netlify](https://www.netlify.com/) for hosting
 * [Segment](https://segment.com/) for analytics
 
-## How to run, build, and upgrade dependencies
+## How to run, build, and verify
 ### Running locally
 * Clone the repo.
 * Run `npm install`.
-* Run `npm run dev` and open http://localhost:3000.
+* Run `npm run dev` and open [http://localhost:3000](http://localhost:3000).
 
 ### Building the site
 * Clone the repo.
 * Run `npm install`.
-* Run `npm run build`.
+* Run `npm run build` (this also generates RSS feeds and sitemap output in `public/`).
 * Optionally run `npm run serve` to serve the production build locally.
 
 ### Quality checks
@@ -26,6 +26,9 @@ This is the source code for my personal website at https://thtmnisamnstr.com. It
 * Run `npm run test` for unit/integration tests.
 * Run `npm run verify` to run lint, typecheck, tests, and build together.
 * Pull requests run these checks in GitHub Actions along with runtime crawl and Lighthouse assertions.
+
+### Cleanup
+* Run `npm run clean` to remove local build/test/cache artifacts and generated outputs.
 
 ### Runtime regression crawl
 * Build first: `npm run build`.
