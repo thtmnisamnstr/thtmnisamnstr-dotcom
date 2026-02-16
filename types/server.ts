@@ -1,13 +1,4 @@
-import type { Data, Node } from 'unist'
-
-export interface SpotifyNowPlayingData {
-  isPlaying: boolean
-  songUrl?: string
-  title?: string
-  artist?: string
-  album?: string
-  albumImageUrl?: string
-}
+import type { Node } from 'unist'
 
 export interface TagsCount {
   [tag: string]: number
@@ -16,14 +7,16 @@ export interface TagsCount {
 export interface PaginationType {
   currentPage: number
   totalPages: number
+  basePath?: string
 }
 
-export interface UnistTreeType extends Node<Data> {
-  children: Node<Data>[]
+export interface UnistTreeType extends Node {
+  children: UnistNodeType[]
 }
-export interface UnistNodeType extends Node<Data> {
+export interface UnistNodeType extends Node {
   lang?: string
-  children: Node<Data>[]
+  value?: string
+  children: UnistNodeType[]
   properties?: { [key: string]: string[] }
   depth?: number
 }

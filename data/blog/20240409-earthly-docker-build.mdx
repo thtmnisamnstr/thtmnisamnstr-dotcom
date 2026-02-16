@@ -4,7 +4,7 @@ date: '2024-04-09 17:00'
 tags: ['earthly', 'product-launch']
 draft: false
 summary: "Introducing Earthly docker-build: a new feature that enables Dockerfile-based builds with Earthly and speeds them up by giving you a persistent BuildKit cache that can be used with any CI."
-images: ['/static/images/blog/20240409-earthly-docker-build/header.jpg']
+images: ['/images/blog/20240409-earthly-docker-build/header.jpg']
 authors: ['gavin-johnson']
 ---
 **_This post was originally published on [Earthly's blog](https://earthly.dev/blog/earthly-docker-build/)._**
@@ -18,8 +18,7 @@ We have team offsites every six to nine months. At our offsites, we discuss how 
 
 Announcing `earthly docker-build`, a feature of Earthly that lets you run builds using your Dockerfiles, no Earthfiles required. This makes it much easier to have a repo with mixed Dockerfiles and Earthfiles as you start using Earthly, and possibly more importantly, lets you use Earthly Satellites as a persistent remote BuildKit cache for Dockerfile-based builds. So you can get faster Dockerfile-based builds that work with any CI.
 
-![Announcing](/static/images/blog/20240409-earthly-docker-build/announce.png)\
-
+![Announcing](/images/blog/20240409-earthly-docker-build/announce.png)
 ## What Is `earthly docker-build`?
 
 `earthly docker-build` is a command built-in to Earthly that lets you build container images from Dockerfiles, very similar to running `docker build`. Since both Earthly and Docker use BuildKit to build container images, you get all the benefits you get with `docker build`, such as parallelism and caching for reduced build times.
@@ -45,6 +44,5 @@ _[Visit our docs from more information and details about using `earthly docker-b
 
 ## Sign Up for Earthly Cloud and Start Using `earthly docker-build` Today
 
-![Sign](/static/images/blog/20240409-earthly-docker-build/sign.png)\
-
+![Sign](/images/blog/20240409-earthly-docker-build/sign.png)
 You can use `earthly docker-build` with open source Earthly, but if you [sign up for Earthly Cloud](https://cloud.earthly.dev/login) you get 6,000 build minutes per month free on Satellites and the ability to use them as a persistent remote BuildKit cache. Try `earthly docker-build` out, and let us know how it works for you.

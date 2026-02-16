@@ -1,13 +1,21 @@
+import { useEffect } from 'react'
 import { PageSeo } from 'components/SEO'
 import { useSegment } from '~/components'
-import fs from 'fs'
-import path from 'path'
+import { POSTS_PER_PAGE } from '~/constant'
 import { siteMetadata } from '~/data'
 import { ListLayout } from '~/layouts'
-import { getAllTags, generateRss } from '~/libs'
+import { getAllTags } from '~/libs'
 import { getAllFilesFrontMatter } from '~/libs/mdx'
 import type { BlogFrontMatter } from '~/types'
 import { kebabCase } from '~/utils'
+
+function formatTagLabel(tag: string) {
+  return tag
+    .split('-')
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(' ')
+}
 
 export function getStaticPaths() {
   let tags = getAllTags('blog')
@@ -27,28 +35,47 @@ export async function getStaticProps({ params }: { params: { tag: string } }) {
   let filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   )
+  let initialDisplayPosts = filteredPosts.slice(0, POSTS_PER_PAGE)
+  let pagination = {
+    currentPage: 1,
+    totalPages: Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
+    basePath: `/tags/${params.tag}`,
+  }
 
-  // rss
-  let root = process.cwd()
-  let rss = generateRss(filteredPosts, `tags/${params.tag}/feed.xml`)
-  let rssPath = path.join(root, 'public', 'tags', params.tag)
-  fs.mkdirSync(rssPath, { recursive: true })
-  fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)
-
-  return { props: { posts: filteredPosts, tag: params.tag } }
+  return { props: { posts: filteredPosts, initialDisplayPosts, pagination, tag: params.tag } }
 }
 
-export default function Tag({ posts, tag }: { posts: BlogFrontMatter[]; tag: string }) {
-  // Capitalize first letter and convert space to dash
-  let title = tag[0] + tag.split(' ').join('-').slice(1)
+export default function Tag({
+  posts,
+  initialDisplayPosts,
+  pagination,
+  tag,
+}: {
+  posts: BlogFrontMatter[]
+  initialDisplayPosts: BlogFrontMatter[]
+  pagination: { currentPage: number; totalPages: number; basePath: string }
+  tag: string
+}) {
+  let tagLabel = formatTagLabel(tag)
 
   const { analytics: segment } = useSegment()
-  segment.page(`/tags/${title}`)
+
+  useEffect(() => {
+    segment.page(`/tags/${tag}`)
+  }, [segment, tag])
 
   return (
     <>
-      <PageSeo title={`${tag} - ${siteMetadata.title}`} description={`${tag} blog post tags`} />
-      <ListLayout posts={posts} title={`Tag: #${title}`} />
+      <PageSeo
+        title={`${tagLabel} - ${siteMetadata.title}`}
+        description={`${tagLabel} blog post tags`}
+      />
+      <ListLayout
+        posts={posts}
+        initialDisplayPosts={initialDisplayPosts}
+        pagination={pagination}
+        title={`Tag: #${tagLabel}`}
+      />
     </>
   )
 }

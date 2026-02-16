@@ -1,10 +1,9 @@
-import { useTheme } from 'next-themes'
-import React, { useState, useEffect, useCallback, KeyboardEvent as ReactKeyboardEvent } from 'react'
+import NextImage from 'next/image'
+import React, { useState, useEffect, useCallback } from 'react'
+import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
 import type { ImageLightBoxProps } from '~/types'
-import { Twemoji } from './Twemoji'
 
 export function ImageLightbox({ src, closeLightbox }: ImageLightBoxProps) {
-  let { theme } = useTheme()
   let [imgLoaded, setImgLoaded] = useState(false)
   let [close, setClose] = useState(false)
 
@@ -36,35 +35,53 @@ export function ImageLightbox({ src, closeLightbox }: ImageLightBoxProps) {
   }, [imgLoaded])
 
   let style = {
-    '--tw-bg-opacity': theme === 'dark' ? 0.7 : 0.8,
+    backgroundColor: 'var(--vscode-bg)',
     opacity: !close && imgLoaded ? 1 : 0,
   } as React.CSSProperties
 
   return (
     <div
-      role="button"
-      tabIndex={0}
-      className="lightbox-overlay fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-300 ease-out"
+      className="lightbox-overlay fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 ease-out"
       style={style}
       onClick={handleClose}
-      onKeyDown={handleKeydown}
     >
-      <div className="w-full h-full relative flex justify-center items-center">
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: 'var(--vscode-bg)', opacity: 0.85 }}
+      />
+      <div
+        className="w-full h-full relative z-10 flex justify-center items-center"
+        onClick={(event) => event.stopPropagation()}
+      >
         <div className="absolute flex justify-between top-0 inset-x-0">
-          <button className="p-4 text-xl text-white" onClick={handleClose}>
+          <button
+            type="button"
+            className="p-4 text-2xl"
+            style={{ color: 'var(--vscode-fg)' }}
+            onClick={handleClose}
+          >
             Esc
           </button>
-          <button className="p-4" onClick={handleClose}>
-            <Twemoji emoji="cross-mark" />
+          <button
+            type="button"
+            className="p-4 text-6xl leading-none"
+            style={{ color: 'var(--vscode-link)' }}
+            onClick={handleClose}
+            aria-label="Close lightbox"
+          >
+            ×
           </button>
         </div>
-        {/* eslint-disable @next/next/no-img-element */}
-        <img
-          src={src.toString()}
-          onLoad={() => setImgLoaded(true)}
-          className="cursor-zoom-out max-w-[90vw] max-h-[80vh]"
-          alt="Lightbox"
-        />
+        <div className="relative w-[90vw] h-[80vh]">
+          <NextImage
+            src={src.toString()}
+            alt="Lightbox"
+            fill
+            sizes="90vw"
+            className="cursor-zoom-out object-contain"
+            onLoadingComplete={() => setImgLoaded(true)}
+          />
+        </div>
       </div>
     </div>
   )

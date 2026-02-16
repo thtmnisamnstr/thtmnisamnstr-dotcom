@@ -1,10 +1,10 @@
-import { Twemoji } from '~/components'
+import { Twemoji } from '~/components/Twemoji'
 import type { BlogMetaProps } from '~/types'
 import { formatDate } from '~/utils'
 
-export function BlogMeta({ date, slug, readingTime }: BlogMetaProps) {
+export function BlogMeta({ date, readingTime }: BlogMetaProps) {
   return (
-    <dd className="flex flex-wrap text-sm md:text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+    <dd className="vscode-meta flex flex-wrap text-sm md:text-base font-medium leading-6">
       <time dateTime={date} className="flex items-center justify-center">
         <Twemoji emoji="calendar" size="" />
         <span className="ml-1.5 md:ml-2">{formatDate(date)}</span>

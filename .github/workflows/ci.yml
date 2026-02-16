@@ -1,0 +1,50 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify
+        run: npm run verify
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Runtime crawl
+        run: |
+          set -euo pipefail
+          npm run serve -- --port 3012 &
+          SERVER_PID=$!
+          trap "kill $SERVER_PID" EXIT
+          for i in {1..30}; do
+            if curl -fsS http://localhost:3012 >/dev/null 2>&1; then
+              break
+            fi
+            sleep 1
+            if [ "$i" -eq 30 ]; then
+              echo "Server failed to start"
+              exit 1
+            fi
+          done
+          BASE_URL=http://localhost:3012 npm run test:e2e:crawl
+
+      - name: Lighthouse performance checks
+        run: npm run perf:lighthouse

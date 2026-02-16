@@ -1,18 +1,33 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import NextLink from 'next/link'
 import type { AnchorHTMLAttributes } from 'react'
 
-export function Link({ href, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string
+}
+
+export function Link({ href, children, ...rest }: LinkProps) {
   let isInternalLink = href && href.startsWith('/')
   let isAnchorLink = href && href.startsWith('#')
 
   if (isInternalLink) {
-    return <NextLink href={href} {...rest} />
+    return (
+      <NextLink href={href} {...rest}>
+        {children}
+      </NextLink>
+    )
   }
 
   if (isAnchorLink) {
-    return <a href={href} {...rest} />
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
+    )
   }
 
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+  return (
+    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+      {children}
+    </a>
+  )
 }

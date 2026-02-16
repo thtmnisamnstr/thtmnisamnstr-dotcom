@@ -1,15 +1,9 @@
 export let BLUR_IMAGE_DATA_URL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcvWS1LgAGJQIpt50GkgAAAABJRU5ErkJggg=='
 
-export let LOGO_IMAGE_PATH = '/static/images/gavin-johnson.png'
-
-export let HEADER_HEIGHT = '69px'
-export let FOOTER_HEIGHT = '188px'
+const HEADER_HEIGHT = '69px'
+const FOOTER_HEIGHT = '188px'
 export let MAIN_CONTENT_MIN_HEIGHT = `calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT})`
-
-export let SPOTIFY_TOKEN_API = `https://accounts.spotify.com/api/token`
-export let SPOTIFY_NOW_PLAYING_API = `https://api.spotify.com/v1/me/player/currently-playing`
-export let SPOTIFY_TOP_TRACKS_API = `https://api.spotify.com/v1/me/top/tracks`
 
 export let TOKEN_CLASSNAME_MAP = {
   tag: 'text-code-red',
@@ -25,5 +19,5 @@ export let TOKEN_CLASSNAME_MAP = {
   comment: 'text-gray-500 italic',
 }
 
-export let POSTS_PER_PAGE = 5
+export let POSTS_PER_PAGE = 10
 export let FEATURED_POSTS = 5

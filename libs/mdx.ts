@@ -17,6 +17,9 @@ import { remarkCodeBlockTitle } from './remark-code-block-title'
 import { remarkImgToJsx } from './remark-img-to-jsx'
 import { remarkTocHeading } from './remark-toc-heading'
 
+const shouldCache = process.env.NODE_ENV === 'production' || process.env.CI === 'true'
+const frontMatterCache = new Map<string, BlogFrontMatter[]>()
+
 export async function getFileBySlug(type: string, slug: string): Promise<MdxFileData> {
   let root = process.cwd()
   let mdxPath = path.join(root, 'data', type, `${slug}.mdx`)
@@ -104,6 +107,10 @@ export async function getFileBySlug(type: string, slug: string): Promise<MdxFile
 }
 
 export function getAllFilesFrontMatter(folder: string) {
+  if (shouldCache && frontMatterCache.has(folder)) {
+    return frontMatterCache.get(folder) as BlogFrontMatter[]
+  }
+
   let root = process.cwd()
   let prefixPaths = path.join(root, 'data', folder)
   let files = getAllFilesRecursively(prefixPaths)
@@ -124,5 +131,11 @@ export function getAllFilesFrontMatter(folder: string) {
     }
   })
 
-  return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
+  let sortedFrontMatter = allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
+
+  if (shouldCache) {
+    frontMatterCache.set(folder, sortedFrontMatter)
+  }
+
+  return sortedFrontMatter
 }

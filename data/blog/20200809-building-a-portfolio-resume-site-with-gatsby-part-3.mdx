@@ -4,7 +4,7 @@ date: '2020-08-09 17:00'
 tags: ['website', 'personal', 'tutorial']
 draft: false
 summary: "This is about customizing your Gatsby site. Part 1 was entry-level. Part 2 was work. This is part 3, deploying. When all your work goes public."
-images: ['/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/devcommunity-logo.png']
+images: ['/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/devcommunity-logo.png']
 authors: ['gavin-johnson']
 ---
 
@@ -23,40 +23,40 @@ Alright, part 3, deploying is the fun part. That’s when your site actually end
 ## Initialize Firebase on your site and deploy to Firebase
 * Login to [Firebase](https://firebase.google.com) and create a project for you site. Make an account if you don’t already have one.
   * Click Go to Console
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/kf84rw2qsqs6fz2tgupw.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/kf84rw2qsqs6fz2tgupw.png)
   * Click the Add Project tile
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/x5tqo9k76n6ifymeutgw.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/x5tqo9k76n6ifymeutgw.png)
   * Give your project a name and click Continue
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/6ntv93vay6iljg95oykf.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/6ntv93vay6iljg95oykf.png)
   * Enable Google Analytics for your site (or not, your choice) and click Continue
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/ie1zmddggwrhpyfpgodu.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/ie1zmddggwrhpyfpgodu.png)
   * Select your Google Analytics location, configure your Google Analytics settings, accept both terms checkboxes, and click Create Project
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/lvsmaviqxaczoc1ohetj.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/lvsmaviqxaczoc1ohetj.png)
 * Install the Firebase CLI and initialize your site's directory
   * In terminal, `npm install -g firebase-tools`
   * `firebase logout` *(you may not have to do this step, but I did)*
   * `firebase login`
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/gtud5r9sfe8gz7whz3lj.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/gtud5r9sfe8gz7whz3lj.png)
   * Type 'y' to let Firebase collect usage and error reporting info. Type 'n' not to *(I go with 'n')* and press Enter
   * This will open up a Google sign-in page
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/ibxfubbddgk0e8fv9f31.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/ibxfubbddgk0e8fv9f31.png)
   * Select your Google account that you use for Firebase
   * You will be asked to authorize Firebase CLI to access your Google account. Click the Allow button.
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/c2umx2w26qkllo7rrwlg.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/c2umx2w26qkllo7rrwlg.png)
   * You should get a login successful screen *(you can close this window)*
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/jp7u6iy43q4zirokgyv0.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/jp7u6iy43q4zirokgyv0.png)
   * In Terminal, the output should be something like `✔  Success! Logged in as [your.email]@gmail.com`
   * `cd` to your site's root directory
   * `firebase init`
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/9zw5z9vx2jl1tskm3mp1.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/9zw5z9vx2jl1tskm3mp1.png)
   * Press the down arrow until the "Hosting: ..." option is highlighted, press the space bar to select it, and press Enter
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/7o3flez7sxb8dk6sl9ih.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/7o3flez7sxb8dk6sl9ih.png)
   * Use the up and down arrows to highlight "Use an existing project" and press Enter
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/43msfvtua526daoisewl.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/43msfvtua526daoisewl.png)
   * Select the Firebase project you created previously and press Enter
   * For public directory, type 'public' and press Enter
   * For whether to configure as a single-page app, type 'n' and press Enter
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/h44q0whop8hzi5zf5kn6.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/h44q0whop8hzi5zf5kn6.png)
   * If asked to overwrite anything, type 'n' and press Enter
   * Your terminal output should be:
 
@@ -101,7 +101,7 @@ Hosting URL: https://thtmnisamnstr.web.app
 ```
 
 **Boom!** You're site is deployed to Firebase. You should be able to go to the Hosting URL in your most recent terminal output to see your site. I already had my Firebase configured for [thatmanisamnstr.com](https://thtmnisamnstr.com). So when I go there, it's up.
-![Alt Text](/static/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/cxt02ivd63fo9x5bguus.png)
+![Alt Text](/images/blog/20200809-building-a-portfolio-resume-site-with-gatsby-part-3/cxt02ivd63fo9x5bguus.png)
 
 **That's it for today.**
 *I'll post a tutorial next week on how to automate deployments with GitHub Actions. That was supposed to be part of this post, but I’ve been crazy busy at work (I ran go-to-market for [open sourcing our instrumentation](https://blog.newrelic.com/product-news/introducing-open-source-agents-and-projects/), and I ended up doing a bunch of work [for our recent launch](https://blog.newrelic.com/product-news/new-relic-one-observability-made-simple/). [Our new free tier](https://dev.to/newrelic/how-to-sign-up-for-new-relic-s-new-perpetual-free-tier-1ebn) is dope btw.).*

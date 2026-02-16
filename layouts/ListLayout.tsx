@@ -10,20 +10,17 @@ export function ListLayout(props: ListLayoutProps) {
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
-  // If initialDisplayPosts exist, display it if no searchValue is specified
   let displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
   return (
     <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="pt-6 pb-12 space-y-4 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {title}
-          </h1>
+      <div className="vscode-page-block divide-y vscode-divide-y">
+        <div className="pt-2 pb-8 space-y-4">
+          <h1 className="vscode-page-title">{title}</h1>
           <PostsSearch onChange={setSearchValue} />
         </div>
-        <ul className="py-12 space-y-10">
+        <ul className="py-8 space-y-8">
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => (
             <PostListItem key={frontMatter.slug} frontMatter={frontMatter} />
@@ -31,7 +28,11 @@ export function ListLayout(props: ListLayoutProps) {
         </ul>
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
-        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+        <Pagination
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+          basePath={pagination.basePath}
+        />
       )}
     </>
   )

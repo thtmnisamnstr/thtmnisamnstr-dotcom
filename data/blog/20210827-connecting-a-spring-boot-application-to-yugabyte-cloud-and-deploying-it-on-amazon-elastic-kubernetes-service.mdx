@@ -4,7 +4,7 @@ date: '2021-08-27 17:00'
 tags: ['yugabyte', 'tutorial']
 draft: false
 summary: "The post walks you through deploying a Spring Boot app on Amazon Elastic Kubernetes Service (EKS) and connecting it to a YugabyteDB database on Yugabyte Cloud."
-images: ['/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/hero.jpg']
+images: ['/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/hero.jpg']
 authors: ['gavin-johnson']
 ---
 
@@ -43,29 +43,29 @@ Note: Anything in brackets [ ] needs to be replaced with information from your d
 1. Go to [https://cloud.yugabyte.com/signup](https://cloud.yugabyte.com/signup) and sign up for a Yugabyte Cloud account. After you’ve signed up and verified your email address, go to [https://cloud.yugabyte.com/login](https://cloud.yugabyte.com/login) and sign in.
 
 2. Click the Create a Free Cluster button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/001.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/001.png)
 
 3. Select Yugabyte Cloud Free and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/002.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/002.png)
 
 4. Select a cloud provider for your cluster, name your cluster, select a region, and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/003.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/003.png)
 
 5. Copy the default admin credentials by clicking the Copy Credentials link. Then check the “I have copied the admin credentials” checkbox and click the Create Cluster button.
 
     a. You can also set your own admin credentials by selecting the “Add your own credentials” radio button and entering your own credentials.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/004.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/004.png)
 
 6. Wait for your cluster to be provisioned. Click on “Add IP Allow List” in the top section of the Clusters page.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/005.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/005.png)
 
 7. Click the Create New List and Add to Cluster button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/006.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/006.png)
 
 8. In the Name text box, enter “all-ips”. In the IP Address(es) or Range text box, enter “0.0.0.0/0”. Click the Save button. This will allow traffic from all IP addresses to your cluster.
 
     a. Allowing all IPs access to your cluster is for development purposes only. When you deploy an application to Production, you will want to specify only the specific IP addresses or ranges that need access to your cluster.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/007.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/007.png)
 
 
 Your cluster is now created in Yugabyte Cloud and is accessible to all IP addresses. Leave this page open, as you’ll be accessing the Cloud Shell later to create an application database and user.
@@ -92,15 +92,15 @@ Note: Instructions for how to connect this application to YugabyteDB are in `spr
 3. Copy the contents of `spring-petclinic/src/main/resources/db/yugabytedb/user.sql`.
 
 4. In Yugabyte Cloud, click on “Connect”. Click on Connect to your Application.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/008.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/008.png)
 
 5. Save your host address and port (highlighted in the screenshot below) for later. Click the Back link in the Connect to Cluster navigation breadcrumb.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/009.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/009.png)
 
 6. Click the Launch Cloud Shell button.
 
 7. Leave the default Database Name, Database User Name, and API Type. Click the Confirm button. This will launch the Cloud Shell.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/010.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/010.png)
 
 8. Enter the admin password you copied previously. After you enter the password, you will have a standard YSQL shell (exactly like a PSQL shell in PostgreSQL) that you can interact with from your browser.
     ```
@@ -113,7 +113,7 @@ Note: Instructions for how to connect this application to YugabyteDB are in `spr
     ```
 
 9. Go to [http://localhost:8080](http://localhost:8080/). The PetClinic sample application should be available.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/011.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/011.png)
 
 
 The PetClinic sample application is now connected to your Yugabyte Cloud cluster and running locally.
@@ -138,13 +138,13 @@ The PetClinic sample application is now connected to your Yugabyte Cloud cluster
 1. Go to [https://aws.amazon.com/console/](https://aws.amazon.com/console/) and sign up for/sign in to Amazon Web Services (AWS).
 
 2. Type “ecr” in the search bar and click on “Elastic Container Registry”.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/012.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/012.png)
 
 3. Create a repository by clicking the Get Started button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/013.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/013.png)
 
 4. Enter a repository name and click the Create Repository button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/014.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/014.png)
 
 5. On your computer from terminal, login to ECR with Docker: `aws ecr get-login-password --region [aws_region] | docker login --username AWS --password-stdin [aws_acct_id].dkr.ecr.[aws_region].amazonaws.com`.
     ```
@@ -167,58 +167,58 @@ The PetClinic sample application is now connected to your Yugabyte Cloud cluster
     ...
     ```
     If you go to your repo in ECR, you should see the image you just pushed.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/015.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/015.png)
 
 8. Type “cloudformation” in the search bar and click on “CloudFormation”.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/016.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/016.png)
 
 9. Click on Create Stack -> Create stack, With new resources (standard).
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/017.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/017.png)
 
 10. For Prepare Template, select Template is Ready. For Template Source, select Amazon S3 URL. For Amazon S3 URL, enter “https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml”. Click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/018.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/018.png)
 
 11. Enter a Stack Name, and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/019.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/019.png)
 
 12. On the Configure Stack Options page, click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/020.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/020.png)
 
 13. Review your VPC stack and click the Create Stack button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/021.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/021.png)
 
 14. After your stack is created, type “eks” in the search bar and click on “Elastic Kubernetes Service”.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/022.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/022.png)
 
 15. Under “Create EKS cluster” enter a cluster name and click the Next Step button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/023.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/023.png)
 
 16. Select a Cluster Service Role and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/024.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/024.png)
 
 17. Under Networking, choose the VPC you just created (that should automatically choose the appropriate subnets) and the two security groups that are available. Under Cluster Endpoint Access, choose Public and Private. Click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/025.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/025.png)
 
 18. Select nothing for Configure Logging and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/026.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/026.png)
 
 19. Review your EKS cluster and click the Create button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/027.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/027.png)
 
 20. After your cluster has been created, go to the Configuration tab and the Compute tab under it. Click on the Add Node Group button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/028.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/028.png)
 
 21. Give your node group a Name, select an IAM Role, and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/029.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/029.png)
 
 22. Set your compute and scaling options and click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/030.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/030.png)
 
 23. Your subnets should automatically be selected. Click the Next button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/031.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/031.png)
 
 24. Review the details of your node group and click the Create button.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/032.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/032.png)
 
 25. On your computer from terminal, configure `kubectl` to connect to your EKS cluster: `aws eks --region [aws_region] update-kubeconfig --name [cluster_name]`.
     ```
@@ -287,7 +287,7 @@ The PetClinic sample application is now connected to your Yugabyte Cloud cluster
     ```
 =
 29. If you go to the External IP address listed ([http://ad7029ef94fed4c06a25897baf9e3c31-1572590571.us-west-1.elb.amazonaws.com/](http://ad7029ef94fed4c06a25897baf9e3c31-1572590571.us-west-1.elb.amazonaws.com/)), the PetClinic sample application should be available.
-    ![alt_text](/static/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/033.png)
+    ![alt_text](/images/blog/20210827-connecting-a-spring-boot-application-to-yugabyte-cloud-and-deploying-it-on-amazon-elastic-kubernetes-service/033.png)
 
 
 The PetClinic sample application is now connected to your Yugabyte Cloud cluster and running on Kubernetes on EKS.

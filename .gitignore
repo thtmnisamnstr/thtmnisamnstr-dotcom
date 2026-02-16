@@ -10,6 +10,10 @@
 
 # testing
 /coverage
+/playwright-report
+/test-results
+/tests/artifacts
+.eslintcache
 
 # next.js
 /.next
@@ -20,13 +24,18 @@
 
 # production
 /build
-*.xml
 # rss feed
 /public/feed.xml
 /public/tags
 
+# lighthouse artifacts
+/.lighthouseci
+/.cache
+
 # misc
 .DS_Store
+*.orig
+*.swp
 
 # debug
 *.log
@@ -44,4 +53,4 @@ yarn-error.log*
 .env
 .secret
 
-tsconfig.tsbuildinfo
+*.tsbuildinfo

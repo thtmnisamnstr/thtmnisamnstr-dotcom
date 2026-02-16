@@ -18,10 +18,7 @@ export function Pre({ children }: { children: React.ReactNode }) {
     navigator.clipboard.writeText(innerText)
     setTimeout(() => setCopied(false), 2000)
   }
-  let className = clsx(
-    `absolute z-10 right-2 top-2 w-8 h-8 p-1 rounded border-2 bg-gray-700 dark:bg-gray-800`,
-    copied ? 'focus:outline-none focus:border-green-400 border-green-400' : 'border-gray-300'
-  )
+  let className = clsx('vscode-copy-button', copied && 'is-copied')
   return (
     <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
       {hovered && (
@@ -32,7 +29,7 @@ export function Pre({ children }: { children: React.ReactNode }) {
               viewBox="0 0 24 24"
               stroke="currentColor"
               fill="none"
-              className={copied ? 'text-green-400' : 'text-gray-300'}
+              className={copied ? 'text-[#2ea043]' : ''}
             >
               {copied ? (
                 <path
@@ -53,10 +50,8 @@ export function Pre({ children }: { children: React.ReactNode }) {
           </button>
           {copied && (
             <>
-              <span className="text-base absolute z-10 top-2.5 right-12 bg-gray-300 rounded-md px-1.5 py-0.5 copy-text text-gray-800">
-                Copied
-              </span>
-              <span className="absolute w-2 h-2 transform rotate-45 bg-gray-300 top-5 right-11" />
+              <span className="vscode-copy-toast copy-text">Copied</span>
+              <span className="vscode-copy-toast-arrow" />
             </>
           )}
         </>

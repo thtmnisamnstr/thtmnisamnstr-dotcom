@@ -1,22 +1,49 @@
 import React from 'react'
-import { AnalyticsBrowser } from '@segment/analytics-next'
 
 interface Props {
   children: React.ReactNode
 }
 
+type SegmentClient = {
+  page: (..._args: unknown[]) => void
+  track: (..._args: unknown[]) => void
+}
+
+const noopAnalytics: SegmentClient = {
+  page: () => undefined,
+  track: () => undefined,
+}
+
 const SegmentContext = React.createContext<{
-  analytics: AnalyticsBrowser
+  analytics: SegmentClient
   writeKey: string
 }>(undefined)
 
 export const SegmentProvider: React.FC<Props> = ({ children }) => {
-  const writeKey = getSegmentWriteKey()
+  let writeKey = getSegmentWriteKey()
+  let [analytics, setAnalytics] = React.useState<SegmentClient>(noopAnalytics)
 
-  const analytics = React.useMemo(() => {
-    console.log(`AnalyticsBrowser loading...`, JSON.stringify({ writeKey }))
-    return AnalyticsBrowser.load({ writeKey })
+  React.useEffect(() => {
+    let active = true
+
+    async function loadAnalytics() {
+      if (!writeKey) {
+        setAnalytics(noopAnalytics)
+        return
+      }
+
+      let { AnalyticsBrowser } = await import('@segment/analytics-next')
+      if (active) {
+        setAnalytics(AnalyticsBrowser.load({ writeKey }))
+      }
+    }
+
+    loadAnalytics()
+    return () => {
+      active = false
+    }
   }, [writeKey])
+
   return (
     <SegmentContext.Provider value={{ analytics, writeKey }}>{children}</SegmentContext.Provider>
   )
@@ -31,7 +58,7 @@ export const useSegment = () => {
   return result
 }
 
-export function getSegmentWriteKey() {
+function getSegmentWriteKey() {
   let isProduction = process.env.NODE_ENV === 'production'
   var segmentWriteKey
   if (isProduction) {
@@ -39,5 +66,5 @@ export function getSegmentWriteKey() {
   } else {
     segmentWriteKey = process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY_DEV
   }
-  return segmentWriteKey
+  return segmentWriteKey || ''
 }

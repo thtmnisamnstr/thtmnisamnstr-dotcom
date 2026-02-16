@@ -3,7 +3,7 @@ import type { UnistNodeType, UnistTreeType } from '~/types'
 
 export function remarkCodeBlockTitle() {
   return (tree: UnistTreeType) => {
-    return visit(tree, 'code', (node: UnistNodeType, index) => {
+    return visit(tree as any, 'code', (node: UnistNodeType, index: number) => {
       let nodeLang = node.lang || ''
       let language = ''
       let title = ''
@@ -23,7 +23,7 @@ export function remarkCodeBlockTitle() {
         data: { _xdmExplicitJsx: true },
       }
 
-      tree.children.splice(index, 0, titleNode)
+      tree.children.splice(index, 0, titleNode as any)
       // @ts-ignore
       node.lang = language
     })

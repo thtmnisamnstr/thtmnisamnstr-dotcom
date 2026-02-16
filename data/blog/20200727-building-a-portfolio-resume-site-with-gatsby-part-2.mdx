@@ -3,7 +3,7 @@ title: "Building a Portfolio/Resume Site with Gatsby, Part 2 - Customizing your 
 date: '2020-07-27 17:00'
 tags: ['website', 'personal', 'tutorial']
 summary: "This is about customizing your Gatsby site. Part 1 was entry-level. This is Part 2 though. Part 2 is much more involved. Part 2 is where you make your site your own."
-images: ['/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/devcommunity-logo.png']
+images: ['/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/devcommunity-logo.png']
 authors: ['gavin-johnson']
 ---
 
@@ -132,7 +132,7 @@ module.exports = {
   * Create a new folder under `./content/authors/`. Name it `avatars`.
   * Add your avatar image to `./content/authors/avatars/`. Name it `[your-name].jpg`. Here's mine.
 
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/jvi6yagt6r1wqwm95m08.jpg)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/jvi6yagt6r1wqwm95m08.jpg)
 
 
 * Update the existing example blog post to use your author info
@@ -143,7 +143,7 @@ module.exports = {
 title: My first post using Novela by Narative
 author: Gavin Johnson
 date: 2019-04-30
-hero: /static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/hero.jpg
+hero: /images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/hero.jpg
 excerpt: With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
 ---
 ```
@@ -224,7 +224,7 @@ const LogoContainer = styled.div`
 ```
 
 * Run `gatsby develop` to see what your site looks like. Here's mine.
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/9x8ognlmntt378x9y9yb.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/9x8ognlmntt378x9y9yb.png)
 
 I don't love how big the bio text is. I want a short bio. So I'mma add a new key to the Authors YAML, `shortBio`, and put that in the Featured Author section.
 * Add shortBio to the authors YAML
@@ -708,10 +708,10 @@ yarn-error.log
 ```
 
 * Run `gatsby develop` to see what your site looks like. Here's mine.
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/36qu3wcsxqucxanw259g.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/36qu3wcsxqucxanw259g.png)
 
 * Click on the author avatar to go to the Author page. Note that it still uses the standard `bio` field. This is what I was aiming for. Here's mine.
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/af5g9da08589ml4oyif4.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/af5g9da08589ml4oyif4.png)
 
 ## Add a resume page and navigation
 I also want a resume page as well. I could go and create a new content type, update the query to include it, add it to `createPages`, ..., or I could create a static page, but I just want a resume I can write in markdown and direct-link to. Plus, I'm trying to learn Gatsby anyway, so I'm going to make a resume page by making a secret post that includes a slug.
@@ -1381,10 +1381,10 @@ const Hidden = styled.span`
 ```
 
 * Run `gatsby develop` to see what your site looks like. Here's mine.
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/28nnul9fytg6k9gtlmx9.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/28nnul9fytg6k9gtlmx9.png)
 
 * Click on the Resume L1 menu item to go to the Resume page. Here's mine.
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/g6isdgwfk7fu2ryr8kec.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/g6isdgwfk7fu2ryr8kec.png)
 
 Now that we've gotten rid of the hero image, there is a gap between the author info and the resume body that I don't like. So let's fix that.
 * Shadow the `article.template.tsx` template
@@ -1774,7 +1774,7 @@ const HeroImage = styled.div`
 ```
 
 * Run `gatsby develop` and click on the Resume L1 menu item to go to the Resume page. Here's mine.
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/nrfvt3b4rg95uycad5gt.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/nrfvt3b4rg95uycad5gt.png)
 
 Much better. Now let's commit your changes to your repo.
 
@@ -1791,20 +1791,20 @@ Much better. Now let's commit your changes to your repo.
 *If you got an "Authentication failed..." error even though you entered your GitHub username and password correctly, you may have to create and use a personal access token. Read [this Medium blog](https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8#:~:text=How%20to%20Authenticate%20on%20GitHub,requires%20a%20personal%20access%20token.&text=Make%20sure%20you%20copy%20the,authenticate%20via%20the%20command%20line) for details on how to do that.*
 
 * In your repo on GitHub, click on the "Pull Requests" tab
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/suju4flsit5du4k5znww.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/suju4flsit5du4k5znww.png)
 * Click on the "New pull request" button
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/9hqfsmu3n98qn6cubxoa.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/9hqfsmu3n98qn6cubxoa.png)
 * Click the "Compare" dropdown and select the `initial_customizations` branch
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/gt48ztpm5qepplvmaex2.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/gt48ztpm5qepplvmaex2.png)
 * Compare your changes
 * When you are good with all of the change made, click the "Create pull request" button
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/bn3ahxtojnntzcp8rz2m.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/bn3ahxtojnntzcp8rz2m.png)
 * Write your PR notes and click the "Create pull request" button
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/9t0k42ugyg43kjm9ir4e.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/9t0k42ugyg43kjm9ir4e.png)
 * Click the "Merge pull request" button
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/gwwe0kicstl92q8wn9y3.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/gwwe0kicstl92q8wn9y3.png)
 * Click the "Confirm merge" button
-![Alt Text](/static/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/31o9nhzz4tnb7vkqnr9a.png)
+![Alt Text](/images/blog/20200727-building-a-portfolio-resume-site-with-gatsby-part-2/31o9nhzz4tnb7vkqnr9a.png)
 *You should see "Pull request successfully merged and closed."*
 * In Terminal, `git checkout main`
 

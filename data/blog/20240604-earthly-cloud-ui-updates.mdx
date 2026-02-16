@@ -4,7 +4,7 @@ date: '2024-06-04 17:00'
 tags: ['earthly', 'product-launch']
 draft: false
 summary: "Earthly introduces UI updates for its Cloud platform, enhancing the Home Dashboard and Build Details screen with new features like build timings, graphs, and detailed logs. These improvements aim to provide users with better insights and a more efficient build experience."
-images: ['/static/images/blog/20240604-earthly-cloud-ui-updates/header.jpg']
+images: ['/images/blog/20240604-earthly-cloud-ui-updates/header.jpg']
 authors: ['gavin-johnson']
 ---
 **_This post was originally published on [Earthly's blog](https://earthly.dev/blog/earthly-cloud-ui-updates/)._**
@@ -15,7 +15,7 @@ Over the past several months, we've been working on revamping the UI of Earthly 
 ## Home Dashboard
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-01.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-01.png)
 </div>
 
 The Earthly Cloud home dashboard isn't new, but it's a great entry point to Earthly Cloud's UI. It has an Active Builds section with information about each currently running build and a Builds section with all of the builds across your org represented by visual indicators that make it easy to determine if individual builds were successful, failed, or canceled. If you hover your cursor over any of these build icons, additional details about the build are displayed. Clicking any of these build icons will take you to the new Build Details screen which will be detailed later in this post. The dashboard also has a Satellites section listing all satellites in your org, their status, and instance details.
@@ -27,7 +27,7 @@ The new Build Details screen aims to give you more information about your builds
 ### Overview
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-02.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-02.png)
 </div>
 
 The first and default tab is the Overview tab. It is a quick look at the status and performance of a build. It shows details like build status, duration, the percentage of the build that was cached, and a high-level build timeline.
@@ -37,13 +37,13 @@ The first and default tab is the Overview tab. It is a quick look at the status 
 #### Target Timings
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-03.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-03.png)
 </div>
 
 The second tab is the Timings tab which has 2 sub-tabs. The first is Target Timings. Target Timings show how long each target run as part of the build took to execute. Clicking any of the targets takes you to its Target Detail screen.
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-04.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-04.png)
 </div>
 
 The Target Detail screen shows you the build logs for the target next to the commands that were executed for the target.
@@ -51,7 +51,7 @@ The Target Detail screen shows you the build logs for the target next to the com
 #### Command Timings
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-05.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-05.png)
 </div>
 
 The second sub-tab on the Timings tab is Command Timings. This screen gives a detailed breakdown of how long each command run as part of the build took to execute. Clicking any of the commands takes you to its Target Detail screen with the command you clicked highlighted.
@@ -59,7 +59,7 @@ The second sub-tab on the Timings tab is Command Timings. This screen gives a de
 ### Build Graph
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-06.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-06.png)
 </div>
 
 The third tab on the Build Details screen is the Graph tab. This tab shows a graph visualization of each target run as part of the build and which relied on which others. Clicking any of the targets takes you to its Target Detail screen.
@@ -67,7 +67,7 @@ The third tab on the Build Details screen is the Graph tab. This tab shows a gra
 ### Build Logs
 
 <div class="wide">
-![Image](/static/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-07.png)\
+![Image](/images/blog/20240604-earthly-cloud-ui-updates/earthly-cloud-ui-updates-07.png)
 </div>
 
 The last tab on the Build Details screen is the Logs tab. This shows the logs for your build. If you've ever used Earthly's Cloud logs, this should look very familiar.

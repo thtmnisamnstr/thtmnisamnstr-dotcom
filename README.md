@@ -1,42 +1,47 @@
 # thtmnisamnstr-dotcom
-![image info](./public/static/images/thtmnisamnstr-dotcom-screenshot.png)
-This is the source code for my personal website at https://thtmnisamnstr.com. It is a modified version of [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\].
+![image info](./public/images/thtmnisamnstr-dotcom-screenshot.png)
+This is the source code for my personal website at [https://thtmnisamnstr.com](https://thtmnisamnstr.com). It is a Next.js site with a theme inspired by VS Code.
 
 ## Tech Stack
-*   Node.js 19
-*   Next.js 13
-*   [Netlify](https://www.netlify.com/) for hosting
-*   [Segment](https://segment.com/) for analytics
-*   [Earthly](http://earthly.dev/) for builds
+* Node.js >=22 <26
+* Next.js 16
+* [Netlify](https://www.netlify.com/) for hosting
+* [Segment](https://segment.com/) for analytics
 
-## How to run, build, and upgrade dependencies
+## How to run, build, and verify
 ### Running locally
-*   Clone the repo
-*   Run `earthly +preview`, and the site will run on http://localhost:3000.
-
-### Deploying the site
-Deploying the site requires building at deploy. The site uses `next/image`. Netlify requires `@netlify/plugin-nextjs` and running `netlify deploy` with the `--build` argument to work with `next/image`.
-*   Clone the repo.
-*   Make sure to set the `NODE_ENV` environment variable.
-*   Run `earthly --push +deploy`, and the site will build and deploy to Netlify based on your Netlify environment variables.
-    *   Make sure Docker is started before running Earthly commands.
-**Note:** You must add the `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` environment variables to your Netlify site.
+* Clone the repo.
+* Run `npm install`.
+* Run `npm run dev` and open [http://localhost:3000](http://localhost:3000).
 
 ### Building the site
-Building the site standalone isn't super useful unless you want to debug your Netlify build. Since build is required at deploy, build and deploy can't be isolated.
-*   Clone the repo.
-*   Run `earthly +build`, and the site will build and save build outputs to your project.
-    *   Make sure Docker is started before running Earthly commands.
+* Clone the repo.
+* Run `npm install`.
+* Run `npm run build` (this also generates RSS feeds and sitemap output in `public/`).
+* Optionally run `npm run serve` to serve the production build locally.
 
-### Dependency management and package install/uninstall
-*   To update dependencies and remove unneeded dependencies, run `earthly +upgrade`. `npm-check` and `taze` are used to maintain dependencies.
-    * Manually upgrade by running `npm run deps-npm-check` and `npm run deps-taze`.
-    * Or, even more manually, run `npx npm-check -u` and `npx taze`.
-*   To install modules, run `npm install --force`.
-*   To uninstall modules, run `npm uninstall [module_name] --force`.
+### Quality checks
+* Run `npm run lint` for lint checks.
+* Run `npm run typecheck` for TypeScript checks.
+* Run `npm run test` for unit/integration tests.
+* Run `npm run verify` to run lint, typecheck, tests, and build together.
+* Pull requests run these checks in GitHub Actions along with runtime crawl and Lighthouse assertions.
 
-## License 🤝
+### Cleanup
+* Run `npm run clean` to remove local build/test/cache artifacts and generated outputs.
+
+### Runtime regression crawl
+* Build first: `npm run build`.
+* Serve locally: `npm run serve -- --port 3000`.
+* In another shell, run `npm run test:e2e:crawl` to crawl all sitemap routes and fail on runtime/image errors.
+
+### Image optimization
+* Run `npm run optimize:images` to optimize local image assets.
+* Only files `>=1MB` are recompressed by default.
+
+### Deploying the site
+* Deploy via your Netlify site configuration connected to this repository.
+* Ensure required environment variables are set in Netlify (for example Segment keys if used).
+
+## License
 [MIT](./LICENSE)
-
-## Thanks
-Thanks to [Leo Huynh's personal website](https://www.leohuynh.dev/) \[[repo](https://github.com/hta218/leohuynh.dev)\] for making his website open source.

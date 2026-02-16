@@ -2,51 +2,10 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
   content: ['./(components|constant|layouts|pages)/**/*.(ts|tsx)', './data/(blog|authors)/*.mdx'],
   darkMode: 'class',
   theme: {
     extend: {
-      keyframes: {
-        wiggle: {
-          '0%': { transform: 'rotate(0deg)' },
-          '50%': { transform: 'rotate(180deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
-        'music-bar-1': {
-          '0%, 100%': { height: '0%' },
-          '50%': { height: '70%' },
-        },
-        'music-bar-2': {
-          '0%, 100%': { height: '50%' },
-          '25%': { height: '0%' },
-          '75%': { height: '100%' },
-        },
-        'music-bar-3': {
-          '0%, 100%': { height: '70%' },
-          '15%': { height: '100%' },
-          '65%': { height: '0%' },
-        },
-        'music-bar-4': {
-          '0%, 100%': { height: '50%' },
-          '35.7%': { height: '0%' },
-          '85.7%': { height: '70%' },
-        },
-        'song-title': {
-          '0%': { transform: 'translateX(0%)' },
-          '25%': { transform: 'translateX(0%)' },
-          '95%': { transform: 'translateX(-85%)' },
-          '100%': { transform: 'translateX(-85%)' },
-        },
-      },
-      animation: {
-        wiggle: 'wiggle 7s linear infinite',
-        'music-bar-1': 'music-bar-1 .8s linear infinite',
-        'music-bar-2': 'music-bar-2 .8s linear infinite',
-        'music-bar-3': 'music-bar-3 .8s linear infinite',
-        'music-bar-4': 'music-bar-4 .8s linear infinite',
-        'song-title': 'song-title 10s linear infinite',
-      },
       spacing: {
         '9/16': '56.25%',
       },
@@ -71,7 +30,6 @@ module.exports = {
           blue: '#93ddfd',
           white: '#fff',
         },
-        spotify: '#1DB954',
         twitter: '#1da1f2',
         facebook: '#1877f2',
       },
@@ -85,45 +43,46 @@ module.exports = {
         'zoom-in': 'zoom-in',
         'zoom-out': 'zoom-out',
       },
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.700'),
+            color: 'var(--vscode-editor-foreground)',
             a: {
-              color: theme('colors.primary.500'),
+              color: 'var(--vscode-text-link-foreground)',
               '&:hover': {
-                color: theme('colors.primary.600'),
+                color: 'var(--vscode-text-link-active-foreground)',
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: 'var(--vscode-text-link-foreground)' },
             },
             h1: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.900'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h2: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.900'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h3: {
               fontWeight: '600',
-              color: theme('colors.gray.900'),
+              color: 'var(--vscode-editor-foreground)',
             },
             h4: {
               fontSize: '1.166667em',
             },
             'h4,h5,h6': {
-              color: theme('colors.gray.900'),
+              color: 'var(--vscode-editor-foreground)',
             },
             code: {
-              color: theme('colors.pink.500'),
-              backgroundColor: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
+              backgroundColor: 'var(--vscode-text-code-block-background)',
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '2px',
               paddingBottom: '2px',
               borderRadius: '0.25rem',
+              border: '1px solid var(--vscode-editor-group-border)',
             },
             'code::before': {
               content: 'none',
@@ -131,18 +90,19 @@ module.exports = {
             'code::after': {
               content: 'none',
             },
-            hr: { borderColor: theme('colors.gray.200') },
+            hr: { borderColor: 'var(--vscode-editor-group-border)' },
             'ol li::before': {
               fontWeight: '600',
-              color: theme('colors.gray.500'),
+              color: 'var(--vscode-description-foreground)',
             },
             'ul li::before': {
-              backgroundColor: theme('colors.gray.500'),
+              backgroundColor: 'var(--vscode-description-foreground)',
             },
-            strong: { color: theme('colors.gray.600') },
+            strong: { color: 'var(--vscode-editor-foreground)' },
             blockquote: {
-              color: theme('colors.gray.900'),
-              borderLeftColor: theme('colors.gray.200'),
+              color: 'var(--vscode-editor-foreground)',
+              borderLeftColor: 'var(--vscode-text-blockquote-border)',
+              backgroundColor: 'var(--vscode-text-blockquote-background)',
             },
           },
         },
@@ -162,59 +122,57 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.300'),
+            color: 'var(--vscode-editor-foreground)',
             a: {
-              color: theme('colors.primary.400'),
+              color: 'var(--vscode-text-link-foreground)',
               '&:hover': {
-                color: theme('colors.primary.200'),
+                color: 'var(--vscode-text-link-active-foreground)',
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: 'var(--vscode-text-link-foreground)' },
             },
             h1: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.100'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h2: {
               fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.100'),
+              letterSpacing: '-0.02em',
+              color: 'var(--vscode-editor-foreground)',
             },
             h3: {
               fontWeight: '600',
-              color: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
             },
             'h4,h5,h6': {
-              color: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
             },
-            hr: { borderColor: theme('colors.gray.700') },
+            hr: { borderColor: 'var(--vscode-editor-group-border)' },
             'ol li:before': {
               fontWeight: '600',
-              color: theme('colors.gray.400'),
+              color: 'var(--vscode-description-foreground)',
             },
             'ul li:before': {
-              backgroundColor: theme('colors.gray.400'),
+              backgroundColor: 'var(--vscode-description-foreground)',
             },
-            strong: { color: theme('colors.gray.100') },
+            strong: { color: 'var(--vscode-editor-foreground)' },
             thead: {
-              color: theme('colors.gray.100'),
+              color: 'var(--vscode-editor-foreground)',
             },
             tbody: {
               tr: {
-                borderBottomColor: theme('colors.gray.700'),
+                borderBottomColor: 'var(--vscode-editor-group-border)',
               },
             },
             blockquote: {
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.700'),
+              color: 'var(--vscode-editor-foreground)',
+              borderLeftColor: 'var(--vscode-text-blockquote-border)',
+              backgroundColor: 'var(--vscode-text-blockquote-background)',
             },
           },
         },
       }),
     },
-  },
-  variants: {
-    typography: ['dark'],
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }

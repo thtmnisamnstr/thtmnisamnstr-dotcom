@@ -13,7 +13,7 @@ export function BlogHeader({ title, date, readingTime }: BlogHeaderProps) {
         <dl className="space-y-10">
           <div>
             <dt className="sr-only">Published on</dt>
-            <dd className="flex justify-center items-center text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+            <dd className="vscode-meta flex justify-center items-center text-base font-medium leading-6">
               <time dateTime={date} className="flex items-center">
                 <Twemoji emoji="calendar" size="" />
                 <span className="ml-1.5">{createdAt}</span>

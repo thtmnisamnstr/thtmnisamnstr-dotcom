@@ -1,6 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 
+const shouldCache = process.env.NODE_ENV === 'production' || process.env.CI === 'true'
+const filesCache = new Map<string, string[]>()
+
 function pipe(...fns: Function[]) {
   return (x: any) => fns.reduce((v, f) => f(v), x)
 }
@@ -30,9 +33,19 @@ export function formatSlug(slug: string) {
 }
 
 export function getFiles(type: string): string[] {
+  if (shouldCache && filesCache.has(type)) {
+    return filesCache.get(type) as string[]
+  }
+
   let root = process.cwd()
   let prefixPaths = path.join(root, 'data', type)
   let files = getAllFilesRecursively(prefixPaths)
   // Only want to return blog/path and ignore root, replace is needed to work on Windows
-  return files.map((file) => file.slice(prefixPaths.length + 1).replace(/\\/g, '/'))
+  let normalizedFiles = files.map((file) => file.slice(prefixPaths.length + 1).replace(/\\/g, '/'))
+
+  if (shouldCache) {
+    filesCache.set(type, normalizedFiles)
+  }
+
+  return normalizedFiles
 }
