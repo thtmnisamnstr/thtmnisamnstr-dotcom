@@ -1,8 +1,8 @@
 import { definePineconeSearches } from 'nextjs-pinecone-search'
 
 export default definePineconeSearches({
-  siteUrl: 'http://localhost:3000',
-  //siteUrl: 'https://thtmnisamnstr.com',
+  //siteUrl: 'http://localhost:3000',
+  siteUrl: 'https://thtmnisamnstr.com',
   namespacePrefix: 'thtmnisamnstr-dotcom',
   searches: {
     blog: {
