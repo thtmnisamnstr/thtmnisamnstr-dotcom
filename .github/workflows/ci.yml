@@ -23,12 +23,22 @@ jobs:
         run: npm ci
 
       - name: Verify
+        env:
+          NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+          PINECONE_DENSE_INDEX: ${{ secrets.PINECONE_DENSE_INDEX }}
+          PINECONE_SPARSE_INDEX: ${{ secrets.PINECONE_SPARSE_INDEX }}
         run: npm run verify
 
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
       - name: Runtime crawl
+        env:
+          NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+          PINECONE_DENSE_INDEX: ${{ secrets.PINECONE_DENSE_INDEX }}
+          PINECONE_SPARSE_INDEX: ${{ secrets.PINECONE_SPARSE_INDEX }}
         run: |
           set -euo pipefail
           npm run serve -- --port 3012 &
@@ -47,4 +57,9 @@ jobs:
           BASE_URL=http://localhost:3012 npm run test:e2e:crawl
 
       - name: Lighthouse performance checks
+        env:
+          NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+          PINECONE_DENSE_INDEX: ${{ secrets.PINECONE_DENSE_INDEX }}
+          PINECONE_SPARSE_INDEX: ${{ secrets.PINECONE_SPARSE_INDEX }}
         run: npm run perf:lighthouse
