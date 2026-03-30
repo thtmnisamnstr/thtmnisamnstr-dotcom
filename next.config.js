@@ -1,4 +1,6 @@
-module.exports = {
+const { withPineconeSearch } = require('nextjs-pinecone-search')
+
+const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   experimental: {
     largePageDataBytes: 256 * 1024,
@@ -29,3 +31,5 @@ module.exports = {
     ]
   },
 }
+
+module.exports = withPineconeSearch(nextConfig)
