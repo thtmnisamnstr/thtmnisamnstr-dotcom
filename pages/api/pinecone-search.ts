@@ -1,9 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createPineconeSearchService } from 'nextjs-pinecone-search'
 
-import config from '../../pinecone.search.config'
+import pineconeSearchConfig from '../../pinecone.search.config'
 
-const service = createPineconeSearchService({ config })
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+}
+
+const service = createPineconeSearchService({ config: pineconeSearchConfig })
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {

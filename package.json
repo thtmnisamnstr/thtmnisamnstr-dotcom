@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack && node ./scripts/generate-feeds.mjs && node ./scripts/generate-sitemap.mjs",
+    "reindex": "node ./scripts/reindex-pinecone.mjs",
     "serve": "next start",
     "clean": "node ./scripts/clean.mjs",
     "lint": "eslint --max-warnings=0 \"{components,constant,layouts,libs,pages,scripts,types,utils}/**/*.{js,jsx,mjs,ts,tsx}\"",
@@ -47,7 +48,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@netlify/plugin-nextjs": "^5.15.8",
+    "@netlify/plugin-nextjs": "^5.15.9",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.2.3",

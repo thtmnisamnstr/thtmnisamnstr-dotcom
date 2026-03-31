@@ -32,4 +32,7 @@ const nextConfig = {
   },
 }
 
-module.exports = withPineconeSearch(nextConfig)
+const isNetlifyProductionDeploy =
+  process.env.NETLIFY === 'true' && process.env.CONTEXT === 'production'
+
+module.exports = isNetlifyProductionDeploy ? withPineconeSearch(nextConfig) : nextConfig
