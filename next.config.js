@@ -1,4 +1,6 @@
-module.exports = {
+const { withPineconeSearch } = require('nextjs-pinecone-search')
+
+const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   experimental: {
     largePageDataBytes: 256 * 1024,
@@ -29,3 +31,8 @@ module.exports = {
     ]
   },
 }
+
+const isNetlifyProductionDeploy =
+  process.env.NETLIFY === 'true' && process.env.CONTEXT === 'production'
+
+module.exports = isNetlifyProductionDeploy ? withPineconeSearch(nextConfig) : nextConfig
