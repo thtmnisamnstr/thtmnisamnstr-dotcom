@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Blogs"
+  short_description: "Import complete blog posts for thtmnisamnstr.com"
+  default_prompt: "Use $update-blogs to import these article links into my site, including authors, images, and validation."

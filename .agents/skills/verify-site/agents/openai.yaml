@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Site"
+  short_description: "Check this site's content, UI, search, and release readiness"
+  default_prompt: "Use $verify-site to check the current site changes and report whether they are ready to release."

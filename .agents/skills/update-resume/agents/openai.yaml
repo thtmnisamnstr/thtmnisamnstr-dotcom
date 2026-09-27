@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Resume"
+  short_description: "Sync my site's resume from Google Docs or Markdown"
+  default_prompt: "Use $update-resume to update my resume page from this Google Doc or Markdown resume."

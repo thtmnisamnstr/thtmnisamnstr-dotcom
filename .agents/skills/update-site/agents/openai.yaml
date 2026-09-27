@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Site"
+  short_description: "Update this site's packages, runtime, and tooling"
+  default_prompt: "Use $update-site to update this site's dependencies, Node, and related tooling, and verify the result."
