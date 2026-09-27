@@ -1,11 +1,7 @@
 import type readingTime from 'reading-time'
 
 export type MdxPageLayout =
-  | 'AuthorLayout'
-  | 'ListLayout'
-  | 'PostLayout'
-  | 'PostSimple'
-  | 'ResumeLayout'
+  'AuthorLayout' | 'ListLayout' | 'PostLayout' | 'PostSimple' | 'ResumeLayout'
 
 export interface MdxFrontMatter {
   layout?: MdxPageLayout
