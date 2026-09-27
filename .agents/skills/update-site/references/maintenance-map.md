@@ -4,7 +4,7 @@ Observed at `d382a6458`; inspect current files and release metadata each run.
 
 | Coupled area | Source of truth and relevant behavior |
 | --- | --- |
-| Runtime | `.nvmrc`, `package.json#engines`, `.github/workflows/ci.yml`, README, Netlify runtime settings. Recorded repo pin was Node 22 and engines `>=22 <26`; these are historical, not upgrade targets. |
+| Runtime | `.nvmrc`, `package.json#engines`, `.github/workflows/ci.yml`, README, Netlify runtime settings. The current pin and engine range are a baseline to inspect, not future upgrade targets. A selected Node may be installed outside the default `PATH`; scope it to the task rather than changing the system default. |
 | Framework | Next Pages Router, React, `next.config.js`, `pages/**`, `next-env.d.ts`. `dev` and `build` explicitly pass `--webpack`; do not drop this incidentally. |
 | Hosting | `netlify.toml` runs `npm run build`, publishes `.next`, and uses `@netlify/plugin-nextjs`. It is not a static-export-only site; `/api/pinecone-search` requires a server function. |
 | Styling | Tailwind 4, `@tailwindcss/postcss`, forms/typography plugins, `css/tailwind.css`, VS Code theme tokens and static masked header logo. |
@@ -13,7 +13,7 @@ Observed at `d382a6458`; inspect current files and release metadata each run.
 | Generated content | `build` also runs feed and sitemap generators. `public/feed.xml`, `public/tags`, `public/sitemap.xml`, `.next`, and TypeScript build info are ignored/generated. |
 | Tests | Vitest; Playwright Chromium for `scripts/crawl-sitemap.mjs`; an inline `@lhci/cli` version in `perf:lighthouse`. Browser executables must match the installed Playwright version. |
 | CI | `.github/workflows/ci.yml` runs on pull requests targeting `main`, not every branch push. Verify, crawl and Lighthouse all have environment configuration. Preserve the intended PR checks when upgrading Actions. |
-| Search | `nextjs-pinecone-search`, `pinecone.search.config.ts`, `pages/api/pinecone-search.ts`, `layouts/ListLayout.tsx`, `scripts/reindex-pinecone.mjs`, and production wrapper in `next.config.js`. |
+| Search | `nextjs-pinecone-search`, `pinecone.search.config.ts`, `pages/api/pinecone-search.ts`, `layouts/ListLayout.tsx`, `scripts/reindex-pinecone.mjs`, and production wrapper in `next.config.js`. The API validates the method/body before lazily constructing the provider service, so contract failures do not require credentials; keep that behavior when upgrading. |
 | Analytics | `components/Segment.tsx`, `pages/_app.tsx`, route calls and `.env.example`. Verify graceful behavior with missing development keys and keep private service credentials server-side. |
 
 ## Search and deployment boundary
@@ -31,6 +31,8 @@ The reindex script imports `@next/env`, currently available transitively through
 ## Quality gates and limitations
 
 `npm run verify` runs lint, typecheck, unit/integration tests, production build, feeds, and sitemap. CI then launches a server on 3012 and runs `BASE_URL=http://localhost:3012 npm run test:e2e:crawl`. Use an available port, a readiness check, and cleanup of the specific server process started for this task.
+
+Some task environments apply an install-script allowlist and may warn during `npm ci`. Do not suppress or ignore a warning that prevents a required executable from working; if the clean install and build succeed, record it as an environment policy warning rather than misclassifying it as an application failure.
 
 The current crawl checks browser page errors and broken/failed images. It does not assert navigation HTTP status, search interaction, redirects, canonical URLs, external links, all lazy images, or visual layout. Supplement it with targeted checks for changed behavior; do not describe it as exhaustive.
 

@@ -5,7 +5,7 @@ description: Check thtmnisamnstr.com for release readiness or regressions using 
 
 # Verify site
 
-Verify the actual changed site or diagnose a reported failure in `thtmnisamnstr/thtmnisamnstr-dotcom`. Prefer its active checkout; the usual location is `/Users/gavinjohnson/Documents/Development/thtmnisamnstr-dotcom`. Record branch/commit plus uncommitted changes so results describe a concrete tree.
+Verify the actual changed site or diagnose a reported failure in `thtmnisamnstr/thtmnisamnstr-dotcom`. Prefer its active checkout; the usual location is `/Users/gavinjohnson/Documents/Development/thtmnisamnstr-dotcom`. Record branch/commit, short worktree status, lockfile identity, and selected Node/npm versions so results describe a concrete tree. Reuse earlier evidence only when those inputs and the relevant generated build are unchanged.
 
 Determine whether the request is inspection, a fix, or release work. A check/review reports findings; a request to fix authorizes relevant repairs and re-verification. Reuse checks already completed for the same source, dependency lock, and runtime. Honor existing publishing authorization, but do not infer it from a check request.
 
@@ -15,10 +15,10 @@ Read [references/verification-checklist.md](references/verification-checklist.md
 
 - Inspect the current Node pin/engines, lockfile, package scripts, `netlify.toml`, CI, and `next.config.js`. Use the supported runtime and a matching installation. If inspection requires restoring dependencies, avoid disturbing another active task; use an isolated checkout where appropriate.
 - Inspect ambient `NETLIFY` and `CONTEXT` without printing secrets. For local verification, run `env NETLIFY=false CONTEXT=dev npm run verify`; a successful build generates the feeds/sitemap used by later checks without activating the production-only Pinecone wrapper. Use a genuine production build only when production indexing is authorized and intended. Do not continue with stale output after a failed build and call it a pass.
-- Serve the production build on an available local port, wait for readiness, and run `BASE_URL=http://localhost:<port> npm run test:e2e:crawl`. Install the matching Playwright Chromium browser if needed. Stop only the server process started for this check.
-- Inspect response status and meaningful page content on representative routes as well as browser errors and images. The existing crawler alone does not validate status codes or user interactions.
+- Serve the production build on an available local port, wait for readiness, and run `BASE_URL=http://localhost:<port> npm run test:e2e:crawl`. Install the matching Playwright Chromium browser if needed. Use cleanup that targets only the server started for this check, including when a later assertion fails, and confirm no check-owned server remains afterward.
+- Inspect response status and meaningful page content on representative routes as well as browser errors and images. The existing crawler alone does not validate status codes or user interactions. Prefer DOM assertions for title/metadata, or attribute-tolerant HTML matching: framework output may add attributes to tags such as `<title>` without changing the rendered metadata.
 - Run configured Lighthouse collection/assertions when doing release/performance/shared-layout verification. Preserve the configured three runs and thresholds. Use local reports: the existing `perf:lighthouse` autorun uploads to temporary public storage, so run equivalent `collect` and `assert` steps without `upload`, or use a temporary filesystem-upload config unless report publication is authorized.
-- Inspect relevant desktop/mobile pages, theme selection/persistence, and changed user interactions. For a reported production issue, compare local evidence with available read-only CI/Netlify/deployed-site evidence. Never claim an unseen deployment passed.
+- Inspect relevant desktop/mobile pages, theme selection/persistence, and changed user interactions. Capture mobile menus at viewport size rather than with a full-page screenshot, because fixed overlays can create misleading stitched output. For a reported production issue, compare local evidence with available read-only CI/Netlify/deployed-site evidence. Never claim an unseen deployment passed.
 
 ## Search and external-state checks
 

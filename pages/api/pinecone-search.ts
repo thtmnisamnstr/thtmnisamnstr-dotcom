@@ -9,7 +9,12 @@ export const config = {
   },
 }
 
-const service = createPineconeSearchService({ config: pineconeSearchConfig })
+let service: ReturnType<typeof createPineconeSearchService> | undefined
+
+function getSearchService() {
+  service ??= createPineconeSearchService({ config: pineconeSearchConfig })
+  return service
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -25,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     let topKNumber = typeof topK === 'number' ? topK : undefined
-    let result = await service.search(search, query, { topK: topKNumber })
+    let result = await getSearchService().search(search, query, { topK: topKNumber })
     return res.status(200).json(result)
   } catch (error) {
     let message = error instanceof Error ? error.message : 'Search failed'

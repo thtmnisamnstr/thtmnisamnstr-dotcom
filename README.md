@@ -3,7 +3,7 @@
 This is the source code for my personal website at [https://thtmnisamnstr.com](https://thtmnisamnstr.com). It is a Next.js site with a theme inspired by VS Code.
 
 ## Tech Stack
-* Node.js >=22 <26
+* Node.js 24.21.0 (the current Node.js 24 LTS patch)
 * Next.js 16
 * [Netlify](https://www.netlify.com/) for hosting
 * [Segment](https://segment.com/) for analytics

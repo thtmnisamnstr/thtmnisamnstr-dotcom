@@ -1,6 +1,6 @@
 # Verification checklist
 
-Use current routes/config; examples below reflect commit `d382a6458`. Pick meaningful coverage, and record omissions rather than implying exhaustive testing.
+Use current routes/config; the examples below describe the maintained Pages Router implementation, not a frozen commit. Pick meaningful coverage, and record omissions rather than implying exhaustive testing.
 
 ## Baseline and generated output
 
@@ -17,8 +17,8 @@ Use current routes/config; examples below reflect commit `d382a6458`. Pick meani
 | Redirects/errors | `/blog/page/1` redirects to `/blog`; `/tags/<tag>/page/1` to tag root; nonexistent slugs/page numbers behave as expected. Assert HTTP status and actual content, not only no console errors. |
 | Articles | Every new/changed article plus the existing image-rich `20240604-earthly-cloud-ui-updates` regression fixture; hero, author order/name/link, date, tags, inline images/captions, code, tables, links, lightbox and navigation. Validate an author portrait only when a current rendered surface uses one. |
 | Resume | `/resume`: all source sections, titles/dates, multiple roles per employer, tables/lists and long lines; compare against the supplied document when changed. |
-| Metadata | Title, description, canonical URL, Open Graph image and structured author/post data. Canonicals currently use this site's origin even in local previews. |
-| Themes | At least one light and dark theme on desktop and a narrow/mobile viewport. For theme/component changes, include high contrast and representative alternatives, reload persistence and system preference; check hydration, body contrast, header logo, code blocks and select/menu focus. |
+| Metadata | Title, description, canonical URL, Open Graph image and structured author/post data. Assert rendered DOM metadata or tolerate framework-added element attributes; do not require a literal bare `<title>` start tag. Canonicals currently use this site's origin even in local previews. |
+| Themes | At least one light and dark theme on desktop and a narrow/mobile viewport. For theme/component changes, include high contrast and representative alternatives, reload persistence and system preference; check hydration, body contrast, header logo, code blocks and select/menu focus. Capture an open mobile menu as a viewport image, not a stitched full-page image, then confirm that closing it restores normal navigation. |
 
 The sitemap crawler captures `pageerror`, failed image requests, image HTTP errors, and already-complete broken images. It does not guarantee lazy images outside the viewport were loaded. Scroll image-heavy affected pages and inspect relevant layout/screenshots. It also does not exercise search or every control.
 
@@ -31,14 +31,14 @@ Read `layouts/ListLayout.tsx`, `pages/api/pinecone-search.ts`, `pinecone.search.
 - Test the current Pinecone-backed search in `/blog` and populated tag contexts. Check debounce/loading state, no-results behavior, clear-query restoration of normal pagination, and no stale results when typing quickly. There is currently no separate keyword mode or automatic keyword fallback.
 - Backend errors currently become an empty results array and the UI says `No posts found.` Inspect the actual network response to distinguish provider failure from legitimate zero matches; report this behavior as a finding when relevant, not as a successful graceful fallback.
 - Use a known post/topic query; check relevant titles and clickable `/blog/<slug>` destinations. Search queries may hit a paid provider, so use a small bounded set.
-- The API accepts POST bodies with `search` and `query` strings and optional numeric `topK`. It rejects other methods with 405/`Allow: POST` and malformed required fields with 400. A valid search requires working provider credentials; do not count error-path checks as proof it works.
+- The API accepts POST bodies with `search` and `query` strings and optional numeric `topK`. It rejects other methods with 405/`Allow: POST` and malformed required fields with 400 before constructing the provider service, so those contract checks work without credentials. A valid search requires working provider credentials; do not count error-path checks as proof it works.
 - Config currently points at production site `https://thtmnisamnstr.com` with namespace prefix `thtmnisamnstr-dotcom` and the `blog` search. Inspect actual targets before any authorized reindex. Keep `PINECONE_API_KEY` server-only.
 - `NETLIFY=true` together with `CONTEXT=production` enables the production build wrapper; manual `npm run reindex` directly writes the index. Never invoke either path as a routine local/preview test.
 - After an authorized production deploy, use its logs to confirm indexing and a new article query to check freshness. A local build, a successful HTTP deployment, and a fresh search index are three different outcomes.
 
 ## Performance and CI
 
-Inspect `.lighthouserc.json`: its recorded three-run checks cover `/`, `/blog`, and an older article, with performance >=0.8 and accessibility/best-practices/SEO >=0.9. It does not cover `/resume` by default. Use the CLI version configured by the current package script; run collection then assertion without the public-upload step for local work. Keep reports in ignored output or a temporary directory.
+Inspect `.lighthouserc.json`: its recorded three-run checks cover `/`, `/blog`, and an older article, with performance >=0.8 and accessibility/best-practices/SEO >=0.9. It does not cover `/resume` by default. Use the CLI version configured by the current package script; run collection then assertion without the public-upload step for local work. If Lighthouse cannot discover Chrome, use the executable from the installed matching Playwright browser rather than an arbitrary incompatible browser. Keep reports in ignored output or a temporary directory.
 
 The February 16 history includes both replacing the dynamic header logo with a CSS-masked static logo and increasing Lighthouse runs to reduce flakiness. Preserve those benefits; investigate actual assets/scripts/layout if performance drops.
 
