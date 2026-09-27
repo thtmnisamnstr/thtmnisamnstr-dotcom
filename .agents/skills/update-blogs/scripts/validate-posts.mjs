@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Read-only metadata/asset checks. MDX bodies still need the site's build and browser checks.
+// Read-only metadata/asset checks. MDX bodies still need source and browser checks.
 import fs from 'node:fs'
 import path from 'node:path'
 import { createRequire } from 'node:module'
@@ -27,6 +27,27 @@ function publicationDate(value) {
   }
   if (!Number.isFinite(Date.parse(value))) return null
   return `${yearText}${monthText}${dayText}`
+}
+
+function localBodyImages(content) {
+  const visibleLines = []
+  let fence = null
+  for (const line of content.split(/\r?\n/)) {
+    const marker = line.match(/^ {0,3}(`{3,}|~{3,})/)
+    if (marker) {
+      const character = marker[1][0]
+      if (!fence) fence = { character, length: marker[1].length }
+      else if (fence.character === character && marker[1].length >= fence.length) fence = null
+      continue
+    }
+    if (!fence) visibleLines.push(line)
+  }
+
+  const body = visibleLines.join('\n')
+  const images = new Set()
+  for (const match of body.matchAll(/!\[[^\]]*\]\(\s*(\/images\/[^\s)]+)[^)]*\)/g)) images.add(match[1])
+  for (const match of body.matchAll(/<(?:Image|img)\b[^>]*\bsrc\s*=\s*["'](\/images\/[^"']+)["'][^>]*>/g)) images.add(match[1])
+  return images
 }
 
 function main() {
@@ -110,7 +131,7 @@ function main() {
         throw new Error('provide an explicit .md or .mdx file inside data/blog')
       }
       if (!isInside(blogRoot, fs.realpathSync(postPath))) throw new Error('post resolves outside data/blog')
-      const { data } = matter(fs.readFileSync(postPath, 'utf8'))
+      const { data, content } = matter(fs.readFileSync(postPath, 'utf8'))
       for (const key of ['title', 'summary']) {
         if (typeof data[key] !== 'string' || !data[key].trim()) error(`${key} must be a nonempty string`)
       }
@@ -153,6 +174,10 @@ function main() {
           if (issue) error(`image ${JSON.stringify(image)}: ${issue}`)
         }
       }
+      for (const image of localBodyImages(content)) {
+        const issue = imageError(image)
+        if (issue) error(`inline image ${JSON.stringify(image)}: ${issue}`)
+      }
     } catch (cause) {
       error(cause.code === 'ENOENT' ? 'post file does not exist' : cause.message)
     }
@@ -163,9 +188,9 @@ function main() {
     console.error(`Failed: ${diagnostics.length} issue(s) across ${postFiles.length} supplied post(s).`)
     process.exitCode = 1
   } else {
-    console.log(`Passed metadata, authors, and frontmatter image checks for ${postFiles.length} supplied post(s).`)
+    console.log(`Passed metadata, authors, and local image checks for ${postFiles.length} supplied post(s).`)
   }
-  console.log('Scope: read-only. MDX bodies, inline images, source fidelity, links, and rendered layout still require build/browser checks. Image checks read dimensions, not every pixel.')
+  console.log('Scope: read-only. Inline checks cover literal local Markdown and JSX image paths outside fenced code. Source fidelity, links, MDX compilation, and rendered layout still require review. Image checks read dimensions, not every pixel.')
 }
 
 try {
