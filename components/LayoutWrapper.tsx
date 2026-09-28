@@ -43,6 +43,13 @@ export function LayoutWrapper({
   const closeDrawer = useCallback(() => setDrawerOpen(false), [])
   const closeQuickOpen = useCallback(() => setQuickOpen(false), [])
   const blogRelated = /^\/(blog|tags)(\/|$)/.test(file.href)
+  const tagDocument = file.href.startsWith('/tags/')
+  const explorerFileLabel = tagDocument
+    ? file.crumbs
+        .slice(1)
+        .map(({ label }) => label)
+        .join('/')
+    : file.label
   const extraFile = !workspaceFiles.some(({ href }) => href === file.href)
 
   useEffect(() => {
@@ -207,8 +214,12 @@ export function LayoutWrapper({
                   <span>blog</span>
                 </summary>
                 {explorerLink('/blog', 'index.md', true)}
-                {extraFile && blogRelated && explorerLink(file.href, file.label, true)}
+                {extraFile &&
+                  blogRelated &&
+                  !tagDocument &&
+                  explorerLink(file.href, file.label, true)}
                 {explorerLink('/tags', 'tags/index.md', true)}
+                {extraFile && tagDocument && explorerLink(file.href, explorerFileLabel, true)}
               </details>
             )
           })}

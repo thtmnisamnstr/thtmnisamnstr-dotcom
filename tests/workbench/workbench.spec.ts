@@ -76,6 +76,33 @@ test('Explorer groups tags and the current article under blog on desktop and mob
   await expect(drawerFolder.getByRole('link', { name: 'tags/index.md', exact: true })).toBeVisible()
 })
 
+test('Explorer names tag documents and lists them after tags index on desktop and mobile', async ({
+  page,
+}) => {
+  for (const [route, label] of [
+    ['/tags/product-launch', 'tags/product-launch/index.md'],
+    ['/tags/product-launch/page/2', 'tags/product-launch/page-2.md'],
+  ]) {
+    for (const width of [1440, 390]) {
+      await page.setViewportSize({ width, height: 844 })
+      await page.goto(route)
+      if (width < 768)
+        await page.getByRole('button', { name: 'Open Explorer', exact: true }).click()
+      const explorer =
+        width < 768
+          ? page.getByRole('dialog', { name: 'Explorer', exact: true })
+          : page.locator('#desktop-explorer')
+      const folder = explorer.locator('.vscode-explorer-folder')
+      const active = folder.locator('a[aria-current="page"]')
+      await expect(active).toHaveText(label)
+      await expect(active).toHaveAttribute('href', route)
+      await expect(folder.getByRole('link')).toHaveText(['index.md', 'tags/index.md', label])
+      if (width < 768)
+        await page.getByRole('button', { name: 'Close Explorer', exact: true }).click()
+    }
+  }
+})
+
 test('mobile displays multiple tabs when they fit, including after reload', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.addInitScript(() =>
