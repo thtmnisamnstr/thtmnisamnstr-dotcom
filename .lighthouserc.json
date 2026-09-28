@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "numberOfRuns": 3,
-      "startServerCommand": "npm run serve -- --port 3010",
+      "startServerCommand": "corepack npm run serve -- --port 3010",
       "startServerReadyPattern": "Ready",
       "url": [
         "http://localhost:3010/",

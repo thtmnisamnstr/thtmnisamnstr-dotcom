@@ -14,7 +14,7 @@ The shell uses React and CSS; Monaco and a split editor are not included. See th
 
 ## Stack
 
-- Node.js 24 (use the patch pinned in [`.nvmrc`](./.nvmrc)) and npm
+- Node.js 24 (use the patch pinned in [`.nvmrc`](./.nvmrc)) and npm 12.1.0, pinned in `package.json`
 - Next.js 16 Pages Router, React, and MDX
 - Tailwind CSS 4 and semantic VS Code color tokens
 - Netlify hosting, Segment analytics, and Pinecone blog search
@@ -25,8 +25,8 @@ The shell uses React and CSS; Monaco and a split editor are not included. See th
 Select the Node version in `.nvmrc`, then:
 
 ```sh
-npm ci
-npm run dev
+corepack npm ci
+corepack npm run dev
 ```
 
 Open [localhost:3000](http://localhost:3000). Environment variable names are documented in [`.env.example`](./.env.example); private credentials belong in an ignored local environment file.
@@ -36,32 +36,32 @@ Open [localhost:3000](http://localhost:3000). Environment variable names are doc
 Use explicit local flags to keep production search indexing disabled:
 
 ```sh
-NETLIFY=false CONTEXT=dev npm run verify
-npx playwright install chromium
-npm run test:e2e:workbench
+NETLIFY=false CONTEXT=dev corepack npm run verify
+corepack npm exec -- playwright install chromium
+corepack npm run test:e2e:workbench
 ```
 
-`verify` runs lint, type generation/TypeScript, unit/integration tests, and the production build, which also generates feeds and the sitemap. The workbench suite starts its own production server on port 3015; use `BASE_URL=http://localhost:<port>` to test an existing server. Individual commands are `lint`, `typecheck`, `test`, and `build`.
+The repo pins Node and npm for repeatable installs. `verify` runs lint, type generation/TypeScript, unit/integration tests, and the production build, which also generates feeds and the sitemap. The workbench suite starts its own production server on port 3015; use `BASE_URL=http://localhost:<port>` to test an existing server. Individual commands are `lint`, `typecheck`, `test`, and `build`.
 
 For the sitemap crawl:
 
 ```sh
-npm run serve -- --port 3012
+corepack npm run serve -- --port 3012
 # In another terminal:
-BASE_URL=http://localhost:3012 npm run test:e2e:crawl
+BASE_URL=http://localhost:3012 corepack npm run test:e2e:crawl
 ```
 
 When a development preview is running, perform production builds in a separate checkout or source copy so the two processes do not overwrite the same `.next` output.
 
-PRs targeting `main` run verify, the workbench/axe suite, runtime crawl, and Lighthouse. Lighthouse takes three runs each of Home, Blog, a representative post, About, and Resume; configured minimum scores are 80 for performance and 90 for accessibility, best practices, and SEO. `npm run perf:lighthouse` uploads reports to temporary public storage. For local-only reports, use the configured Lighthouse CLI's `collect` and `assert` commands without `upload`, as described in the [verification skill](./.agents/skills/verify-site/references/verification-checklist.md).
+PRs targeting `main` run verify, the workbench/axe suite, runtime crawl, and Lighthouse. Lighthouse takes three runs each of Home, Blog, a representative post, About, and Resume; configured minimum scores are 80 for performance and 90 for accessibility, best practices, and SEO. `corepack npm run perf:lighthouse` uploads reports to temporary public storage. For local-only reports, use the configured Lighthouse CLI's `collect` and `assert` commands without `upload`, as described in the [verification skill](./.agents/skills/verify-site/references/verification-checklist.md).
 
 ## Maintain themes and content
 
-- **Themes:** edit metadata in [`constant/themes.ts`](./constant/themes.ts). Upstream palettes and their MIT license are pinned in [`data/themes`](./data/themes); `npm run themes:generate` regenerates the checked-in [`css/themes.css`](./css/themes.css) offline. Workbench styles and documented web contrast adjustments live in [`css/workbench.css`](./css/workbench.css). Keep generated CSS reproducible and run the theme/axe checks after palette changes.
+- **Themes:** edit metadata in [`constant/themes.ts`](./constant/themes.ts). Upstream palettes and their MIT license are pinned in [`data/themes`](./data/themes); `corepack npm run themes:generate` regenerates the checked-in [`css/themes.css`](./css/themes.css) offline. Workbench styles and documented web contrast adjustments live in [`css/workbench.css`](./css/workbench.css). Keep generated CSS reproducible and run the theme/axe checks after palette changes.
 - **Blog/resume workflows:** repository skills under [`.agents/skills`](./.agents/skills) cover `$update-blogs`, `$update-resume`, `$update-site`, and `$verify-site`. New posts enter lists and the workbench automatically.
-- **Images:** `npm run optimize:images` scans local image assets and recompresses files of at least 1 MB by default; inspect its scope before using it for a small content change.
+- **Images:** `corepack npm run optimize:images` scans local image assets and recompresses files of at least 1 MB by default; inspect its scope before using it for a small content change.
 - **Screenshot:** the README image is a 1440 × 900 desktop capture of the current homepage in Dark Modern, stored under `docs/images` rather than shipped as a public site asset. Refresh it after substantial visual changes.
-- **Cleanup:** `npm run clean -- --dry-run` previews generated paths; `npm run clean` removes them, including `node_modules`. Build output, generated Next types, feeds, sitemap, caches, and browser reports are ignored. Source theme CSS, upstream palettes/licenses, docs, and the README screenshot are versioned.
+- **Cleanup:** `corepack npm run clean -- --dry-run` previews generated paths; `corepack npm run clean` removes them, including `node_modules`. Build output, generated Next types, feeds, sitemap, caches, and browser reports are ignored. Source theme CSS, upstream palettes/licenses, docs, and the README screenshot are versioned.
 
 ## Deploy
 

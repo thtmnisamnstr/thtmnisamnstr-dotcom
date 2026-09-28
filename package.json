@@ -1,7 +1,9 @@
 {
   "private": true,
+  "packageManager": "npm@12.1.0",
   "engines": {
-    "node": ">=24 <25"
+    "node": ">=24.15.0 <25",
+    "npm": ">=12.1.0 <13"
   },
   "scripts": {
     "dev": "next dev --webpack",
@@ -17,7 +19,7 @@
     "test:e2e:crawl": "node ./scripts/crawl-sitemap.mjs",
     "optimize:images": "node ./scripts/optimize-images.mjs",
     "perf:lighthouse": "npx --yes @lhci/cli@0.15.1 autorun --config=.lighthouserc.json",
-    "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "verify": "corepack npm run lint && corepack npm run typecheck && corepack npm run test && corepack npm run build",
     "test:e2e:workbench": "playwright test --config playwright.workbench.config.ts",
     "themes:generate": "node scripts/generate-workbench-themes.mjs"
   },

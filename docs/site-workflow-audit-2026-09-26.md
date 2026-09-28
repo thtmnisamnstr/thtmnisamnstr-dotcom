@@ -2,6 +2,30 @@
 
 Reviewed September 26, 2026, against commit `d382a6458` on `technical_updates`. Scope: repository history from February 15, 2026, current content/rendering/build/deployment code, and read-only dependency diagnostics. This is a source/process audit, not a claim that the live site or a new production build passed verification.
 
+## September 28 dependency and runtime follow-up
+
+This section records the current package and runtime baseline; earlier read-only observations below describe September 26 and remain historical.
+
+- The repository uses Node **24.21.0** (latest 24 LTS) rather than the shell's default Node 26, which is Current. `package.json` now declares Node `>=24.15.0 <25` and npm `>=12.1.0 <13`. `packageManager` pins npm `12.1.0`, GitHub Actions invokes it through Corepack, and `netlify.toml` sets `NPM_VERSION=12.1.0`.
+- A clean Corepack/npm 12 installation passed. All 46 direct dependencies are at the latest registry version satisfying their declared ranges; the current audit has zero findings and `npm ls --depth=0` is clean. `nextjs-pinecone-search@0.1.1` is published and installable; the earlier report of 0.1.0 returning E404 no longer blocks the lockfile.
+- `typescript@6.0.3` is retained. TypeScript 7.0.2 is available, but the installed `@typescript-eslint/parser@8.70.1` peer range is `<6.1.0`; TypeScript 7 also has no programmatic API yet, and Microsoft currently recommends TypeScript 6 for MDX tooling. `@types/node@24.19.0` matches the Node 24 target; Node 26 definitions would describe the wrong runtime. Sources: [TypeScript 7 announcement and migration guidance](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/), [Node release status](https://nodejs.org/en/about/previous-releases).
+- `npm audit` is clear, and Next.js **16.3.6** is the latest published active-line package at this review. The Next.js team has announced a **September 30, 2026** security release containing Next.js 16.3.7 and nine fixes (one critical, two high, five medium, one low). Recheck the registry and apply 16.3.7 after publication: [Next.js release announcement](https://nextjs.org/blog).
+- Netlify’s project configuration now pins `NPM_VERSION`; `.nvmrc` supplies the Node pin. The separate Netlify dashboard Node setting was not inspected.
+
+### Final local verification on September 28
+
+The exact working tree with these runtime and package-manager changes passed the release checks under Node 24.21.0 and npm 12.1.0:
+
+- `corepack npm ci` completed from the lockfile; `npm audit` reported zero vulnerabilities and `npm ls --depth=0` was clean.
+- `env NETLIFY=false CONTEXT=dev corepack npm run verify` passed lint, typecheck, all 20 unit/integration tests, the production build across 109 static routes, 27 generated tag feeds, and sitemap generation.
+- `corepack npm run test:e2e:workbench` passed all 47 browser/axe checks. `BASE_URL=http://localhost:3018 corepack npm run test:e2e:crawl` passed all 68 sitemap routes.
+- Local-only Lighthouse collection and assertions passed all 15 runs across Home, Blog, the image-rich post, About, and Resume. Accessibility, best-practices, and SEO were 1.00 in every run. Performance cleared the configured 0.80 floor; its lowest score was 0.81 on the image-rich post and 0.89 on Home, so those two routes have little margin before the gate. Reports were not uploaded.
+- Prettier checks for changed Markdown, JSON, and YAML passed, as did `git diff --check`.
+
+These local results do not establish Netlify dashboard settings, production deployment state, live Pinecone search health, or the pending Next.js security release. No production deploy or reindex was performed.
+
+The current-tree build, unit/browser, crawl, and Lighthouse results are recorded in the [workbench alignment report](./vscode-workbench-alignment.md). No production deploy, manual Pinecone reindex, or external provider check was performed by this maintenance run.
+
 ## September 28 workbench follow-up
 
 This document's September 26 observations below are historical. After the workbench implementation, all four skills and their references were reviewed and updated. The current contracts cover the centralized 16-theme registry, pinned/offline generated theme CSS, shared Explorer/Outline/session tabs, sidebar resizing, native scrolling, Quick Open versus Pinecone search, and the Playwright/axe release gate. Lighthouse now covers five routes, including About and Resume. Resume metadata uses paragraphs and skills use a responsive list instead of h5 metadata and an empty-header table. Generated Next environment/types are ignored and recreated before typechecking. The README screenshot is maintained under `docs/images`.
