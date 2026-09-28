@@ -1,6 +1,6 @@
 ---
 name: verify-site
-description: Check thtmnisamnstr.com for release readiness or regressions using its build, runtime crawl, Lighthouse, content, theme and Pinecone-search checks. Use for this site's QA or deployment diagnosis; a verification request does not itself request code changes or deployment.
+description: Check thtmnisamnstr.com for release readiness or regressions using its build, workbench/axe suite, runtime crawl, Lighthouse, content, theme and Pinecone-search checks. Use for this site's QA or deployment diagnosis; a verification request does not itself request code changes or deployment.
 ---
 
 # Verify site
@@ -9,15 +9,17 @@ Verify the actual changed site or diagnose a reported failure in `thtmnisamnstr/
 
 Determine whether the request is inspection, a fix, or release work. A check/review reports findings; a request to fix authorizes relevant repairs and re-verification. Reuse checks already completed for the same source, dependency lock, and runtime. Honor existing publishing authorization, but do not infer it from a check request.
 
-Read [references/verification-checklist.md](references/verification-checklist.md), selecting the checks relevant to the change. Default release verification includes build, runtime crawl, performance checks, representative visual pages and search behavior. A narrow content check can concentrate on affected pages plus the build.
+Read [references/verification-checklist.md](references/verification-checklist.md), selecting the checks relevant to the change. Default release verification includes build, workbench/axe tests, runtime crawl, performance checks, representative visual pages and search behavior. A narrow content check can concentrate on affected pages plus the build.
 
 ## Establish and run the checks
 
 - Inspect the current Node pin/engines, lockfile, package scripts, `netlify.toml`, CI, and `next.config.js`. Use the supported runtime and a matching installation. If inspection requires restoring dependencies, avoid disturbing another active task; use an isolated checkout where appropriate.
 - Inspect ambient `NETLIFY` and `CONTEXT` without printing secrets. For local verification, run `env NETLIFY=false CONTEXT=dev npm run verify`; a successful build generates the feeds/sitemap used by later checks without activating the production-only Pinecone wrapper. Use a genuine production build only when production indexing is authorized and intended. Do not continue with stale output after a failed build and call it a pass.
-- Serve the production build on an available local port, wait for readiness, and run `BASE_URL=http://localhost:<port> npm run test:e2e:crawl`. Install the matching Playwright Chromium browser if needed. Use cleanup that targets only the server started for this check, including when a later assertion fails, and confirm no check-owned server remains afterward.
+- If a development preview is running, use an isolated source copy/worktree for production checks to avoid concurrent dev/build writes to `.next`. Generated `next-env.d.ts` is ignored and recreated by `typecheck`, dev, or build.
+- Serve the production build on an available local port, wait for readiness, and run `BASE_URL=http://localhost:<port> npm run test:e2e:workbench` and `BASE_URL=http://localhost:<port> npm run test:e2e:crawl` for release/shared-shell verification. Narrow changes may select affected workbench tests with `-- --grep`. Install the matching Playwright Chromium browser if needed. Use cleanup that targets only the server started for this check, including when a later assertion fails, and confirm no check-owned server remains afterward.
 - Inspect response status and meaningful page content on representative routes as well as browser errors and images. The existing crawler alone does not validate status codes or user interactions. Prefer DOM assertions for title/metadata, or attribute-tolerant HTML matching: framework output may add attributes to tags such as `<title>` without changing the rendered metadata.
 - Run configured Lighthouse collection/assertions when doing release/performance/shared-layout verification. Preserve the configured three runs and thresholds. Use local reports: the existing `perf:lighthouse` autorun uploads to temporary public storage, so run equivalent `collect` and `assert` steps without `upload`, or use a temporary filesystem-upload config unless report publication is authorized.
+- For theme changes, check the single registry and required tokens; `npm run themes:generate` must reproduce `css/themes.css` from the pinned licensed source. Preserve documented web contrast adjustments in `css/workbench.css`.
 - Inspect relevant desktop/mobile pages, theme selection/persistence, and changed user interactions. Capture mobile menus at viewport size rather than with a full-page screenshot, because fixed overlays can create misleading stitched output. For a reported production issue, compare local evidence with available read-only CI/Netlify/deployed-site evidence. Never claim an unseen deployment passed.
 
 ## Search and external-state checks

@@ -16,6 +16,7 @@
 .eslintcache
 
 # next.js
+/next-env.d.ts
 /.next
 /.netlify
 /out/

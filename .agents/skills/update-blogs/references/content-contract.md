@@ -16,7 +16,9 @@ summary: 'A concise description of what the article explains.'
 images: ['/images/blog/20260219-source-title/header.png']
 authors: ['gavin-johnson']
 ---
+
 **_This post was originally published on [Pinecone's blog](https://www.pinecone.io/blog/source-title/)._**
+
 <br />
 
 Article content starts here.
@@ -55,6 +57,10 @@ Local Markdown images, such as `![Diagram description](/images/blog/<slug>/diagr
 `components/MDXComponents.tsx` exposes `Image`, link and preformatted-code replacements, and known layouts. Keep ordinary Markdown when it expresses the article. Raw HTML needs JSX-compatible attributes and self-closing elements. `next.config.js` only allows a small set of remote image hosts, so adding arbitrary publisher hosts is not the normal import path.
 
 Resolve article-relative links to source URLs; rewrite a link to a local article only when the same article exists here. Keep source citations and technical code intact. Do not add an original-source canonical override as an incidental import change: `components/SEO.tsx` currently emits this site's canonical URLs, while attribution links credit the publisher.
+
+## Workbench presentation
+
+Articles are rendered Markdown previews inside the shared workbench, not editable source. The current article and `tags/index.md` appear under the Explorer blog folder automatically; no manual Explorer or tab registration is needed. Both post layouts use a single reading column. Keep author/date/tags available in the article header; desktop Outline/post details are also derived in `LayoutWrapper`. Preserve meaningful H2/H3 headings for Outline navigation and use prose/code styles rather than adding a second metadata rail or applying monospace to the whole article. Check long titles, tables, images and code within the flexible editor at mobile/desktop widths.
 
 ## Downstream consumers
 

@@ -5,50 +5,26 @@ import { SectionContainer } from '~/components/SectionContainer'
 import { siteMetadata } from '~/data'
 import type { PostLayoutProps } from '~/types'
 
-export function PostLayout(props: PostLayoutProps) {
-  let { frontMatter, authorDetails, page, children } = props
-  let { slug, date, title, tags, readingTime } = frontMatter
-  let postUrl = `${siteMetadata.siteUrl}/blog/${slug}`
-
+export function PostLayout({ frontMatter, authorDetails, page, children }: PostLayoutProps) {
+  const { slug, date, title, tags, readingTime } = frontMatter
   return (
     <SectionContainer>
-      <BlogSeo url={postUrl} authorDetails={authorDetails} {...frontMatter} />
+      <BlogSeo
+        url={`${siteMetadata.siteUrl}/blog/${slug}`}
+        authorDetails={authorDetails}
+        {...frontMatter}
+      />
       <ScrollTopButton />
       <article>
-        <div>
-          <BlogHeader title={title} date={date} readingTime={readingTime} />
-          <div
-            className="pb-8 divide-y vscode-divide-y xl:divide-y-0 xl:grid xl:grid-cols-4 xl:gap-x-6"
-            style={{ gridTemplateRows: 'auto 1fr' }}
-          >
-            <div>
-              <div className="hidden xl:block py-4 xl:py-8 border-b vscode-divider">
-                <BackToPosts page={page} />
-              </div>
-              <dl className="pt-6 pb-10 xl:pt-11">
-                <dt className="sr-only">Authors</dt>
-                <dd>
-                  <AuthorDetails authorDetails={authorDetails} />
-                </dd>
-              </dl>
-            </div>
-            <div className="!border-t-0 divide-y vscode-divide-y xl:pb-0 xl:col-span-3 xl:row-span-2">
-              <div className="vscode-body-copy pt-10 pb-8 prose prose-lg dark:prose-dark max-w-none">
-                {children}
-              </div>
-            </div>
-            <footer>
-              <div className="text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2">
-                <div className="py-4">
-                  <BlogTags tags={tags} />
-                </div>
-              </div>
-            </footer>
-          </div>
+        <BlogHeader title={title} date={date} readingTime={readingTime} />
+        <div className="vscode-post-metadata">
+          <AuthorDetails authorDetails={authorDetails} />
+          <BlogTags tags={tags} />
         </div>
+        <div className="vscode-body-copy pb-8 prose dark:prose-dark max-w-none">{children}</div>
+        <BackToPosts page={page} />
       </article>
     </SectionContainer>
   )
 }
-
 export default PostLayout

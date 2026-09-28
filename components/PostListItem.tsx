@@ -8,12 +8,12 @@ export function PostListItem({ frontMatter }: { frontMatter: MdxFrontMatter }) {
   return (
     <li key={slug}>
       <article className="space-y-2">
-        <time className="block text-sm opacity-80" dateTime={date}>
+        <time className="block text-sm vscode-meta" dateTime={date}>
           {formatDate(date)}
         </time>
-        <h3 className="text-xl font-semibold leading-8">
+        <h2 className="text-xl font-semibold leading-8">
           <Link href={`/blog/${slug}`}>{title}</Link>
-        </h3>
+        </h2>
         <div className="flex flex-wrap">
           {tags.map((tag) => (
             <Tag key={tag} text={tag} />

@@ -14,7 +14,7 @@ export function FeaturedPosts({ posts }: { posts: BlogFrontMatter[] }) {
           return (
             <li key={slug} className="py-6">
               <article className="space-y-2">
-                <time className="block text-sm opacity-80" dateTime={date}>
+                <time className="block text-sm vscode-meta" dateTime={date}>
                   {formatDate(date)}
                 </time>
                 <h3 className="text-xl font-semibold">

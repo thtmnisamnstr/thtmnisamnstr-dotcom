@@ -36,6 +36,9 @@ jobs:
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
+      - name: Workbench interaction and accessibility checks
+        run: npm run test:e2e:workbench
+
       - name: Runtime crawl
         env:
           NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD: ${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY_PROD }}

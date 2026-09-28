@@ -57,10 +57,12 @@ export function ListLayout(props: ListLayoutProps) {
   let [searchValue, setSearchValue] = useState('')
   let [searchResults, setSearchResults] = useState<PineconeSearchResult[]>([])
   let [isSearching, setIsSearching] = useState(false)
+  let [searchError, setSearchError] = useState(false)
   let hasQuery = searchValue.trim().length > 0
 
   useEffect(() => {
     let query = searchValue.trim()
+    setSearchError(false)
 
     if (!query) {
       setSearchResults([])
@@ -68,6 +70,7 @@ export function ListLayout(props: ListLayoutProps) {
       return
     }
 
+    setIsSearching(true)
     let controller = new AbortController()
     let timeoutId = setTimeout(async () => {
       setIsSearching(true)
@@ -80,14 +83,18 @@ export function ListLayout(props: ListLayoutProps) {
         })
 
         if (!response.ok) {
+          if (controller.signal.aborted) return
+          setSearchError(true)
           setSearchResults([])
           return
         }
 
         let payload = (await response.json()) as PineconeSearchResponse
-        setSearchResults(Array.isArray(payload.results) ? payload.results : [])
+        if (!controller.signal.aborted)
+          setSearchResults(Array.isArray(payload.results) ? payload.results : [])
       } catch {
         if (!controller.signal.aborted) {
+          setSearchError(true)
           setSearchResults([])
         }
       } finally {
@@ -143,11 +150,16 @@ export function ListLayout(props: ListLayoutProps) {
               <li>
                 <div className="flex items-center" role="status" aria-live="polite">
                   <span className="h-4 w-4 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
-                  <span className="ml-3 text-sm opacity-80">Loading...</span>
+                  <span className="ml-3 text-sm">Loading...</span>
                 </div>
               </li>
             ) : null}
-            {!isSearching && !searchDisplay.matchedPosts.length && 'No posts found.'}
+            {!isSearching && searchError && (
+              <li role="alert">Search is temporarily unavailable. Please try again.</li>
+            )}
+            {!isSearching && !searchError && !searchDisplay.matchedPosts.length && (
+              <li role="status">No posts found.</li>
+            )}
             {searchDisplay.matchedPosts.map((frontMatter) => (
               <PostListItem key={frontMatter.slug} frontMatter={frontMatter} />
             ))}
