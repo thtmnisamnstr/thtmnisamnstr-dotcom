@@ -21,18 +21,22 @@ export function PostSimple(props: PostSimpleLayoutProps) {
       />
       <article>
         <div>
-          <header className="pt-6 xl:pt-12">
+          <header className="vscode-post-header">
             <div className="space-y-4">
-              <BlogTags tags={tags} />
+              <div className="vscode-post-metadata">
+                <BlogTags tags={tags} />
+              </div>
               <PageTitle>{title}</PageTitle>
-              <dl>
+              <dl className="vscode-post-metadata">
                 <div className="pb-4">
                   <dt className="sr-only">Published on</dt>
                   <BlogMeta date={date} readingTime={readingTime} />
                 </div>
                 <div className="pb-4">
                   <dt className="sr-only">Written by</dt>
-                  <AuthorDetails authorDetails={authorDetails} />
+                  <dd>
+                    <AuthorDetails authorDetails={authorDetails} />
+                  </dd>
                 </div>
               </dl>
               {heroImage && (
@@ -52,7 +56,7 @@ export function PostSimple(props: PostSimpleLayoutProps) {
           </header>
           <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>
             <div className="xl:pb-0 xl:col-span-3 xl:row-span-2">
-              <div className="vscode-body-copy pb-8 prose prose-lg md:prose-xl dark:prose-dark max-w-none">
+              <div className="vscode-body-copy pb-8 prose dark:prose-dark max-w-none">
                 {children}
               </div>
             </div>

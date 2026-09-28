@@ -1,7 +1,9 @@
 {
   "private": true,
+  "packageManager": "npm@12.1.0",
   "engines": {
-    "node": ">=24 <25"
+    "node": ">=24.15.0 <25",
+    "npm": ">=12.1.0 <13"
   },
   "scripts": {
     "dev": "next dev --webpack",
@@ -11,13 +13,15 @@
     "clean": "node ./scripts/clean.mjs",
     "lint": "eslint --max-warnings=0 \"{components,constant,layouts,libs,pages,scripts,types,utils}/**/*.{js,jsx,mjs,ts,tsx}\"",
     "lint:fix": "eslint --fix --max-warnings=0 \"{components,constant,layouts,libs,pages,scripts,types,utils}/**/*.{js,jsx,mjs,ts,tsx}\"",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen --webpack && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e:crawl": "node ./scripts/crawl-sitemap.mjs",
     "optimize:images": "node ./scripts/optimize-images.mjs",
     "perf:lighthouse": "npx --yes @lhci/cli@0.15.1 autorun --config=.lighthouserc.json",
-    "verify": "npm run lint && npm run typecheck && npm run test && npm run build"
+    "verify": "corepack npm run lint && corepack npm run typecheck && corepack npm run test && corepack npm run build",
+    "test:e2e:workbench": "playwright test --config playwright.workbench.config.ts",
+    "themes:generate": "node scripts/generate-workbench-themes.mjs"
   },
   "dependencies": {
     "@next/env": "^16.3.6",
@@ -48,6 +52,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^10.0.1",
     "@netlify/plugin-nextjs": "^5.16.0",
     "@playwright/test": "^1.63.0",

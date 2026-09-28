@@ -2,16 +2,46 @@
 
 Reviewed September 26, 2026, against commit `d382a6458` on `technical_updates`. Scope: repository history from February 15, 2026, current content/rendering/build/deployment code, and read-only dependency diagnostics. This is a source/process audit, not a claim that the live site or a new production build passed verification.
 
+## September 28 dependency and runtime follow-up
+
+This section records the current package and runtime baseline; earlier read-only observations below describe September 26 and remain historical.
+
+- The repository uses Node **24.21.0** (latest 24 LTS) rather than the shell's default Node 26, which is Current. `package.json` now declares Node `>=24.15.0 <25` and npm `>=12.1.0 <13`. `packageManager` pins npm `12.1.0`, GitHub Actions invokes it through Corepack, and `netlify.toml` sets `NPM_VERSION=12.1.0`.
+- A clean Corepack/npm 12 installation passed. All 46 direct dependencies are at the latest registry version satisfying their declared ranges; the current audit has zero findings and `npm ls --depth=0` is clean. `nextjs-pinecone-search@0.1.1` is published and installable; the earlier report of 0.1.0 returning E404 no longer blocks the lockfile.
+- `typescript@6.0.3` is retained. TypeScript 7.0.2 is available, but the installed `@typescript-eslint/parser@8.70.1` peer range is `<6.1.0`; TypeScript 7 also has no programmatic API yet, and Microsoft currently recommends TypeScript 6 for MDX tooling. `@types/node@24.19.0` matches the Node 24 target; Node 26 definitions would describe the wrong runtime. Sources: [TypeScript 7 announcement and migration guidance](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/), [Node release status](https://nodejs.org/en/about/previous-releases).
+- `npm audit` is clear, and Next.js **16.3.6** is the latest published active-line package at this review. The Next.js team has announced a **September 30, 2026** security release containing Next.js 16.3.7 and nine fixes (one critical, two high, five medium, one low). Recheck the registry and apply 16.3.7 after publication: [Next.js release announcement](https://nextjs.org/blog).
+- Netlify’s project configuration now pins `NPM_VERSION`; `.nvmrc` supplies the Node pin. The separate Netlify dashboard Node setting was not inspected.
+
+### Final local verification on September 28
+
+The exact working tree with these runtime and package-manager changes passed the release checks under Node 24.21.0 and npm 12.1.0:
+
+- `corepack npm ci` completed from the lockfile; `npm audit` reported zero vulnerabilities and `npm ls --depth=0` was clean.
+- `env NETLIFY=false CONTEXT=dev corepack npm run verify` passed lint, typecheck, all 20 unit/integration tests, the production build across 109 static routes, 27 generated tag feeds, and sitemap generation.
+- `corepack npm run test:e2e:workbench` passed all 47 browser/axe checks. `BASE_URL=http://localhost:3018 corepack npm run test:e2e:crawl` passed all 68 sitemap routes.
+- Local-only Lighthouse collection and assertions passed all 15 runs across Home, Blog, the image-rich post, About, and Resume. Accessibility, best-practices, and SEO were 1.00 in every run. Performance cleared the configured 0.80 floor; its lowest score was 0.81 on the image-rich post and 0.89 on Home, so those two routes have little margin before the gate. Reports were not uploaded.
+- Prettier checks for changed Markdown, JSON, and YAML passed, as did `git diff --check`.
+
+These local results do not establish Netlify dashboard settings, production deployment state, live Pinecone search health, or the pending Next.js security release. No production deploy or reindex was performed.
+
+The current-tree build, unit/browser, crawl, and Lighthouse results are recorded in the [workbench alignment report](./vscode-workbench-alignment.md). No production deploy, manual Pinecone reindex, or external provider check was performed by this maintenance run.
+
+## September 28 workbench follow-up
+
+This document's September 26 observations below are historical. After the workbench implementation, all four skills and their references were reviewed and updated. The current contracts cover the centralized 16-theme registry, pinned/offline generated theme CSS, shared Explorer/Outline/session tabs, sidebar resizing, native scrolling, Quick Open versus Pinecone search, and the Playwright/axe release gate. Lighthouse now covers five routes, including About and Resume. Resume metadata uses paragraphs and skills use a responsive list instead of h5 metadata and an empty-header table. Generated Next environment/types are ignored and recreated before typechecking. The README screenshot is maintained under `docs/images`.
+
+The [workbench alignment report](./vscode-workbench-alignment.md) records the implementation and its verification. The older package, search-error, test-coverage and layout findings here must not be read as the current implementation state; recheck current sources before acting on them.
+
 ## Skills created
 
 Four repository-local skills live under `.agents/skills/`, the OpenAI-compatible location for reusable project workflows. Each has `SKILL.md`, a task-specific reference, and `agents/openai.yaml` for discovery. Because they are versioned with the site, other contributors and coding agents receive the same workflow instead of depending on one machine's personal Codex configuration.
 
-| Invocation | What it handles |
-| --- | --- |
-| `$update-blogs` followed by article links | Complete source imports, duplicate detection, publication dates, MDX, provenance, coauthors, local images, tags, generated outputs and verification. Includes a read-only metadata/author/image validator. |
-| `$update-resume` followed by a Google Doc or Markdown resume | Full replacement or partial update, source fidelity, site heading/layout conventions, preserved evidence links, and reporting of duplicated current-role/contact drift. |
-| `$update-site` | Current dependency and tooling discovery, supported Node/npm selection, coordinated upgrades and migrations, lockfile reproducibility, advisories and release checks. |
-| `$verify-site` | Independent site QA and release diagnosis across builds, routes, images, themes, mobile layouts, search, Lighthouse and deployment/indexing evidence. |
+| Invocation                                                   | What it handles                                                                                                                                                                                            |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$update-blogs` followed by article links                    | Complete source imports, duplicate detection, publication dates, MDX, provenance, coauthors, local images, tags, generated outputs and verification. Includes a read-only metadata/author/image validator. |
+| `$update-resume` followed by a Google Doc or Markdown resume | Full replacement or partial update, source fidelity, site heading/layout conventions, preserved evidence links, and reporting of duplicated current-role/contact drift.                                    |
+| `$update-site`                                               | Current dependency and tooling discovery, supported Node/npm selection, coordinated upgrades and migrations, lockfile reproducibility, advisories and release checks.                                      |
+| `$verify-site`                                               | Independent site QA and release diagnosis across builds, routes, images, themes, mobile layouts, search, Lighthouse and deployment/indexing evidence.                                                      |
 
 The skill-creator workflow informed the narrow descriptions, supporting references, automatic discoverability, and validation. The skills query current release information on each future maintenance run; they do not hardcode September's package targets. The default Node choice is the latest suitable supported LTS release, consistent with the [Node project's production guidance](https://nodejs.org/en/about/previous-releases). Explicit user preferences can override that choice where the hosting/dependency stack supports them.
 
@@ -19,14 +49,14 @@ These skills prepare and validate work within the user's requested scope. Existi
 
 ## What changed since the redesign
 
-| Date / evidence | Process or architecture change | Captured in the skills |
-| --- | --- | --- |
-| Feb 15: `b19202877`, `e63acce5d` | VS Code-inspired redesign, content/layout changes, dependency/runtime cleanup, PR checks, crawler, Lighthouse, image optimizer and tests. | Preserve the current framework/layout; update runtime/config together; use the existing quality gates. |
-| Feb 16: `63ae81e3b` | Pagination, theme persistence, image lightbox, mixed image/caption handling, feed/sitemap and build/deploy hardening. | Check interactions and generated outputs, not only compilation; keep image captions and stable routes. |
-| Feb 16: `6e16acfc5` | Resume restructure, theme/layout polish and configuration cleanup. | Preserve resume role grouping and established heading/style conventions. |
-| Feb 16: `5c1d7f38d`, `bfcb1d92f` | Static masked header logo improved performance; Lighthouse increased to three runs to reduce flakiness. | Preserve performance behavior, configured repetitions and thresholds. |
-| Feb 26: `25ce8ef0d` | Five blog imports, four new coauthor profiles, local media, attribution/tag normalization, date/slug repair, resume link restoration. | Treat each import as content plus authors/assets; preserve evidence links; validate real dates and existing URLs. |
-| Mar 30–31: `752c255fa`, `bb14e6c6d`, `811db2caf`, `a765d4709` | Pinecone-backed search, deployment/CI environment changes, production-only automatic indexing and manual reindex command. | Distinguish local verification, deployment success and fresh search indexes; preserve the production gate. |
+| Date / evidence                                               | Process or architecture change                                                                                                            | Captured in the skills                                                                                            |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Feb 15: `b19202877`, `e63acce5d`                              | VS Code-inspired redesign, content/layout changes, dependency/runtime cleanup, PR checks, crawler, Lighthouse, image optimizer and tests. | Preserve the current framework/layout; update runtime/config together; use the existing quality gates.            |
+| Feb 16: `63ae81e3b`                                           | Pagination, theme persistence, image lightbox, mixed image/caption handling, feed/sitemap and build/deploy hardening.                     | Check interactions and generated outputs, not only compilation; keep image captions and stable routes.            |
+| Feb 16: `6e16acfc5`                                           | Resume restructure, theme/layout polish and configuration cleanup.                                                                        | Preserve resume role grouping and established heading/style conventions.                                          |
+| Feb 16: `5c1d7f38d`, `bfcb1d92f`                              | Static masked header logo improved performance; Lighthouse increased to three runs to reduce flakiness.                                   | Preserve performance behavior, configured repetitions and thresholds.                                             |
+| Feb 26: `25ce8ef0d`                                           | Five blog imports, four new coauthor profiles, local media, attribution/tag normalization, date/slug repair, resume link restoration.     | Treat each import as content plus authors/assets; preserve evidence links; validate real dates and existing URLs. |
+| Mar 30–31: `752c255fa`, `bb14e6c6d`, `811db2caf`, `a765d4709` | Pinecone-backed search, deployment/CI environment changes, production-only automatic indexing and manual reindex command.                 | Distinguish local verification, deployment success and fresh search indexes; preserve the production gate.        |
 
 The three merged work streams are PR #93 (redesign), #94 (content), and #95 (technical/search). The checked-out history contains no later source changes after March 31. Use an explicit history boundary such as `2026-02-15T00:00:00-08:00` to include the first day's commits reliably.
 

@@ -1,20 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-
-const THEMES = [
-  { value: 'vscode-dark-plus', label: 'Dark+ (default dark)' },
-  { value: 'vscode-light-plus', label: 'Light+ (default light)' },
-  { value: 'github-dark', label: 'GitHub Dark' },
-  { value: 'github-light', label: 'GitHub Light' },
-  { value: 'one-dark-pro', label: 'One Dark Pro' },
-  { value: 'dracula', label: 'Dracula' },
-  { value: 'monokai', label: 'Monokai' },
-  { value: 'night-owl', label: 'Night Owl' },
-  { value: 'solarized-dark', label: 'Solarized Dark' },
-  { value: 'solarized-light', label: 'Solarized Light' },
-  { value: 'vscode-hc-black', label: 'High Contrast Black' },
-  { value: 'vscode-hc-light', label: 'High Contrast Light' },
-]
+import { themes } from '~/constant/themes'
 
 export function ThemeSwitcher() {
   let [mounted, setMounted] = useState(false)
@@ -30,7 +16,7 @@ export function ThemeSwitcher() {
     )
   }
 
-  let selectedTheme = theme || 'vscode-dark-plus'
+  let selectedTheme = theme || 'system'
 
   return (
     <label className="vscode-theme-select-wrap">
@@ -41,8 +27,9 @@ export function ThemeSwitcher() {
         value={selectedTheme}
         onChange={(event) => setTheme(event.target.value)}
       >
-        {THEMES.map((item) => (
-          <option key={item.value} value={item.value}>
+        <option value="system">System theme</option>
+        {themes.map((item) => (
+          <option key={item.id} value={item.id}>
             {item.label}
           </option>
         ))}

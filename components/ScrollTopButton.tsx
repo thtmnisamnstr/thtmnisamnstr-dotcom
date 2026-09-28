@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
-import smoothscroll from 'smoothscroll-polyfill'
 
 export function ScrollTopButton() {
   let [show, setShow] = useState(false)
 
   useEffect(() => {
-    smoothscroll.polyfill()
     let handleWindowScroll = () => {
       if (window.scrollY > 200) setShow(true)
       else setShow(false)
@@ -16,7 +14,12 @@ export function ScrollTopButton() {
   }, [])
 
   let handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'instant'
+        : 'smooth',
+    })
   }
 
   return (
@@ -24,7 +27,9 @@ export function ScrollTopButton() {
       aria-label="Scroll To Top"
       type="button"
       onClick={handleClick}
-      style={{ opacity: show ? 1 : 0 }}
+      hidden={!show}
+      tabIndex={show ? 0 : -1}
+      style={{ visibility: show ? 'visible' : 'hidden' }}
       className="vscode-scroll-top hidden md:inline-block transition-opacity"
     >
       <svg

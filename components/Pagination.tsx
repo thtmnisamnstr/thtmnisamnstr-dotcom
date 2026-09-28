@@ -23,8 +23,12 @@ export function Pagination({ totalPages, currentPage, basePath = '/blog' }: Pagi
 
   return (
     <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-      <nav className="flex flex-wrap items-center justify-start gap-2">
-        {!hasPrevPage && <span className={disabledControlClassName}>Previous</span>}
+      <nav aria-label="Pagination" className="flex flex-wrap items-center justify-start gap-2">
+        {!hasPrevPage && (
+          <button type="button" disabled className={disabledControlClassName}>
+            Previous
+          </button>
+        )}
         {hasPrevPage && (
           <Link href={prevHref} className={controlClassName}>
             Previous
@@ -32,7 +36,7 @@ export function Pagination({ totalPages, currentPage, basePath = '/blog' }: Pagi
         )}
         {showLeadingEllipsis && (
           <Link href={getPageHref(leadingEllipsisTarget)} className={controlClassName}>
-            more
+            Earlier pages
           </Link>
         )}
         {pageNumbers.map((pageNumber) =>
@@ -52,10 +56,14 @@ export function Pagination({ totalPages, currentPage, basePath = '/blog' }: Pagi
         )}
         {showTrailingEllipsis && (
           <Link href={getPageHref(trailingEllipsisTarget)} className={controlClassName}>
-            more
+            Later pages
           </Link>
         )}
-        {!hasNextPage && <span className={disabledControlClassName}>Next</span>}
+        {!hasNextPage && (
+          <button type="button" disabled className={disabledControlClassName}>
+            Next
+          </button>
+        )}
         {hasNextPage && (
           <Link href={nextHref} className={controlClassName}>
             Next

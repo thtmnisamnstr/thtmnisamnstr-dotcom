@@ -7,13 +7,13 @@ export function BlogHeader({ title, date, readingTime }: BlogHeaderProps) {
   let readingTimeText = readingTime.text
 
   return (
-    <header className="pt-6 xl:py-16">
-      <div className="space-y-4 md:space-y-2 text-center">
+    <header className="vscode-post-header">
+      <div className="space-y-4 md:space-y-2">
         <PageTitle>{title}</PageTitle>
-        <dl className="space-y-10">
+        <dl className="vscode-post-metadata">
           <div>
             <dt className="sr-only">Published on</dt>
-            <dd className="vscode-meta flex justify-center items-center text-base font-medium leading-6">
+            <dd className="vscode-meta flex items-center text-base font-medium leading-6">
               <time dateTime={date} className="flex items-center">
                 <Twemoji emoji="calendar" size="" />
                 <span className="ml-1.5">{createdAt}</span>

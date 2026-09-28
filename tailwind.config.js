@@ -16,7 +16,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Outfit', ...defaultTheme.fontFamily.sans],
+        sans: ['Segoe UI', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.sky,

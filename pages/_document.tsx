@@ -1,3 +1,4 @@
+import { themeBootstrap } from '~/constant/themes'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
@@ -5,6 +6,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
           <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon.png" />
           <link
             rel="icon"
